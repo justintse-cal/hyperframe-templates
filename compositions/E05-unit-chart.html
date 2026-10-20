@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background-color: #ffffff;
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Editorial Frame & Header */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 80px;
+          right: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #C2185B;
+        }
+
+        /* Content: dots left, statement right */
+        .unit-stage {
+          position: absolute;
+          top: 150px;
+          left: 130px;
+          right: 130px;
+          bottom: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 200px; /* tighten chart ↔ text (tune this one number) */
+        }
+
+        .unit-grid {
+          display: grid;
+          grid-template-columns: repeat(10, 28px);
+          gap: 14px;
+          flex-shrink: 0;
+        }
+
+        .unit-dot {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: rgba(18, 18, 18, 0.12);
+        }
+
+        .unit-text {
+          max-width: 940px;
+          opacity: 0;
+        }
+
+        .unit-source {
+          font-family: 'Inter', sans-serif;
+          font-size: 22px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: rgba(18, 18, 18, 0.6);
+        }
+
+        .unit-line {
+          margin-top: 18px;
+          font-family: 'Inter', sans-serif;
+          font-size: 84px;
+          font-weight: 700;
+          line-height: 1.15;
+          color: #121212;
+        }
+
+        .unit-number {
+          color: #C2185B;
+          font-family: 'Playfair Display', serif;
+          font-weight: 800;
+        }
+
+        .unit-caption {
+          margin-top: 24px;
+          font-family: 'Inter', sans-serif;
+          font-size: 26px;
+          font-weight: 400;
+          color: rgba(18, 18, 18, 0.7);
+          line-height: 1.5;
+        }
+
+        /* Footer & Logo */
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 96px;
+          right: 96px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #8A6D00;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(18, 18, 18, 0.6);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-t7cd" id="root" data-composition-id="E05-unit-chart" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
+          <span data-hf-id="hf-nrq4" class="use-it-for-tag">Use It For: Share / Proportion</span>
+        </div>
+
+        <div data-hf-id="hf-p8xn" class="unit-stage">
+          <div data-hf-id="hf-aj1k" class="unit-grid" id="e5-grid">
+            <!-- 100 dots, generated statically for deterministic rendering -->
+            <span data-hf-id="hf-or5h" class="unit-dot"></span><span data-hf-id="hf-ize1" class="unit-dot"></span><span data-hf-id="hf-k6b4" class="unit-dot"></span><span data-hf-id="hf-js03" class="unit-dot"></span><span data-hf-id="hf-hsgy" class="unit-dot"></span><span data-hf-id="hf-he5x" class="unit-dot"></span><span data-hf-id="hf-il30" class="unit-dot"></span><span data-hf-id="hf-i6rz" class="unit-dot"></span><span data-hf-id="hf-g78u" class="unit-dot"></span><span data-hf-id="hf-fsxt" class="unit-dot"></span>
+            <span data-hf-id="hf-8frv" class="unit-dot"></span><span data-hf-id="hf-8u2w" class="unit-dot"></span><span data-hf-id="hf-7n5t" class="unit-dot"></span><span data-hf-id="hf-81gu" class="unit-dot"></span><span data-hf-id="hf-6ujr" class="unit-dot"></span><span data-hf-id="hf-78us" class="unit-dot"></span><span data-hf-id="hf-61xp" class="unit-dot"></span><span data-hf-id="hf-6g8q" class="unit-dot"></span><span data-hf-id="hf-bm83" class="unit-dot"></span><span data-hf-id="hf-c0j4" class="unit-dot"></span>
+            <span data-hf-id="hf-l000" class="unit-dot"></span><span data-hf-id="hf-kloz" class="unit-dot"></span><span data-hf-id="hf-k7dy" class="unit-dot"></span><span data-hf-id="hf-jt2x" class="unit-dot"></span><span data-hf-id="hf-jerw" class="unit-dot"></span><span data-hf-id="hf-j0gv" class="unit-dot"></span><span data-hf-id="hf-im5u" class="unit-dot"></span><span data-hf-id="hf-i7ut" class="unit-dot"></span><span data-hf-id="hf-htjs" class="unit-dot"></span><span data-hf-id="hf-hf8r" class="unit-dot"></span>
+            <span data-hf-id="hf-6wg9" class="unit-dot"></span><span data-hf-id="hf-7ara" class="unit-dot"></span><span data-hf-id="hf-7p2b" class="unit-dot"></span><span data-hf-id="hf-83dc" class="unit-dot"></span><span data-hf-id="hf-5b85" class="unit-dot"></span><span data-hf-id="hf-5pj6" class="unit-dot"></span><span data-hf-id="hf-63u7" class="unit-dot"></span><span data-hf-id="hf-6i58" class="unit-dot"></span><span data-hf-id="hf-3q01" class="unit-dot"></span><span data-hf-id="hf-44b2" class="unit-dot"></span>
+            <span data-hf-id="hf-4jdi" class="unit-dot"></span><span data-hf-id="hf-452h" class="unit-dot"></span><span data-hf-id="hf-5bzk" class="unit-dot"></span><span data-hf-id="hf-4xoj" class="unit-dot"></span><span data-hf-id="hf-2y5e" class="unit-dot"></span><span data-hf-id="hf-2jud" class="unit-dot"></span><span data-hf-id="hf-3qrg" class="unit-dot"></span><span data-hf-id="hf-3cgf" class="unit-dot"></span><span data-hf-id="hf-1cxa" class="unit-dot"></span><span data-hf-id="hf-0ym9" class="unit-dot"></span>
+            <span data-hf-id="hf-5b1b" class="unit-dot"></span><span data-hf-id="hf-5pcc" class="unit-dot"></span><span data-hf-id="hf-4if9" class="unit-dot"></span><span data-hf-id="hf-4wqa" class="unit-dot"></span><span data-hf-id="hf-6w9f" class="unit-dot"></span><span data-hf-id="hf-7akg" class="unit-dot"></span><span data-hf-id="hf-63nd" class="unit-dot"></span><span data-hf-id="hf-6hye" class="unit-dot"></span><span data-hf-id="hf-24l3" class="unit-dot"></span><span data-hf-id="hf-2iw4" class="unit-dot"></span>
+            <span data-hf-id="hf-97fo" class="unit-dot"></span><span data-hf-id="hf-4r5j" class="unit-dot"></span><span data-hf-id="hf-4cui" class="unit-dot"></span><span data-hf-id="hf-3yjh" class="unit-dot"></span><span data-hf-id="hf-asns" class="unit-dot"></span><span data-hf-id="hf-aecr" class="unit-dot"></span><span data-hf-id="hf-a01q" class="unit-dot"></span><span data-hf-id="hf-9lqp" class="unit-dot"></span><span data-hf-id="hf-cdvw" class="unit-dot"></span><span data-hf-id="hf-bzkv" class="unit-dot"></span>
+            <span data-hf-id="hf-r1wt" class="unit-dot"></span><span data-hf-id="hf-rg7u" class="unit-dot"></span><span data-hf-id="hf-ruiv" class="unit-dot"></span><span data-hf-id="hf-s8tw" class="unit-dot"></span><span data-hf-id="hf-sn4x" class="unit-dot"></span><span data-hf-id="hf-t1fy" class="unit-dot"></span><span data-hf-id="hf-tfqz" class="unit-dot"></span><span data-hf-id="hf-tu20" class="unit-dot"></span><span data-hf-id="hf-u8d1" class="unit-dot"></span><span data-hf-id="hf-umo2" class="unit-dot"></span>
+            <span data-hf-id="hf-oou2" class="unit-dot"></span><span data-hf-id="hf-oaj1" class="unit-dot"></span><span data-hf-id="hf-phg4" class="unit-dot"></span><span data-hf-id="hf-p353" class="unit-dot"></span><span data-hf-id="hf-uc1a" class="unit-dot"></span><span data-hf-id="hf-pvr5" class="unit-dot"></span><span data-hf-id="hf-v4nc" class="unit-dot"></span><span data-hf-id="hf-uqcb" class="unit-dot"></span><span data-hf-id="hf-vx9e" class="unit-dot"></span><span data-hf-id="hf-viyd" class="unit-dot"></span>
+            <span data-hf-id="hf-nb37" class="unit-dot"></span><span data-hf-id="hf-npe8" class="unit-dot"></span><span data-hf-id="hf-mih5" class="unit-dot"></span><span data-hf-id="hf-mws6" class="unit-dot"></span><span data-hf-id="hf-lpv3" class="unit-dot"></span><span data-hf-id="hf-m464" class="unit-dot"></span><span data-hf-id="hf-kx91" class="unit-dot"></span><span data-hf-id="hf-lbk2" class="unit-dot"></span><span data-hf-id="hf-k4mz" class="unit-dot"></span><span data-hf-id="hf-kiy0" class="unit-dot"></span>
+          </div>
+
+          <div data-hf-id="hf-6ynm" class="unit-text" id="e5-text">
+            <div data-hf-id="hf-xwlw" class="unit-source">McKinsey 2025</div>
+            <div data-hf-id="hf-togm" class="unit-line"><span data-hf-id="hf-aggj" class="unit-number">78%</span> of companies use AI</div>
+            <div data-hf-id="hf-a6nr" class="unit-caption">More than three quarters of organizations now run at least one AI workload in production.</div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-ku1m" class="sample-label">SAMPLE UNIT CHART • TEMPLATE E05</span>
+          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0.4–1.4s: 78 of the 100 dots light up one by one in a scattered,
+        // but fully deterministic, order (multiplicative permutation — no randomness).
+        // pos(i) = (i * 73) % 100 inverts order = (pos * 37) % 100 (73 is 37^-1 mod 100),
+        // so each dot knows its own lighting time without a shared baseline.
+        const dots = Array.from(document.querySelectorAll("#e5-grid .unit-dot"));
+        const LIT_COUNT = 78;
+        const STEP = 1 / LIT_COUNT; // all 78 light up across ~1s
+        const litDelay = (target) => {
+          const i = dots.indexOf(target);
+          return 0.4 + ((i * 73) % 100) * STEP;
+        };
+        const litDots = dots.filter((_, i) => ((i * 73) % 100) < LIT_COUNT);
+
+        // stay lit once lit (to() tweens start from the gray CSS baseline)
+        tl.to(litDots, {
+          backgroundColor: "#C2185B",
+          duration: 0.18,
+          ease: "power2.out",
+          stagger: (index, target) => litDelay(target)
+        }, 0);
+
+        // small pop as each dot lights
+        tl.to(litDots, {
+          scale: 1.3,
+          duration: 0.09,
+          yoyo: true,
+          repeat: 1,
+          ease: "power2.out",
+          stagger: (index, target) => litDelay(target)
+        }, 0);
+
+        // 1.6–2.8s: the chart reorganizes — the 78 lit dots pack into the
+        // top-left cells 0–77 (DOM order) and the 22 unlit dots get pushed
+        // into the bottom-right cells 78–99. Pure transforms: grid pitch is
+        // 28px dot + 14px gap = 42px, so each dot's move is
+        // (dest − src) × 42 on x/y. Bijection over all 100 cells → no overlap.
+        const PITCH = 42;
+        const destOf = new Map();
+        let litFill = 0;
+        let unlitFill = 0;
+        dots.forEach((dot, i) => {
+          const pos = (i * 73) % 100;
+          destOf.set(dot, pos < LIT_COUNT ? litFill++ : LIT_COUNT + unlitFill++);
+        });
+        const colOf = (n) => n % 10;
+        const rowOf = (n) => Math.floor(n / 10);
+
+        tl.to(dots, {
+          x: (index, target) => (colOf(destOf.get(target)) - colOf(index)) * PITCH,
+          y: (index, target) => (rowOf(destOf.get(target)) - rowOf(index)) * PITCH,
+          duration: 0.8,
+          ease: "power3.inOut",
+          // sweep column by column toward each dot's destination cell
+          stagger: (index, target) =>
+            colOf(destOf.get(target)) * 0.045 + rowOf(destOf.get(target)) * 0.02
+        }, 1.6);
+
+        // 0.9–1.9s: statement slides in from the right
+        tl.fromTo("#e5-text",
+          { opacity: 0, x: 90 },
+          { opacity: 1, x: 0, duration: 1, ease: "power3.out" },
+          0.9
+        );
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["E05-unit-chart"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

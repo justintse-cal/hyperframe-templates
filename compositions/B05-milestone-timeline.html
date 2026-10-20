@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background-color: #ffffff;
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 80px;
+          right: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #C2185B;
+        }
+
+        .title-block {
+          position: absolute;
+          top: 140px;
+          left: 96px;
+          right: 96px;
+          font-family: 'Playfair Display', serif;
+          font-size: 52px;
+          font-weight: 800;
+          color: #8A6D00;
+          text-align: center;
+        }
+
+        /* Horizontal Path Container */
+        .timeline-path-container {
+          position: absolute;
+          top: 380px;
+          left: 112px;
+          right: 112px;
+          height: 360px;
+        }
+
+        .horizontal-line {
+          position: absolute;
+          top: 80px;
+          left: 56px;
+          right: 56px;
+          height: 4px;
+          background: rgba(18, 18, 18, 0.15);
+        }
+
+        .line-active {
+          position: absolute;
+          top: 80px;
+          left: 56px;
+          height: 4px;
+          width: 1584px;
+          background: linear-gradient(90deg, #E6B800, #C2185B, #C0392B);
+          transform-origin: left center;
+          scaleX: 0;
+        }
+
+        .nodes-wrapper {
+          position: absolute;
+          top: 50px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .node-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 360px;
+        }
+
+        .node-dot {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: #121212;
+          border: 4px solid #E6B800;
+          margin-bottom: 30px;
+          z-index: 5;
+          opacity: 0;
+        }
+
+        .node-dot.current {
+          border-color: #C2185B;
+          box-shadow: 0 0 25px rgba(194, 24, 91, 0.45);
+        }
+
+        .node-card {
+          background: rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(18, 18, 18, 0.12);
+          border-radius: 8px;
+          padding: 20px;
+          text-align: center;
+          opacity: 0;
+        }
+
+        .node-date {
+          font-family: 'Playfair Display', serif;
+          font-size: 24px;
+          font-weight: 700;
+          color: #C2185B;
+          margin-bottom: 8px;
+        }
+
+        .node-desc {
+          font-size: 16px;
+          color: #121212;
+          line-height: 1.35;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 96px;
+          right: 96px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #8A6D00;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(18, 18, 18, 0.6);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-12nu" id="root" data-composition-id="B05-milestone-timeline" data-width="1920" data-height="1080" data-duration="15">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-7rcy" class="category-tag">Roadmap Infographic</span>
+          <span data-hf-id="hf-wxty" class="use-it-for-tag">Use It For: Chronological Progress & Milestones</span>
+        </div>
+
+        <div data-hf-id="hf-esoh" class="title-block" id="c10-title">Product Evolution Roadmap</div>
+
+        <div data-hf-id="hf-7o0h" class="timeline-path-container">
+          <div data-hf-id="hf-3g1z" class="horizontal-line"></div>
+          <div data-hf-id="hf-cw2w" class="line-active" id="c10-line"></div>
+
+          <div data-hf-id="hf-d24x" class="nodes-wrapper">
+            <div data-hf-id="hf-c3nw" class="node-item">
+              <div data-hf-id="hf-vurn" class="node-dot" id="c10-dot1"></div>
+              <div data-hf-id="hf-ogur" class="node-card" id="c10-card1">
+                <div data-hf-id="hf-xi5f" class="node-date">Q1 2026</div>
+                <div data-hf-id="hf-fne6" class="node-desc">Beta Release & Early Access Program</div>
+              </div>
+            </div>
+
+            <div data-hf-id="hf-pxno" class="node-item">
+              <div data-hf-id="hf-kza0" class="node-dot" id="c10-dot2"></div>
+              <div data-hf-id="hf-fsyw" class="node-card" id="c10-card2">
+                <div data-hf-id="hf-i7ck" class="node-date">Q2 2026</div>
+                <div data-hf-id="hf-9bre" class="node-desc">Global Multi-Region Scaling</div>
+              </div>
+            </div>
+
+            <div data-hf-id="hf-oqql" class="node-item">
+              <div data-hf-id="hf-71v2" class="node-dot current" id="c10-dot3"></div>
+              <div data-hf-id="hf-gkmp" class="node-card" id="c10-card3">
+                <div data-hf-id="hf-jza9" class="node-date">Q3 2026</div>
+                <div data-hf-id="hf-yug5" class="node-desc">Autonomous AI Agent Ecosystem</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-mg0i" class="sample-label">SAMPLE TIMELINE • TEMPLATE B05</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Introduce title & timeline path
+        tl.fromTo("#c10-title",
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+          0
+        );
+
+        // 2–6s: Pulse 1st date node & card
+        tl.to("#c10-line", { scaleX: 0.15, duration: 1.2, ease: "power2.out" }, 2.0);
+        tl.fromTo("#c10-dot1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 2.6);
+        tl.fromTo("#c10-card1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 3.0);
+
+        // 6–10s: Extend line to 2nd date node & card
+        tl.to("#c10-line", { scaleX: 0.55, duration: 1.5, ease: "power2.inOut" }, 6.0);
+        tl.fromTo("#c10-dot2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 7.2);
+        tl.fromTo("#c10-card2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 7.6);
+
+        // 10–14s: Extend line to final date node & highlight current state
+        tl.to("#c10-line", { scaleX: 1.0, duration: 1.5, ease: "power2.inOut" }, 10.0);
+        tl.fromTo("#c10-dot3", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1.2, duration: 0.6, ease: "back.out(2)" }, 11.2);
+        tl.fromTo("#c10-card3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 11.6);
+
+        window.__timelines["B05-milestone-timeline"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

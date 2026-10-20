@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background-color: #ffffff;
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Editorial Frame & Header */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 80px;
+          right: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #C2185B;
+        }
+
+        /* Article stage */
+        .article-stage {
+          position: absolute;
+          top: 150px;
+          left: 96px;
+          right: 96px;
+          bottom: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .article-frame {
+          position: relative;
+          width: 1344px; /* 70% of 1920 */
+          height: 760px;
+          transform-origin: center center;
+        }
+
+        .article-img {
+          width: 1344px;
+          height: 760px;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+          border: 1px solid rgba(18, 18, 18, 0.14);
+          border-radius: 6px;
+          box-shadow: 12px 14px 0 rgba(18, 18, 18, 0.08);
+        }
+
+        /* Outline drawn around the target text */
+        .highlight-box {
+          position: absolute;
+          top: 300px;
+          left: 300px;
+          width: 744px;
+          height: 170px;
+          border: 3px solid #E6B800;
+          border-radius: 8px;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        /* Yellow highlighter sweeping across the target text */
+        .highlighter {
+          position: absolute;
+          top: 318px;
+          left: 318px;
+          width: 708px;
+          height: 62px;
+          background: rgba(255, 227, 79, 0.85);
+          transform-origin: left center;
+          transform: scaleX(0);
+          z-index: 4;
+        }
+
+        /* Footer & Logo */
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 96px;
+          right: 96px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #8A6D00;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(18, 18, 18, 0.6);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-x4uq" id="root" data-composition-id="E08-article-circle" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
+          <span data-hf-id="hf-ys0h" class="use-it-for-tag">Use It For: Quote From An Article</span>
+        </div>
+
+        <div data-hf-id="hf-mafj" class="article-stage">
+          <div data-hf-id="hf-lv7m" class="article-frame" id="e8-article-frame">
+            <img data-hf-id="hf-gvk1" class="article-img" id="e8-article-img" src="../stock%20media/article1.png" alt="Article screenshot placeholder" width="1344" height="760">
+            <div data-hf-id="hf-qow9" class="highlight-box" id="e8-box"></div>
+            <div data-hf-id="hf-ikai" class="highlighter" id="e8-highlighter"></div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-6ebx" class="sample-label">SAMPLE ARTICLE SPOTLIGHT • TEMPLATE E08</span>
+          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
+        </div>
+      </div>
+
+      <script>
+gsap.set("#e8-highlighter", { x: -53.383, y: -74.736 });
+gsap.set("#e8-box", { x: -53.383, y: -74.736 });
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1s: article screenshot slides in from below at 70% size
+        tl.fromTo("#e8-article-frame",
+          { opacity: 0, y: 320 },
+          { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+          0
+        );
+
+        // 1–1.5s: scales up to 80% size
+        tl.fromTo("#e8-article-frame",
+          { scale: 1 },
+          { scale: 1.143, duration: 0.5, ease: "power2.inOut" },
+          1.0
+        );
+
+        // 1.6–2.2s: highlight box appears over the target text
+        tl.fromTo("#e8-box",
+          { opacity: 0, scale: 1.06 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
+          1.6
+        );
+
+        // 2–3s: yellow highlighter sweeps left to right across the target text
+        tl.fromTo("#e8-highlighter",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 1, ease: "power2.inOut" },
+          2.0
+        );
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["E08-article-circle"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

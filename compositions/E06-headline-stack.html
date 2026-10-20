@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Editorial Frame & Header */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 80px;
+          right: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #C2185B;
+        }
+
+        /* Headline pile */
+        .stack-stage {
+          position: absolute;
+          inset: 0;
+        }
+
+        .headline-shot {
+          position: absolute;
+          border: 1px solid #121212;
+          box-shadow: 12px 14px 0 rgba(18, 18, 18, 0.18);
+          opacity: 0;
+          background: #ffffff;
+        }
+
+        .headline-shot img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        /* scattered, tilted placement — set once, animated on top */
+        .shot-1 { width: 720px; top: 190px; left: 180px; transform: rotate(-5deg); z-index: 2; }
+        .shot-2 { width: 660px; top: 140px; left: 900px; transform: rotate(4deg); z-index: 3; }
+        .shot-3 { width: 640px; top: 500px; left: 420px; transform: rotate(-3deg); z-index: 4; }
+        .shot-4 { width: 620px; top: 470px; left: 1080px; transform: rotate(6deg); z-index: 5; }
+
+        /* Footer & Logo */
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 96px;
+          right: 96px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #8A6D00;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(18, 18, 18, 0.6);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-i12p" id="root" data-composition-id="E06-headline-stack" data-width="1920" data-height="1080" data-duration="10">
+        <div data-hf-id="hf-24y9" class="stack-stage">
+          <div data-hf-id="hf-08qq" class="headline-shot shot-1" id="e6-h1"><img data-hf-id="hf-8mkv" src="../stock%20media/news1.png" alt="News headline screenshot 1" width="720" height="405" /></div>
+          <div data-hf-id="hf-k2ek" class="headline-shot shot-2" id="e6-h2"><img data-hf-id="hf-jnn8" src="../stock%20media/news2.png" alt="News headline screenshot 2" width="660" height="371" /></div>
+          <div data-hf-id="hf-mr3i" class="headline-shot shot-3" id="e6-h3"><img data-hf-id="hf-eln4" src="../stock%20media/news3.png" alt="News headline screenshot 3" width="640" height="360" /></div>
+          <div data-hf-id="hf-pg78" class="headline-shot shot-4" id="e6-h4"><img data-hf-id="hf-wmr3" src="../stock%20media/news4.png" alt="News headline screenshot 4" width="620" height="349" /></div>
+        </div>
+
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
+          <span data-hf-id="hf-jiwf" class="use-it-for-tag">Use It For: Press Headline Pile</span>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-by31" class="sample-label">SAMPLE HEADLINE STACK • TEMPLATE E06</span>
+          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–4s: four headline screenshots slam in one by one, each with its
+        // own scattered tilt. Slam = drop-in from above with a small overshoot.
+        const slam = (sel, rotate, at) => {
+          tl.fromTo(sel,
+            { opacity: 0, y: -140, scale: 1.18, rotation: rotate },
+            { opacity: 1, y: 0, scale: 1, rotation: rotate, duration: 0.5, ease: "back.out(1.6)" },
+            at
+          );
+        };
+
+        slam("#e6-h1", -5, 0.3);
+        slam("#e6-h2", 4, 1.2);
+        slam("#e6-h3", -3, 2.1);
+        slam("#e6-h4", 6, 3.0);
+
+        // No exit animation — holds until the clip ends at 10s
+
+        window.__timelines["E06-headline-stack"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

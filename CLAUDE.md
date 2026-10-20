@@ -77,10 +77,57 @@ https://hyperframes.heygen.com/llms.txt
 
 ## Project Structure
 
-- `index.html` — main composition (root timeline)
-- `compositions/` — sub-compositions referenced via `data-composition-src`
+- `index.html` — main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (25 templates, `data-duration="284"`)
+- `compositions/` — one sub-composition per template, named by letter-id (e.g. `A01-core-definition.html`, `E05-unit-chart.html`)
+- `stock media/` — placeholder images and footage used by the templates; referenced from `compositions/` with the space URL-encoded as `../stock%20media/<file>`
 - `meta.json` — project metadata (id, name)
 - `transcript.json` — whisper word-level transcript (if generated)
+- `.hyperframes/artifacts/` — check reports, snapshots, contact sheets
+
+## Template Conventions
+
+### Letter-id scheme
+
+Every template is identified by `<LETTER><NN>` — a category letter plus two digits — used consistently in all five places:
+
+1. **Filename**: `compositions/B02-barchart-growth.html`
+2. **`data-composition-id`**: `B02-barchart-growth` (on the sub-composition's `#root` *and* on its slot in `index.html`)
+3. **Timeline key**: `window.__timelines["B02-barchart-growth"]`
+4. **Slot id** in `index.html`: `id="B02"`
+5. **Footer label** in the sub-composition: `TEMPLATE B02`
+
+Categories:
+
+| Letter | Category | Slots |
+| ------ | -------- | ----- |
+| A | Explaining a concept | A01–A04 |
+| B | Data charts | B01–B05 |
+| C | Workflow | C01–C04 |
+| D | News highlight text | D01–D04 |
+| E | Narrative & emphasis | E01–E08 |
+
+### Format & palette
+
+- **1920×1080**, enforced white background `#ffffff` (`data-width="1920" data-height="1080"`, `background-color: #ffffff` on `#root`)
+- **AA-contrast palette**: text `#121212`, gold `#8A6D00`, pink `#C2185B`, red `#C0392B`; chip/marker accents `#FFF3A8` / `#FFE34F`. Never put white text on white or dark-on-dark.
+- **Editorial chrome** on every template: `.frame-border` (outer solid + inner dashed), header badge (category tag left, "Use It For" chip right), footer bar (`SAMPLE … TEMPLATE Exx` left, `EDITORIAL` wordmark right). E02/E03 sit over full-bleed media, so their chrome is light (white/yellow) instead of dark — keep that pattern for any full-bleed template.
+- Each composition is a `<template>` wrapper containing `<style>` + `<div id="root">` + `<script>`, and registers exactly one paused timeline: `window.__timelines["Exx-slug"] = gsap.timeline({ paused: true });`
+- **Entrance animations only** — no exit animations; scenes hold their final state until the clip ends.
+
+### Stock media
+
+- Placeholders live in `stock media/` (note the space → always URL-encode: `src="../stock%20media/ai_price.jpg"`)
+- Give every image explicit `width`/`height` attributes so layout sampling stays deterministic.
+- Videos need a stable `id`, `muted playsinline`, `class="clip"` plus `data-start`/`data-duration` — **without an `id` the renderer freezes the video**.
+
+### Adding a slot / resequencing
+
+1. Copy an existing slot block in `index.html`; set `id` (`Exx`), `data-composition-id`, `data-composition-src`, and `data-duration` (must match the sub-composition's `data-duration`).
+2. Set `data-start` = previous slot's `data-start` + `data-duration` — slots are back-to-back with no gaps.
+3. Inserting mid-timeline? Resequence `data-start` on **every** slot after the insertion point.
+4. Bump the root `#root data-duration` to the last slot's `data-start` + `data-duration`.
+5. Add the slot to the category comment group (`<!-- Category N: … -->`) it belongs to.
+6. Run `npm run check`.
 
 ## Linting — ALWAYS RUN AFTER CHANGES
 

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background-color: #ffffff;
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .splits-row {
+          position: absolute;
+          inset: 0;
+          display: flex;
+        }
+
+        .slice {
+          position: relative;
+          flex: 1;
+          height: 1080px;
+          overflow: hidden;
+          border-right: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .slice:last-child {
+          border-right: none;
+        }
+
+        .slice-inner {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+
+        .slice-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .slice-tint {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        .slice-text {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .slice-num {
+          font-family: 'Playfair Display', serif;
+          font-size: 26px;
+          font-style: italic;
+          color: #FFF3A8;
+          margin-bottom: 18px;
+        }
+
+        .slice-title {
+          font-family: 'Inter', sans-serif;
+          font-size: 46px;
+          font-weight: 700;
+          color: #ffffff;
+          line-height: 1.25;
+          max-width: 480px;
+        }
+
+        .slice-sub {
+          margin-top: 16px;
+          font-family: 'Inter', sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.85);
+          max-width: 420px;
+          line-height: 1.5;
+        }
+
+        /* Editorial chrome on top of the slices */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 80px;
+          right: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 96px;
+          right: 96px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.7);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-5ma4" id="root" data-composition-id="E03-split-screens" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-k9kw" class="splits-row">
+          <div data-hf-id="hf-outa" class="slice">
+            <div data-hf-id="hf-3euk" class="slice-inner" id="e3-s1">
+              <img data-hf-id="hf-huxl" class="slice-img" src="../stock%20media/augmented_reality.jpg" alt="Augmented reality placeholder" width="640" height="1080" />
+              <div data-hf-id="hf-ddas" class="slice-tint"></div>
+              <div data-hf-id="hf-xiq2" class="slice-text">
+                <div data-hf-id="hf-hoio" class="slice-num">I</div>
+                <div data-hf-id="hf-1b73" class="slice-title">Augmented Reality</div>
+                <div data-hf-id="hf-otej" class="slice-sub">Overlays that stitch digital context onto the physical world</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-g6w2" class="slice">
+            <div data-hf-id="hf-c2qf" class="slice-inner" id="e3-s2">
+              <img data-hf-id="hf-xhoi" class="slice-img" src="../stock%20media/servers.jpg" alt="Server infrastructure placeholder" width="640" height="1080" />
+              <div data-hf-id="hf-7164" class="slice-tint"></div>
+              <div data-hf-id="hf-coum" class="slice-text">
+                <div data-hf-id="hf-7ukr" class="slice-num">II</div>
+                <div data-hf-id="hf-b0am" class="slice-title">Server Infra</div>
+                <div data-hf-id="hf-xydd" class="slice-sub">The racks and networks that keep every model online</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-gl73" class="slice">
+            <div data-hf-id="hf-84me" class="slice-inner" id="e3-s3">
+              <img data-hf-id="hf-8z75" class="slice-img" src="../stock%20media/web_dev.jpg" alt="Web development placeholder" width="640" height="1080" />
+              <div data-hf-id="hf-5u91" class="slice-tint"></div>
+              <div data-hf-id="hf-d35n" class="slice-text">
+                <div data-hf-id="hf-mc86" class="slice-num">III</div>
+                <div data-hf-id="hf-lisu" class="slice-title">Web Development</div>
+                <div data-hf-id="hf-u8ib" class="slice-sub">Interfaces where the technology finally meets people</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
+          <span data-hf-id="hf-h6kw" class="use-it-for-tag">Use It For: Component Breakdown</span>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-aeqd" class="sample-label">SAMPLE SPLIT SCREENS • TEMPLATE E03</span>
+          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2.5s: each slice's content appears and rises up, one by one
+        ["#e3-s1", "#e3-s2", "#e3-s3"].forEach((sel, idx) => {
+          tl.fromTo(sel,
+            { opacity: 0, y: 90 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+            idx * 0.85
+          );
+        });
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["E03-split-screens"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background-color: #ffffff;
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Editorial Frame & Header */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 80px;
+          right: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #C2185B;
+        }
+
+        /* Editor stage */
+        .editor-stage {
+          position: absolute;
+          top: 150px;
+          left: 96px;
+          right: 96px;
+          bottom: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .editor-window {
+          width: 1344px; /* 70% of 1920 */
+          background: #1E1E2E;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 14px 16px 0 rgba(18, 18, 18, 0.1);
+          border: 1px solid rgba(18, 18, 18, 0.35);
+          opacity: 0;
+        }
+
+        .editor-titlebar {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 18px;
+          background: #16161F;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+        }
+
+        .dot-red { background: #F0696B; }
+        .dot-yellow { background: #E6B800; }
+        .dot-green { background: #6BBF59; }
+
+        .editor-filename {
+          margin-left: 14px;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          color: rgba(255, 255, 255, 0.75);
+        }
+
+        .editor-body {
+          display: flex;
+          padding: 28px 0 32px 0;
+        }
+
+        .line-numbers {
+          font-family: 'Courier New', monospace;
+          font-size: 22px;
+          line-height: 1.65;
+          color: rgba(255, 255, 255, 0.35);
+          text-align: right;
+          padding: 0 20px 0 26px;
+          user-select: none;
+        }
+
+        .code-block {
+          font-family: 'Courier New', monospace;
+          font-size: 22px;
+          line-height: 1.65;
+          color: #E8E8E8;
+          padding-right: 26px;
+          white-space: pre;
+        }
+
+        .tok-kw { color: #FF9EBB; }
+        .tok-fn { color: #FFF3A8; }
+        .tok-str { color: #F2C14E; }
+        .tok-num { color: #82D2CE; }
+        .tok-comment { color: #9AA0A6; }
+
+        /* Footer & Logo */
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 96px;
+          right: 96px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #8A6D00;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(18, 18, 18, 0.6);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-mxsv" id="root" data-composition-id="E04-terminal-editor" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
+          <span data-hf-id="hf-8eer" class="use-it-for-tag">Use It For: Code / Terminal Topic</span>
+        </div>
+
+        <div data-hf-id="hf-iaa6" class="editor-stage">
+          <div data-hf-id="hf-fn3t" class="editor-window" id="e4-editor">
+            <div data-hf-id="hf-wb41" class="editor-titlebar">
+              <span data-hf-id="hf-2fdx" class="dot dot-red"></span>
+              <span data-hf-id="hf-wq2o" class="dot dot-yellow"></span>
+              <span data-hf-id="hf-sb41" class="dot dot-green"></span>
+              <span data-hf-id="hf-baxm" class="editor-filename">train_pipeline.py</span>
+            </div>
+            <div data-hf-id="hf-jyko" class="editor-body">
+              <div data-hf-id="hf-oynq" class="line-numbers">1<br data-hf-id="hf-x5px" />2<br data-hf-id="hf-rsrt" />3<br data-hf-id="hf-szow" />4<br data-hf-id="hf-sldv" />5<br data-hf-id="hf-qluq" />6<br data-hf-id="hf-q7jp" />7<br data-hf-id="hf-regs" />8<br data-hf-id="hf-r05r" />9</div>
+              <div data-hf-id="hf-ib6a" class="code-block"><span data-hf-id="hf-402p" class="tok-kw">import</span> torch
+<span data-hf-id="hf-0fec" class="tok-kw">from</span> hyperframes <span data-hf-id="hf-ht2t" class="tok-kw">import</span> render
+
+<span data-hf-id="hf-l6u3" class="tok-comment"># fine-tune the vision encoder on our dataset</span>
+<span data-hf-id="hf-riyb" class="tok-kw">def</span> <span data-hf-id="hf-1om2" class="tok-fn">train_model</span>(dataset, epochs=<span data-hf-id="hf-nibx" class="tok-num">12</span>):
+    model = VisionEncoder(depth=<span data-hf-id="hf-2ge8" class="tok-num">24</span>)
+    <span data-hf-id="hf-4mub" class="tok-kw">for</span> epoch <span data-hf-id="hf-7jhf" class="tok-kw">in</span> <span data-hf-id="hf-3azr" class="tok-fn">range</span>(epochs):
+        loss = model.fit(dataset, lr=<span data-hf-id="hf-ulen" class="tok-num">3e-4</span>)
+    <span data-hf-id="hf-63oy" class="tok-kw">return</span> model.export(<span data-hf-id="hf-ihih" class="tok-str">"model.onnx"</span>)</div>
+            </div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-befd" class="sample-label">SAMPLE CODE EDITOR • TEMPLATE E04</span>
+          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1s: the editor window fades in
+        tl.fromTo("#e4-editor",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+          0
+        );
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["E04-terminal-editor"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

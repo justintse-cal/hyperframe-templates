@@ -1,0 +1,78 @@
+Chart Card
+use it when you have a screenshot of a chart to highlight
+- the chart screenshot slide in from the right side from a 3D perspective (2s)
+- Then a highlight outlined box fade in to highlight the important element in the chart with additional text box fade in too to display highlighted message (2s)
+- At the same time, the rest of the content/area is dimmed using a black color overlay with 50% opacity
+- no exit animation
+- use the ai_price.jpg file in stock media folder as the placeholder
+
+Chapter Card
+use it for first shot of every new chapter as a transition
+- the background will present a dimmed clip dimmed using a black color overlay with 50% opacity. Use the xxx clip as the placeholder clip for this template
+-  Slightly above the center of the clip, a small text 'Chapter 01' will fade in (1s)
+- At the same time, the title characters will appear in a raise animation format one by one at the center of the clip in a large text format (1s)
+- No exit animation
+- use industry.mp4 in stock media folder as the background placeholder
+
+Split Screens
+use it when a few components/things are mentioned
+- split the screen vertically into 3 to 5 equal slices. Each slice will display a text at its center with a background image or video
+- The slice text and background content will appear and rise up one by one (2.5s)
+- no exit animation
+- use augmented_reality.jpg and servers.jpg and web_dev.jpg in the stock media folder as placeholder
+
+Terminal or code editor
+use it when any code-related topics is mentioned
+- show a typical code editor interface with some code snippet at the screen center covering about 70% of the screen (faded in 1s)
+- keep screen background color
+
+Unit chart
+use it when showing a share or a proportion (e.g 3 in 10, 78%, 5% pay)
+- Unit chart on the left side shows colorless 100 dots icons, then 78 of them light up using the theme color randomly one by one (1s)
+- text on the right appear slide in (McKinsey 2025: 78% of companies use AI). Use a different font color for the number to highlight it
+
+Headline stack
+use it for a pile of real headlines from different outlets slams or fade in
+- 3 to 5 real headlines screenshots slam in over the color theme background one by one with different tiled angles scattered over the screen (4s)
+- add a thin black outline to the screenshots and add a 2D shadow effect
+- no exit animation
+- use news1, news2, news3, news4.png as the placeholder
+
+Term explanation card
+use it for explaining a key term
+- the Chinese term raise up to appear on the screen character by character, and an underline draws from left to right. This is in big text style (1s).
+- Then blow the Chinese term text fades in its English term in a small text style
+- then the definition fades in in a normal text style below the term text
+- no exit animation
+
+Article circle
+use it to highlight a text in a screenshot article or news
+- the screenshot slides in from one of the direction (e.g. below) covering 70% of the screen (1s), and it scales up to 80% of the screen (0.5s)
+- Then, there is a highlight box placed over the target text with rest of the content dimmed in black with opacity 50%
+- Then, there the text is highlighed using a yellow color appeared from left to right (1s)
+- no exit animation
+- use article1.jpg as placeholder
+
+Social post
+use it to show social media reactions from screenshots
+- several screenshots fly in from different direction and pile up; one comes forward and the text is highlighted
+- no exit animation
+
+Voice quote
+use it for showing what a real speaker footage
+- background displays the real footage of the speaker
+- the center overlays a dynamic audio wave displays the 
+- below the audio wave overlays the subtile in its original language (english) as well as the translated Chinese subtitle in a bigger font size
+- no exit animation
+- above the audio wave display smaller text of the speak's name, and other context like event name and time
+
+structure diagram
+use it to show a structural workflow or process
+-
+
+
+Flyover Map
+- 
+
+Sketch board
+- sketch style text and graphics on a dotted blank background as the whiteboard
