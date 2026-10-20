@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .news-banner {
+          position: absolute;
+          top: 140px;
+          left: 64px;
+          background: #F0696B;
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          font-weight: 800;
+          font-size: 18px;
+          letter-spacing: 0.2em;
+          padding: 8px 20px;
+          text-transform: uppercase;
+          border-radius: 4px;
+          opacity: 0;
+        }
+
+        .headline-container {
+          position: absolute;
+          top: 240px;
+          left: 64px;
+          right: 64px;
+        }
+
+        .headline-text {
+          font-family: 'Playfair Display', serif;
+          font-size: 64px;
+          font-weight: 800;
+          color: #FFF3A8;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+        }
+
+        .word-unit {
+          display: inline-block;
+          opacity: 0;
+          margin-right: 12px;
+        }
+
+        /* Continuous News Ticker Bar */
+        .ticker-bar {
+          position: absolute;
+          bottom: 120px;
+          left: 0;
+          right: 0;
+          height: 60px;
+          background: rgba(251, 142, 215, 0.1);
+          border-top: 1px solid #FB8ED7;
+          border-bottom: 1px solid #FB8ED7;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .ticker-track {
+          display: inline-block;
+          font-family: 'Inter', sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: #FFFFFF;
+          text-transform: uppercase;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-12n2" id="root" data-composition-id="16-breaking-news" data-width="1080" data-height="1080" data-duration="10">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-ml4n" class="category-tag">News Headline Ticker</span>
+          <span data-hf-id="hf-lm17" class="use-it-for-tag">Use It For: Urgent Industry Updates</span>
+        </div>
+
+        <div data-hf-id="hf-v7jr" class="news-banner" id="c16-banner">SECURITY ALERT</div>
+
+        <div data-hf-id="hf-qkz3" class="headline-container" id="c16-headline">
+          <h1 data-hf-id="hf-yd3y" class="headline-text">
+            <span data-hf-id="hf-atop" class="word-unit">Major</span>
+            <span data-hf-id="hf-0o8a" class="word-unit">Security</span>
+            <span data-hf-id="hf-1est" class="word-unit">Update</span>
+            <span data-hf-id="hf-0otb" class="word-unit">Released</span>
+            <span data-hf-id="hf-tz1f" class="word-unit">for</span>
+            <span data-hf-id="hf-ut6f" class="word-unit">All</span>
+            <span data-hf-id="hf-wigr" class="word-unit">Enterprise</span>
+            <span data-hf-id="hf-j354" class="word-unit">Clients</span>
+          </h1>
+        </div>
+
+        <div data-hf-id="hf-qrj6" class="ticker-bar">
+          <div data-hf-id="hf-tzy3" class="ticker-track" id="c16-ticker">
+            • CRITICAL PATCH DEPLOYED • ZERO DOWNTIME REPORTED • ALL SYSTEMS OPERATIONAL • CRITICAL PATCH DEPLOYED • ZERO DOWNTIME REPORTED • ALL SYSTEMS OPERATIONAL •
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-kqa3" class="sample-label">SAMPLE BREAKING NEWS • TEMPLATE 16</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Flash category tag banner
+        tl.fromTo("#c16-banner",
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+          0
+        );
+
+        // 2–7s: Reveal main headline word-by-word
+        const words = document.querySelectorAll("#c16-headline .word-unit");
+        words.forEach((w, idx) => {
+          tl.fromTo(w,
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+            2.0 + (idx * 0.3)
+          );
+        });
+
+        // 7–10s: Continuous news ticker scroll along bottom
+        tl.fromTo("#c16-ticker",
+          { x: 0 },
+          { x: -350, duration: 3.0, ease: "none" },
+          7.0
+        );
+
+        window.__timelines["16-breaking-news"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

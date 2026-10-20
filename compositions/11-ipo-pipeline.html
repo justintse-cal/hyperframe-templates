@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .pipeline-title {
+          position: absolute;
+          top: 140px;
+          left: 64px;
+          right: 64px;
+          text-align: center;
+          font-family: 'Playfair Display', serif;
+          font-size: 52px;
+          font-weight: 800;
+          color: #FFF3A8;
+        }
+
+        .pipeline-stage {
+          position: absolute;
+          top: 360px;
+          left: 60px;
+          right: 60px;
+          height: 360px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .ipo-block {
+          width: 260px;
+          height: 280px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 243, 168, 0.2);
+          border-radius: 12px;
+          padding: 24px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          opacity: 0;
+          z-index: 5;
+        }
+
+        .ipo-type {
+          font-family: 'Playfair Display', serif;
+          font-size: 20px;
+          font-style: italic;
+          color: #FB8ED7;
+          margin-bottom: 16px;
+        }
+
+        .ipo-label {
+          font-size: 24px;
+          font-weight: 700;
+          color: #FFF3A8;
+        }
+
+        /* Connecting Bridge & Packet */
+        .bridge-line {
+          position: absolute;
+          top: 140px;
+          left: 280px;
+          width: 400px;
+          height: 4px;
+          background: rgba(255, 243, 168, 0.2);
+        }
+
+        .data-packet {
+          position: absolute;
+          top: -8px;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #F0696B;
+          box-shadow: 0 0 20px #F0696B;
+          opacity: 0;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-bwsn" id="root" data-composition-id="11-ipo-pipeline" data-width="1080" data-height="1080" data-duration="12">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-d16z" class="category-tag">Workflow Pipeline</span>
+          <span data-hf-id="hf-fpbs" class="use-it-for-tag">Use It For: Input-Process-Output Systems</span>
+        </div>
+
+        <div data-hf-id="hf-06b5" class="pipeline-title">Automated Lead Routing</div>
+
+        <div data-hf-id="hf-wi2r" class="pipeline-stage">
+          <div data-hf-id="hf-irti" class="bridge-line">
+            <div data-hf-id="hf-0wdp" class="data-packet" id="c11-packet"></div>
+          </div>
+
+          <div data-hf-id="hf-wcku" class="ipo-block" id="c11-input">
+            <div data-hf-id="hf-krml" class="ipo-type">Input</div>
+            <div data-hf-id="hf-ngab" class="ipo-label">Form Submission</div>
+          </div>
+
+          <div data-hf-id="hf-a91l" class="ipo-block" id="c11-process">
+            <div data-hf-id="hf-uprw" class="ipo-type">Process</div>
+            <div data-hf-id="hf-1w7l" class="ipo-label">AI Scoring & CRM Sync</div>
+          </div>
+
+          <div data-hf-id="hf-0wi5" class="ipo-block" id="c11-output">
+            <div data-hf-id="hf-kkqq" class="ipo-type">Output</div>
+            <div data-hf-id="hf-sb5c" class="ipo-label">Assigned Sales Rep</div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-fxss" class="sample-label">SAMPLE PIPELINE • TEMPLATE 11</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Pipeline name
+        tl.fromTo(".pipeline-title",
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+          0
+        );
+
+        // 2–5s: Illuminate Input block
+        tl.fromTo("#c11-input",
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out" },
+          2.0
+        );
+
+        // 5–8s: Data packet moves to Process block
+        tl.fromTo("#c11-packet",
+          { opacity: 0, x: 0 },
+          { opacity: 1, x: 180, duration: 1.5, ease: "power2.inOut" },
+          5.0
+        );
+        tl.fromTo("#c11-process",
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out" },
+          5.8
+        );
+
+        // 8–11s: Data packet moves to Output block
+        tl.to("#c11-packet",
+          { x: 380, duration: 1.5, ease: "power2.inOut" },
+          8.0
+        );
+        tl.fromTo("#c11-output",
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out" },
+          8.8
+        );
+
+        // 11–12s: Seal loop
+        tl.to(".ipo-block",
+          { borderColor: "#FFF3A8", duration: 0.8 },
+          11.0
+        );
+
+        window.__timelines["11-ipo-pipeline"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

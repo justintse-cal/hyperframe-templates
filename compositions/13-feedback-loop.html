@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .loop-stage {
+          position: absolute;
+          inset: 160px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .circle-ring {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          border-radius: 50%;
+          border: 4px dashed rgba(255, 243, 168, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+        }
+
+        .loop-center-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 32px;
+          font-weight: 800;
+          color: #FFF3A8;
+          text-align: center;
+          max-width: 260px;
+          line-height: 1.25;
+        }
+
+        /* 3 Circular Callout Nodes */
+        .stage-callout {
+          position: absolute;
+          background: #121212;
+          border: 2px solid #FB8ED7;
+          border-radius: 30px;
+          padding: 12px 24px;
+          font-size: 20px;
+          font-weight: 700;
+          color: #FFFFFF;
+          opacity: 0;
+        }
+
+        .node-build {
+          top: -30px;
+        }
+
+        .node-measure {
+          right: -40px;
+          top: 320px;
+        }
+
+        .node-learn {
+          left: -40px;
+          top: 320px;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-va3g" id="root" data-composition-id="13-feedback-loop" data-width="1080" data-height="1080" data-duration="12">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-tzbw" class="category-tag">Circular Workflow</span>
+          <span data-hf-id="hf-u45c" class="use-it-for-tag">Use It For: Continuous Iteration & Feedback Cycles</span>
+        </div>
+
+        <div data-hf-id="hf-7xjv" class="loop-stage">
+          <div data-hf-id="hf-wxj7" class="circle-ring" id="c13-ring">
+            <div data-hf-id="hf-8mwp" class="loop-center-title">Build-Measure-Learn Loop</div>
+
+            <div data-hf-id="hf-2qop" class="stage-callout node-build" id="c13-build">01. BUILD</div>
+            <div data-hf-id="hf-jiju" class="stage-callout node-measure" id="c13-measure">02. MEASURE</div>
+            <div data-hf-id="hf-dmkl" class="stage-callout node-learn" id="c13-learn">03. LEARN</div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-germ" class="sample-label">SAMPLE LOOP • TEMPLATE 13</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Reveal circular graphic & loop name
+        tl.fromTo("#c13-ring",
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
+          0
+        );
+
+        // 2–9s: Illuminate stages sequentially along circular path
+        tl.fromTo("#c13-build", { opacity: 0, y: -15 }, { opacity: 1, y: 0, duration: 0.8 }, 2.0);
+        tl.fromTo("#c13-measure", { opacity: 0, x: 15 }, { opacity: 1, x: 0, duration: 0.8 }, 4.2);
+        tl.fromTo("#c13-learn", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.8 }, 6.4);
+
+        // 9–12s: Rotate loop ring slightly & settle on logo
+        tl.to("#c13-ring",
+          { rotation: 360, duration: 2.5, ease: "power2.inOut" },
+          9.0
+        );
+
+        window.__timelines["13-feedback-loop"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

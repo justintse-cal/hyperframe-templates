@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .map-title {
+          position: absolute;
+          top: 140px;
+          left: 64px;
+          right: 64px;
+          text-align: center;
+          font-family: 'Playfair Display', serif;
+          font-size: 48px;
+          font-weight: 800;
+          color: #FFF3A8;
+        }
+
+        /* Network Map Stage */
+        .network-stage {
+          position: absolute;
+          inset: 220px 100px 120px 100px;
+        }
+
+        /* SVG Lines */
+        svg.network-svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        line.node-link {
+          stroke: rgba(255, 243, 168, 0.3);
+          stroke-width: 2;
+          stroke-dasharray: 400;
+          stroke-dashoffset: 400;
+        }
+
+        /* Nodes */
+        .node-hub {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background: rgba(255, 243, 168, 0.15);
+          border: 3px solid #FFF3A8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-family: 'Playfair Display', serif;
+          font-size: 20px;
+          font-weight: 800;
+          color: #FFF3A8;
+          box-shadow: 0 0 30px rgba(255, 243, 168, 0.2);
+          opacity: 0;
+          z-index: 10;
+        }
+
+        .peripheral-node {
+          position: absolute;
+          background: #121212;
+          border: 2px solid #FB8ED7;
+          border-radius: 20px;
+          padding: 10px 20px;
+          font-size: 16px;
+          font-weight: 700;
+          color: #FFFFFF;
+          opacity: 0;
+          z-index: 5;
+        }
+
+        .pn-1 { top: 40px; left: 60px; }
+        .pn-2 { top: 40px; right: 60px; }
+        .pn-3 { bottom: 60px; left: 60px; }
+        .pn-4 { bottom: 60px; right: 60px; }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-31cx" id="root" data-composition-id="15-network-node-map" data-width="1080" data-height="1080" data-duration="15">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-u2ma" class="category-tag">Ecosystem Network Map</span>
+          <span data-hf-id="hf-ygnf" class="use-it-for-tag">Use It For: Hub-and-Spoke Ecosystems</span>
+        </div>
+
+        <div data-hf-id="hf-rbf4" class="map-title">Global Supply Chain Network</div>
+
+        <div data-hf-id="hf-9sgb" class="network-stage">
+          <svg data-hf-id="hf-cius" class="network-svg" viewBox="0 0 880 540">
+            <line data-hf-id="hf-xcbv" id="c15-l1" class="node-link" x1="440" y1="270" x2="160" y2="80" />
+            <line data-hf-id="hf-bzxg" id="c15-l2" class="node-link" x1="440" y1="270" x2="720" y2="80" />
+            <line data-hf-id="hf-ladx" id="c15-l3" class="node-link" x1="440" y1="270" x2="160" y2="460" />
+            <line data-hf-id="hf-hp28" id="c15-l4" class="node-link" x1="440" y1="270" x2="720" y2="460" />
+          </svg>
+
+          <div data-hf-id="hf-xwx3" class="node-hub" id="c15-hub">HQ HUB</div>
+
+          <div data-hf-id="hf-mukv" class="peripheral-node pn-1" id="c15-pn1">Node 01: Supplier</div>
+          <div data-hf-id="hf-c1xz" class="peripheral-node pn-2" id="c15-pn2">Node 02: Logistics</div>
+          <div data-hf-id="hf-2oxm" class="peripheral-node pn-3" id="c15-pn3">Node 03: Retail</div>
+          <div data-hf-id="hf-8kj2" class="peripheral-node pn-4" id="c15-pn4">Node 04: Customer</div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-obdk" class="sample-label">SAMPLE NETWORK • TEMPLATE 15</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Central hub node
+        tl.fromTo("#c15-hub",
+          { opacity: 0, scale: 0.5 },
+          { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.7)" },
+          0
+        );
+
+        // 2–8s: Radiate lines outward to 4 peripheral nodes
+        tl.to([ "#c15-l1", "#c15-l2", "#c15-l3", "#c15-l4" ],
+          { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" },
+          2.0
+        );
+
+        tl.fromTo("#c15-pn1", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 3.0);
+        tl.fromTo("#c15-pn2", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 4.2);
+        tl.fromTo("#c15-pn3", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 5.4);
+        tl.fromTo("#c15-pn4", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 6.6);
+
+        // 8–12s: Pulse hub
+        tl.fromTo("#c15-hub",
+          { boxShadow: "0 0 30px rgba(255, 243, 168, 0.2)" },
+          { boxShadow: "0 0 60px rgba(251, 142, 215, 0.5)", duration: 1.0, yoyo: true, repeat: 1 },
+          8.0
+        );
+
+        // 12–15s: Center logo over hub focus
+        tl.to([ ".peripheral-node", "line.node-link" ],
+          { opacity: 0.3, duration: 1.0 },
+          12.0
+        );
+
+        window.__timelines["15-network-node-map"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

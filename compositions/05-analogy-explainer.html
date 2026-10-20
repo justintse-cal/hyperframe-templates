@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .analogy-container {
+          position: absolute;
+          top: 150px;
+          left: 64px;
+          right: 64px;
+          bottom: 140px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          text-align: center;
+        }
+
+        .complex-idea-box {
+          opacity: 0;
+        }
+
+        .complex-label {
+          font-size: 14px;
+          letter-spacing: 0.15em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+          margin-bottom: 8px;
+        }
+
+        .complex-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 52px;
+          font-weight: 800;
+          color: #FFF3A8;
+        }
+
+        .equals-arrow {
+          font-family: 'Playfair Display', serif;
+          font-size: 48px;
+          color: #F0696B;
+          opacity: 0;
+        }
+
+        .analogy-box {
+          background: rgba(251, 142, 215, 0.05);
+          border: 1px solid #FB8ED7;
+          border-radius: 12px;
+          padding: 32px 40px;
+          max-width: 800px;
+          opacity: 0;
+        }
+
+        .analogy-text {
+          font-family: 'Playfair Display', serif;
+          font-size: 36px;
+          font-weight: 700;
+          color: #FFFFFF;
+          line-height: 1.35;
+        }
+
+        .crossover-badge {
+          background: rgba(255, 243, 168, 0.1);
+          border: 1px solid #FFF3A8;
+          color: #FFF3A8;
+          font-size: 18px;
+          font-weight: 700;
+          padding: 12px 28px;
+          border-radius: 30px;
+          letter-spacing: 0.05em;
+          opacity: 0;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-swbv" id="root" data-composition-id="05-analogy-explainer" data-width="1080" data-height="1080" data-duration="12">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-z9wl" class="category-tag">Analogy Explainer</span>
+          <span data-hf-id="hf-4y8q" class="use-it-for-tag">Use It For: Everyday Metaphors & Comparisons</span>
+        </div>
+
+        <div data-hf-id="hf-uen7" class="analogy-container">
+          <div data-hf-id="hf-v3kl" class="complex-idea-box" id="c5-complex">
+            <div data-hf-id="hf-b2fj" class="complex-label">Complex Concept</div>
+            <div data-hf-id="hf-2pv0" class="complex-title">Firewall Architecture</div>
+          </div>
+
+          <div data-hf-id="hf-06a8" class="equals-arrow" id="c5-arrow">↓ IS LIKE ↓</div>
+
+          <div data-hf-id="hf-6t4p" class="analogy-box" id="c5-analogy">
+            <div data-hf-id="hf-3e2l" class="analogy-text">"Firewalls are like digital security guards inspecting every pass."</div>
+          </div>
+
+          <div data-hf-id="hf-0nbz" class="crossover-badge" id="c5-crossover">
+            Key Trait: Real-time Access Control & Threat Filtering
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-y0lg" class="sample-label">SAMPLE ANALOGY • TEMPLATE 05</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–3s: Introduce complex idea at top
+        tl.fromTo("#c5-complex",
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+          0
+        );
+
+        // 3–7s: Draw equals arrow & reveal analogy
+        tl.fromTo("#c5-arrow",
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+          3.0
+        );
+        tl.fromTo("#c5-analogy",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+          3.6
+        );
+
+        // 7–10s: Highlight key crossover trait
+        tl.fromTo("#c5-crossover",
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" },
+          7.0
+        );
+
+        // 10–12s: Finish with brand signature
+        tl.fromTo(".brand-logo",
+          { opacity: 0.7 },
+          { opacity: 1, color: "#FB8ED7", duration: 0.8 },
+          10.0
+        );
+
+        window.__timelines["05-analogy-explainer"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

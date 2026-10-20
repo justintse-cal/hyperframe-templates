@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .chart-title {
+          position: absolute;
+          top: 140px;
+          left: 64px;
+          right: 64px;
+          font-family: 'Playfair Display', serif;
+          font-size: 48px;
+          font-weight: 800;
+          color: #FFF3A8;
+        }
+
+        .svg-container {
+          position: absolute;
+          top: 240px;
+          left: 80px;
+          right: 80px;
+          height: 520px;
+        }
+
+        path.trend-path {
+          fill: none;
+          stroke: url(#lineGradient);
+          stroke-width: 6;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+        }
+
+        .data-pin {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #FFF3A8;
+          border: 3px solid #FB8ED7;
+          box-shadow: 0 0 20px #FB8ED7;
+          opacity: 0;
+        }
+
+        .pin-peak {
+          top: 260px;
+          left: 850px;
+        }
+
+        .peak-callout {
+          position: absolute;
+          top: 180px;
+          left: 690px;
+          background: rgba(251, 142, 215, 0.15);
+          border: 1px solid #FB8ED7;
+          padding: 12px 20px;
+          border-radius: 8px;
+          font-family: 'Playfair Display', serif;
+          font-size: 20px;
+          font-weight: 700;
+          color: #FFF3A8;
+          opacity: 0;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-o4uk" id="root" data-composition-id="08-linechart-trend" data-width="1080" data-height="1080" data-duration="12">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-k0j9" class="category-tag">Trend Line Tracker</span>
+          <span data-hf-id="hf-v0v9" class="use-it-for-tag">Use It For: Growth Metrics Over Time</span>
+        </div>
+
+        <div data-hf-id="hf-l67v" class="chart-title">Monthly Active Users Growth</div>
+
+        <div data-hf-id="hf-69xg" class="svg-container">
+          <svg data-hf-id="hf-p48m" width="920" height="480" viewBox="0 0 920 480" fill="none">
+            <defs data-hf-id="hf-mh0t">
+              <linearGradient data-hf-id="hf-nl9h" id="lineGradient" x1="0" y1="0" x2="920" y2="0" gradientUnits="userSpaceOnUse">
+                <stop data-hf-id="hf-d8f9" offset="0%" stop-color="#FFF3A8" />
+                <stop data-hf-id="hf-257q" offset="50%" stop-color="#FB8ED7" />
+                <stop data-hf-id="hf-zl9f" offset="100%" stop-color="#F0696B" />
+              </linearGradient>
+            </defs>
+
+            <!-- Axes Grid -->
+            <line data-hf-id="hf-rpu4" x1="60" y1="420" x2="880" y2="420" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+            <text data-hf-id="hf-giew" x="80" y="460" fill="rgba(255,255,255,0.6)" font-size="18" font-family="Inter">JAN</text>
+            <text data-hf-id="hf-8gd3" x="230" y="460" fill="rgba(255,255,255,0.6)" font-size="18" font-family="Inter">FEB</text>
+            <text data-hf-id="hf-2qka" x="380" y="460" fill="rgba(255,255,255,0.6)" font-size="18" font-family="Inter">MAR</text>
+            <text data-hf-id="hf-mm7y" x="530" y="460" fill="rgba(255,255,255,0.6)" font-size="18" font-family="Inter">APR</text>
+            <text data-hf-id="hf-25is" x="680" y="460" fill="rgba(255,255,255,0.6)" font-size="18" font-family="Inter">MAY</text>
+            <text data-hf-id="hf-ej3d" x="830" y="460" fill="rgba(255,255,255,0.6)" font-size="18" font-family="Inter">JUN</text>
+
+            <!-- Smooth Curved Trend Line -->
+            <path data-hf-id="hf-906r" id="c8-line" class="trend-path" d="M 80 380 Q 230 320, 380 260 T 680 140 T 850 50" />
+          </svg>
+        </div>
+
+        <div data-hf-id="hf-ew3s" class="data-pin pin-peak" id="c8-pin"></div>
+        <div data-hf-id="hf-kruk" class="peak-callout" id="c8-peak">Peak: 2.4M in June</div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-sbg2" class="sample-label">SAMPLE LINE CHART • TEMPLATE 08</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Establish grid axes
+        tl.fromTo(".svg-container line, .svg-container text",
+          { opacity: 0 },
+          { opacity: 1, duration: 1.2 },
+          0
+        );
+
+        // 2–8s: Draw line graph smoothly
+        tl.fromTo("#c8-line",
+          { strokeDashoffset: 1000 },
+          { strokeDashoffset: 0, duration: 5.5, ease: "power2.inOut" },
+          2.0
+        );
+
+        // 8–10s: Drop glowing pin on peak & callout
+        tl.fromTo("#c8-pin",
+          { opacity: 0, scale: 0 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" },
+          8.0
+        );
+        tl.fromTo("#c8-peak",
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          8.4
+        );
+
+        window.__timelines["08-linechart-trend"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

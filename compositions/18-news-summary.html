@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .summary-title {
+          position: absolute;
+          top: 140px;
+          left: 64px;
+          right: 64px;
+          font-family: 'Playfair Display', serif;
+          font-size: 52px;
+          font-weight: 800;
+          color: #FFF3A8;
+          border-bottom: 2px solid rgba(255, 243, 168, 0.3);
+          padding-bottom: 20px;
+          opacity: 0;
+        }
+
+        .bullets-container {
+          position: absolute;
+          top: 300px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+
+        .bullet-row {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 243, 168, 0.2);
+          border-radius: 8px;
+          padding: 24px 32px;
+          opacity: 0;
+        }
+
+        .bullet-icon {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: #FB8ED7;
+          color: #121212;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 800;
+          font-size: 18px;
+          flex-shrink: 0;
+        }
+
+        .bullet-text {
+          font-size: 26px;
+          font-weight: 600;
+          color: #FFFFFF;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-t1aa" id="root" data-composition-id="18-news-summary" data-width="1080" data-height="1080" data-duration="15">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-gvt8" class="category-tag">Press Release Summary</span>
+          <span data-hf-id="hf-xe2l" class="use-it-for-tag">Use It For: 3 Key Takeaways & News Bulletins</span>
+        </div>
+
+        <div data-hf-id="hf-auzf" class="summary-title" id="c18-title">Q3 Product Launch Highlights</div>
+
+        <div data-hf-id="hf-okm1" class="bullets-container">
+          <div data-hf-id="hf-67az" class="bullet-row" id="c18-b1">
+            <div data-hf-id="hf-rzir" class="bullet-icon">✓</div>
+            <div data-hf-id="hf-dl7h" class="bullet-text">10x Faster Real-Time Query Processing</div>
+          </div>
+
+          <div data-hf-id="hf-vbtc" class="bullet-row" id="c18-b2">
+            <div data-hf-id="hf-bisz" class="bullet-icon">✓</div>
+            <div data-hf-id="hf-6x2m" class="bullet-text">Native Multi-Tenant Enterprise Security</div>
+          </div>
+
+          <div data-hf-id="hf-w3h5" class="bullet-row" id="c18-b3">
+            <div data-hf-id="hf-b4hy" class="bullet-icon">✓</div>
+            <div data-hf-id="hf-v3zf" class="bullet-text">One-Click Hybrid Cloud Deployment</div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-m5ii" class="sample-label">SAMPLE NEWS SUMMARY • TEMPLATE 18</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Introduce title
+        tl.fromTo("#c18-title",
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+          0
+        );
+
+        // 2–6s: Slide in Bullet Point 1
+        tl.fromTo("#c18-b1",
+          { opacity: 0, x: -40 },
+          { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
+          2.0
+        );
+
+        // 6–10s: Slide in Bullet Point 2
+        tl.fromTo("#c18-b2",
+          { opacity: 0, x: -40 },
+          { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
+          6.0
+        );
+
+        // 10–14s: Slide in Bullet Point 3
+        tl.fromTo("#c18-b3",
+          { opacity: 0, x: -40 },
+          { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
+          10.0
+        );
+
+        // 14–15s: Display company logo
+        tl.fromTo(".brand-logo",
+          { color: "#FFF3A8" },
+          { color: "#FB8ED7", duration: 0.8 },
+          14.0
+        );
+
+        window.__timelines["18-news-summary"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

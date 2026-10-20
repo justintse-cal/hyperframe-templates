@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Inter:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          background-color: #121212;
+          color: #ffffff;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 243, 168, 0.25);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .header-badge {
+          position: absolute;
+          top: 56px;
+          left: 56px;
+          right: 56px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .use-it-for-tag {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #121212;
+          background-color: #FFF3A8;
+          padding: 6px 14px;
+          border-radius: 20px;
+        }
+
+        .category-tag {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #FB8ED7;
+        }
+
+        .chart-title {
+          position: absolute;
+          top: 140px;
+          left: 64px;
+          right: 64px;
+          text-align: center;
+          font-family: 'Playfair Display', serif;
+          font-size: 48px;
+          font-weight: 800;
+          color: #FFF3A8;
+        }
+
+        .donut-container {
+          position: absolute;
+          top: 260px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 480px;
+          height: 480px;
+        }
+
+        circle.segment {
+          fill: transparent;
+          stroke-width: 60;
+        }
+
+        .segment-1 {
+          stroke: #FFF3A8;
+          stroke-dasharray: 628;
+          stroke-dashoffset: 628; /* 50% = 314 */
+        }
+
+        .segment-2 {
+          stroke: #FB8ED7;
+          stroke-dasharray: 628;
+          stroke-dashoffset: 628; /* 30% = 188 */
+        }
+
+        .segment-3 {
+          stroke: #F0696B;
+          stroke-dasharray: 628;
+          stroke-dashoffset: 628; /* 20% = 125 */
+        }
+
+        /* Legend Callouts */
+        .legend-list {
+          position: absolute;
+          bottom: 150px;
+          left: 100px;
+          right: 100px;
+          display: flex;
+          justify-content: space-around;
+        }
+
+        .legend-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 20px;
+          font-weight: 700;
+          opacity: 0;
+        }
+
+        .color-dot {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+        }
+
+        .footer-bar {
+          position: absolute;
+          bottom: 52px;
+          left: 64px;
+          right: 64px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .brand-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          color: #FFF3A8;
+          text-transform: uppercase;
+        }
+
+        .sample-label {
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div data-hf-id="hf-1cga" id="root" data-composition-id="09-pie-donut-share" data-width="1080" data-height="1080" data-duration="12">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6jrl" class="header-badge">
+          <span data-hf-id="hf-hm88" class="category-tag">Proportion Share Breakdown</span>
+          <span data-hf-id="hf-77n4" class="use-it-for-tag">Use It For: Market Share & Budget Allocation</span>
+        </div>
+
+        <div data-hf-id="hf-z2bm" class="chart-title">2026 Q1 Budget Allocation</div>
+
+        <div data-hf-id="hf-ov5u" class="donut-container">
+          <svg data-hf-id="hf-w0xe" width="480" height="480" viewBox="0 0 240 240">
+            <!-- Neutral Outline -->
+            <circle data-hf-id="hf-ired" cx="120" cy="120" r="100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="60" />
+
+            <!-- Segment 1: 50% (314px) -->
+            <circle data-hf-id="hf-0c72" id="c9-s1" class="segment segment-1" cx="120" cy="120" r="100" transform="rotate(-90 120 120)" />
+
+            <!-- Segment 2: 30% (188px) -->
+            <circle data-hf-id="hf-gi2l" id="c9-s2" class="segment segment-2" cx="120" cy="120" r="100" transform="rotate(90 120 120)" />
+
+            <!-- Segment 3: 20% (125px) -->
+            <circle data-hf-id="hf-8t6m" id="c9-s3" class="segment segment-3" cx="120" cy="120" r="100" transform="rotate(198 120 120)" />
+          </svg>
+        </div>
+
+        <div data-hf-id="hf-ql98" class="legend-list">
+          <div data-hf-id="hf-ank5" class="legend-item" id="c9-l1">
+            <div data-hf-id="hf-5v9v" class="color-dot" style="background: #FFF3A8;"></div>
+            <span data-hf-id="hf-wzui">Product R&D: 50%</span>
+          </div>
+          <div data-hf-id="hf-elo6" class="legend-item" id="c9-l2">
+            <div data-hf-id="hf-a55v" class="color-dot" style="background: #FB8ED7;"></div>
+            <span data-hf-id="hf-ngqq">Growth: 30%</span>
+          </div>
+          <div data-hf-id="hf-ijs7" class="legend-item" id="c9-l3">
+            <div data-hf-id="hf-b2wy" class="color-dot" style="background: #F0696B;"></div>
+            <span data-hf-id="hf-q9mi">Operations: 20%</span>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-shlt" class="footer-bar">
+          <span data-hf-id="hf-iied" class="sample-label">SAMPLE PIE CHART • TEMPLATE 09</span>
+          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: Donut outline
+        tl.fromTo(".donut-container",
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
+          0
+        );
+
+        // 2–8s: Fill segments sequentially with percentage labels
+        tl.fromTo("#c9-s1",
+          { strokeDashoffset: 628 },
+          { strokeDashoffset: 314, duration: 1.8, ease: "power2.out" },
+          2.0
+        );
+        tl.fromTo("#c9-l1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 2.8);
+
+        tl.fromTo("#c9-s2",
+          { strokeDashoffset: 628 },
+          { strokeDashoffset: 440, duration: 1.8, ease: "power2.out" },
+          4.0
+        );
+        tl.fromTo("#c9-l2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 4.8);
+
+        tl.fromTo("#c9-s3",
+          { strokeDashoffset: 628 },
+          { strokeDashoffset: 503, duration: 1.8, ease: "power2.out" },
+          6.0
+        );
+        tl.fromTo("#c9-l3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 6.8);
+
+        // 8–10s: Expand largest segment outward slightly
+        tl.to("#c9-s1",
+          { strokeWidth: 68, duration: 0.8, ease: "power2.out" },
+          8.0
+        );
+
+        window.__timelines["09-pie-donut-share"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
