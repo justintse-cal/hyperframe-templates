@@ -104,6 +104,7 @@ https://hyperframes.heygen.com/llms.txt
 - `stock media/` — placeholder images and footage used by the templates; referenced from `compositions/` with the space URL-encoded as `../stock%20media/<file>`
 - `meta.json` — project metadata (id, name)
 - `transcript.json` — whisper word-level transcript (if generated)
+- `docs/` — the static **GitHub Pages template showcase** (`docs/index.html` + `docs/templates.js` + committed `docs/videos/` previews). Vanilla HTML/CSS/JS, no build step; follows `design.md`. Enable via Settings → Pages → deploy from `main` /`docs`.
 - `.hyperframes/artifacts/` — check reports, snapshots, contact sheets
 
 ## Template Conventions

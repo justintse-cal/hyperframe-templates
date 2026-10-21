@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HyperFrames Template Gallery</title>
+  <meta name="description" content="A showcase of 25 HyperFrames video templates — explaining concepts, data charts, workflow diagrams, news highlights, and narrative emphasis — with preview videos and copy-ready template codes." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127909;</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Design system palette (design.md) */
+      --ink: #121212;
+      --gold: #8A6D00;
+      --pink: #C2185B;
+      --red: #C0392B;
+      --sky: #7fa8e9;
+      --teal: #77a3b9;
+      --mauve: #bcabb3;
+      --cream: #FFFCEF;
+      --blush: #FDF3F8;
+      --hl: #FFF3A8;
+      --hl-strong: #FFE34F;
+      --bg: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+      --line: rgba(18, 18, 18, 0.14);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      --mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      background-attachment: fixed;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ---------- Header ---------- */
+
+    .site-header {
+      text-align: center;
+      padding: 72px 0 40px;
+    }
+
+    .kicker {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 18px;
+    }
+
+    .site-header h1 {
+      font-family: var(--serif);
+      font-weight: 800;
+      font-size: clamp(42px, 5.6vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--gold);
+    }
+
+    .site-header h1 em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .lede {
+      max-width: 620px;
+      margin: 20px auto 0;
+      font-size: 17px;
+      color: rgba(18, 18, 18, 0.72);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+    }
+
+    .stat-chip {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      color: rgba(18, 18, 18, 0.75);
+    }
+
+    /* ---------- Filter bar ---------- */
+
+    .filter-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 252, 239, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+      margin-bottom: 40px;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid rgba(18, 18, 18, 0.28);
+      border-radius: 999px;
+      padding: 9px 17px;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .filter-btn .n {
+      color: var(--pink);
+      font-weight: 700;
+      margin-left: 5px;
+    }
+
+    .filter-btn:hover {
+      background: var(--hl);
+    }
+
+    .filter-btn.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+
+    .filter-btn.active .n {
+      color: var(--hl-strong);
+    }
+
+    /* ---------- Grid & cards ---------- */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 26px;
+      padding-bottom: 72px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(18, 18, 18, 0.05);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(18, 18, 18, 0.11);
+      transform: translateY(-2px);
+    }
+
+    .thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #1a1712;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #1a1712;
+    }
+
+    .expand-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      line-height: 1;
+      color: var(--ink);
+      background: rgba(255, 252, 239, 0.92);
+      border: 1px solid rgba(18, 18, 18, 0.35);
+      border-radius: 9px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.15s ease, background 0.15s ease;
+    }
+
+    .thumb:hover .expand-btn,
+    .expand-btn:focus-visible {
+      opacity: 1;
+    }
+
+    .expand-btn:hover {
+      background: var(--hl-strong);
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px 18px 16px;
+      flex: 1;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .code-badge {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 4px 10px;
+      border-radius: 7px;
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+
+    .card-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dur-chip {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(18, 18, 18, 0.55);
+      flex-shrink: 0;
+    }
+
+    .desc {
+      font-size: 14.5px;
+      line-height: 1.45;
+      color: rgba(18, 18, 18, 0.74);
+      flex: 1;
+    }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .cid {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: rgba(18, 18, 18, 0.6);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .copy-btn {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid rgba(18, 18, 18, 0.32);
+      border-radius: 8px;
+      padding: 7px 13px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--hl);
+    }
+
+    .copy-btn.copied {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--hl-strong);
+    }
+
+    /* ---------- Footer ---------- */
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0 44px;
+      text-align: center;
+      font-size: 13.5px;
+      color: rgba(18, 18, 18, 0.6);
+    }
+
+    .site-footer a {
+      color: var(--pink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 560px) {
+      .site-header { padding: 48px 0 30px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header container">
+    <div class="kicker">HyperFrames · Editorial Templates</div>
+    <h1>Template <em>Gallery</em></h1>
+    <p class="lede">
+      25 drop-in video templates for concept explainers, data charts, workflow
+      diagrams, news highlights, and narrative beats — all following the warm
+      editorial design system. Preview each one, then copy its code into your project.
+    </p>
+    <div class="stats">
+      <span class="stat-chip" id="stat-count">25 templates</span>
+      <span class="stat-chip">5 categories</span>
+      <span class="stat-chip">1920 × 1080 · 30 fps</span>
+      <span class="stat-chip">Entrance-only motion</span>
+    </div>
+  </header>
+
+  <nav class="filter-bar" aria-label="Filter templates by category">
+    <div class="filters container" id="filters"></div>
+  </nav>
+
+  <main class="container">
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer class="site-footer container">
+    <p>
+      Previews are draft renders of the compositions in
+      <a href="https://github.com/justintse-cal/hyperframe-templates" target="_blank" rel="noopener">justintse-cal/hyperframe-templates</a>.
+      Look &amp; feel follows <code>design.md</code> — warm editorial gradient, Playfair Display + Plus Jakarta Sans.
+    </p>
+  </footer>
+
+  <script src="templates.js"></script>
+  <script>
+    (function () {
+      var CAT_NAMES = {};
+      window.CATEGORIES.forEach(function (c) { CAT_NAMES[c.letter] = c.name; });
+      var CAT_COLORS = { A: '#8A6D00', B: '#C2185B', C: '#7fa8e9', D: '#C0392B', E: '#bcabb3' };
+
+      function titleFromId(id) {
+        // 'A01-core-definition' -> 'Core Definition'
+        var slug = id.replace(/^[A-E]\d{2}-/, '');
+        return slug.split('-').map(function (w) {
+          return w.charAt(0).toUpperCase() + w.slice(1);
+        }).join(' ');
+      }
+
+      /* ---- Filters ---- */
+      var filtersEl = document.getElementById('filters');
+      var activeFilter = 'all';
+
+      function buildFilters() {
+        var items = [{ letter: 'all', name: 'All Templates', count: window.TEMPLATES.length }];
+        window.CATEGORIES.forEach(function (c) {
+          items.push({
+            letter: c.letter,
+            name: c.letter + ' · ' + c.name,
+            count: window.TEMPLATES.filter(function (t) { return t.code.charAt(0) === c.letter; }).length,
+          });
+        });
+        items.forEach(function (item) {
+          var btn = document.createElement('button');
+          btn.className = 'filter-btn' + (item.letter === 'all' ? ' active' : '');
+          btn.dataset.filter = item.letter;
+          btn.innerHTML = item.name + ' <span class="n">' + item.count + '</span>';
+          btn.addEventListener('click', function () { setFilter(item.letter); });
+          filtersEl.appendChild(btn);
+        });
+      }
+
+      function setFilter(letter) {
+        activeFilter = letter;
+        Array.prototype.forEach.call(filtersEl.children, function (btn) {
+          btn.classList.toggle('active', btn.dataset.filter === letter);
+        });
+        Array.prototype.forEach.call(gridEl.children, function (card) {
+          var show = letter === 'all' || card.dataset.category === letter;
+          card.style.display = show ? '' : 'none';
+          if (!show) {
+            var v = card.querySelector('video');
+            if (v && !v.paused) v.pause();
+          }
+        });
+      }
+
+      /* ---- Cards ---- */
+      var gridEl = document.getElementById('grid');
+
+      function buildCards() {
+        window.TEMPLATES.forEach(function (t) {
+          var category = t.code.charAt(0);
+          var card = document.createElement('article');
+          card.className = 'card';
+          card.dataset.category = category;
+          card.style.setProperty('--accent', CAT_COLORS[category] || '#8A6D00');
+
+          var thumb = document.createElement('div');
+          thumb.className = 'thumb';
+
+          var video = document.createElement('video');
+          video.src = 'videos/' + t.id + '.mp4';
+          video.poster = 'posters/' + t.id + '.jpg';
+          video.preload = 'none';
+          video.controls = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.muted = true;
+          video.setAttribute('aria-label', 'Preview of ' + t.id);
+          // Pause any other video when one starts playing.
+          video.addEventListener('play', function () {
+            Array.prototype.forEach.call(gridEl.querySelectorAll('video'), function (other) {
+              if (other !== video && !other.paused) other.pause();
+            });
+          });
+
+          var expand = document.createElement('button');
+          expand.className = 'expand-btn';
+          expand.title = 'Fullscreen';
+          expand.setAttribute('aria-label', 'Play ' + t.id + ' fullscreen');
+          expand.innerHTML = '&#x2922;';
+          expand.addEventListener('click', function () {
+            if (video.requestFullscreen) {
+              video.requestFullscreen().catch(function () { video.webkitEnterFullscreen && video.webkitEnterFullscreen(); });
+            } else if (video.webkitEnterFullscreen) {
+              video.webkitEnterFullscreen(); // iOS Safari
+            } else if (video.webkitRequestFullscreen) {
+              video.webkitRequestFullscreen();
+            }
+          });
+
+          thumb.appendChild(video);
+          thumb.appendChild(expand);
+
+          var body = document.createElement('div');
+          body.className = 'card-body';
+
+          var head = document.createElement('div');
+          head.className = 'card-head';
+          head.innerHTML =
+            '<span class="code-badge">' + t.code + '</span>' +
+            '<span class="card-name">' + titleFromId(t.id) + '</span>' +
+            '<span class="dur-chip">' + t.duration + 's</span>';
+
+          var desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = t.description;
+
+          var foot = document.createElement('div');
+          foot.className = 'card-foot';
+          var cid = document.createElement('code');
+          cid.className = 'cid';
+          cid.textContent = t.id;
+          var copyBtn = document.createElement('button');
+          copyBtn.className = 'copy-btn';
+          copyBtn.textContent = 'Copy code';
+          copyBtn.addEventListener('click', function () {
+            copyText(t.id).then(function () {
+              copyBtn.textContent = '✓ Copied';
+              copyBtn.classList.add('copied');
+              setTimeout(function () {
+                copyBtn.textContent = 'Copy code';
+                copyBtn.classList.remove('copied');
+              }, 1600);
+            });
+          });
+          foot.appendChild(cid);
+          foot.appendChild(copyBtn);
+
+          body.appendChild(head);
+          body.appendChild(desc);
+          body.appendChild(foot);
+          card.appendChild(thumb);
+          card.appendChild(body);
+          gridEl.appendChild(card);
+        });
+      }
+
+      function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+        }
+        return legacyCopy(text);
+      }
+
+      function legacyCopy(text) {
+        return new Promise(function (resolve) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+          document.body.removeChild(ta);
+          resolve();
+        });
+      }
+
+      buildFilters();
+      buildCards();
+      document.getElementById('stat-count').textContent =
+        window.TEMPLATES.length + ' templates';
+    })();
+  </script>
+</body>
+</html>

@@ -7,6 +7,9 @@
 renders/
 out/
 
+# ...except the committed GitHub Pages showcase previews (docs/).
+!docs/videos/*.mp4
+
 # OS / editor noise
 .DS_Store
 *.log
