@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          container-type: size;
+          isolation: isolate;
+          overflow: hidden;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+          color: #121212;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          pointer-events: none;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .stc-clip { position: absolute; inset: 0; overflow: hidden; }
+
+        /* Two faint ambient side glows: each wing owns a color identity. */
+        .stc-clip::before,
+        .stc-clip::after {
+          content: "";
+          position: absolute;
+          top: 14cqh;
+          width: 52cqw;
+          height: 72cqh;
+          border-radius: 50%;
+          filter: blur(6cqmin);
+          pointer-events: none;
+        }
+
+        .stc-clip::before {
+          left: 2cqw;
+          background: radial-gradient(
+            ellipse at 50% 50%,
+            rgba(18, 18, 18, 0.06) 0%,
+            transparent 70%
+          );
+        }
+
+        .stc-clip::after {
+          right: 2cqw;
+          background: radial-gradient(
+            ellipse at 50% 50%,
+            color-mix(in srgb, var(--stc-accent, #C2185B) 16%, transparent) 0%,
+            transparent 70%
+          );
+        }
+
+        .stc-stage {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5cqw;
+          align-items: center;
+          justify-items: center;
+          padding: 0 8cqw;
+          perspective: 120cqw;
+        }
+
+        .stc-wing {
+          position: relative;
+          width: 100%;
+          max-width: 38cqw;
+          height: 58cqh;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+
+        .stc-float {
+          position: absolute;
+          inset: 0;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+
+        .stc-card {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          padding: 3.6cqh 2.4cqw;
+          border: 0.16cqw solid rgba(18, 18, 18, 0.18);
+          border-radius: 2.4cqmin;
+          background: rgba(255, 255, 255, 0.8);
+          will-change: opacity;
+        }
+
+        .stc-card-a {
+          transform: rotateY(18deg);
+          box-shadow: 2.4cqw 3cqh 7cqh rgba(18, 18, 18, 0.2);
+        }
+
+        .stc-card-b {
+          transform: rotateY(-18deg);
+          border-color: color-mix(in srgb, var(--stc-accent, #C2185B) 42%, rgba(18, 18, 18, 0.18));
+          background: color-mix(in srgb, var(--stc-accent, #C2185B) 8%, rgba(255, 255, 255, 0.86));
+          box-shadow: -2.4cqw 3cqh 7cqh rgba(18, 18, 18, 0.2);
+        }
+
+        .stc-label {
+          flex: 0 0 auto;
+          margin-bottom: 2.4cqh;
+          color: rgba(18, 18, 18, 0.6);
+          font-size: min(2.1cqw, 3.4cqh);
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          line-height: 1;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        .stc-card-b .stc-label {
+          color: color-mix(in srgb, var(--stc-accent, #C2185B) 78%, #121212);
+        }
+
+        .stc-label:empty { display: none; }
+
+        .stc-slot {
+          position: relative;
+          flex: 1 1 auto;
+          min-height: 0;
+          overflow: hidden;
+          border-radius: 1.44cqmin;
+        }
+
+        .stc-slot > img,
+        .stc-slot > video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .stc-default {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 2cqh 1cqw;
+        }
+
+        .stc-bar {
+          width: 42%;
+          height: 4cqh;
+          margin-bottom: 2.6cqh;
+          border-radius: 1.2cqh;
+          background: #121212;
+          opacity: 0.32;
+        }
+
+        .stc-line {
+          height: 2.2cqh;
+          margin-bottom: 1.8cqh;
+          border-radius: 1.1cqh;
+          background: #121212;
+          opacity: 0.22;
+        }
+
+        .stc-line:nth-of-type(2) { width: 88%; }
+        .stc-line:nth-of-type(3) { width: 64%; }
+        .stc-line:nth-of-type(4) { width: 42%; }
+
+        .stc-card-b .stc-bar {
+          background: var(--stc-accent, #C2185B);
+          opacity: 0.85;
+        }
+
+        .stc-card-b .stc-line {
+          background: color-mix(in srgb, var(--stc-accent, #C2185B) 66%, #121212);
+          opacity: 0.5;
+        }
+
+        .stc-badge-pos {
+          position: absolute;
+          top: 50%;
+          z-index: 3;
+          display: flex;
+        }
+
+        .stc-badge-pos-a { right: 0; transform: translate(32%, -50%); }
+        .stc-badge-pos-b { left: 0; transform: translate(-32%, -50%); }
+
+        .stc-badge {
+          padding: 1.4cqh 1.8cqw;
+          border: 0.16cqw solid rgba(18, 18, 18, 0.2);
+          border-radius: 999cqw;
+          background: #ffffff;
+          color: #121212;
+          font-size: min(2.2cqw, 3.6cqh);
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          line-height: 1;
+          white-space: nowrap;
+          will-change: transform, opacity;
+        }
+
+        .stc-badge-b {
+          border-color: color-mix(in srgb, var(--stc-accent, #C2185B) 58%, rgba(18, 18, 18, 0.2));
+          background: color-mix(in srgb, var(--stc-accent, #C2185B) 20%, #ffffff);
+          color: #121212;
+        }
+      </style>
+
+      <div data-hf-id="hf-c07a" id="root" data-composition-id="C07-split-tilt-cards" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-c07f" class="frame-border"></div>
+
+        <div data-hf-id="hf-c07c" id="c07-clip" class="stc-clip clip" data-start="0" data-duration="8" data-track-index="0">
+          <div class="stc-stage">
+            <div class="stc-wing stc-wing-a">
+              <div class="stc-float stc-float-a">
+                <section class="stc-card stc-card-a" aria-label="Left card">
+                  <div class="stc-label stc-label-a"></div>
+                  <div class="stc-slot" data-slot="card-a">
+                    <div class="stc-default" aria-hidden="true">
+                      <div class="stc-bar"></div>
+                      <div class="stc-line"></div>
+                      <div class="stc-line"></div>
+                      <div class="stc-line"></div>
+                    </div>
+                  </div>
+                </section>
+                <div class="stc-badge-pos stc-badge-pos-a">
+                  <div class="stc-badge stc-badge-a"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stc-wing stc-wing-b">
+              <div class="stc-float stc-float-b">
+                <section class="stc-card stc-card-b" aria-label="Right card">
+                  <div class="stc-label stc-label-b"></div>
+                  <div class="stc-slot" data-slot="card-b">
+                    <div class="stc-default" aria-hidden="true">
+                      <div class="stc-bar"></div>
+                      <div class="stc-line"></div>
+                      <div class="stc-line"></div>
+                      <div class="stc-line"></div>
+                    </div>
+                  </div>
+                </section>
+                <div class="stc-badge-pos stc-badge-pos-b">
+                  <div class="stc-badge stc-badge-b"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters ----
+             Two equal-weight cards arrive from opposite wings, each carrying
+             a mirrored 3D book-open tilt; a pill badge spring-pops at each
+             inner edge, then the pair floats gently and settles still.
+             Entrance-only: the final spread holds to the clip end at 8s. */
+          var CONFIG = {
+            label_a: 'Before',
+            label_b: 'After',
+            badge_a: 'v1',
+            badge_b: 'v2',
+            accent: '#C2185B',
+          };
+
+          var root = document.getElementById('root');
+          var clip = root.querySelector('.stc-clip');
+          var wingA = root.querySelector('.stc-wing-a');
+          var cardA = root.querySelector('.stc-card-a');
+          var cardB = root.querySelector('.stc-card-b');
+          var wingB = root.querySelector('.stc-wing-b');
+          var floatA = root.querySelector('.stc-float-a');
+          var floatB = root.querySelector('.stc-float-b');
+          var labelA = root.querySelector('.stc-label-a');
+          var labelB = root.querySelector('.stc-label-b');
+          var badgeA = root.querySelector('.stc-badge-a');
+          var badgeB = root.querySelector('.stc-badge-b');
+          var badgePosA = root.querySelector('.stc-badge-pos-a');
+          var badgePosB = root.querySelector('.stc-badge-pos-b');
+
+          labelA.textContent = CONFIG.label_a;
+          labelB.textContent = CONFIG.label_b;
+          badgeA.textContent = CONFIG.badge_a;
+          badgeB.textContent = CONFIG.badge_b;
+          if (CONFIG.badge_a === '') badgePosA.style.display = 'none';
+          if (CONFIG.badge_b === '') badgePosB.style.display = 'none';
+          root.style.setProperty('--stc-accent', CONFIG.accent);
+
+          var exit = 'none'; // entrance-only
+
+          var CARD_DUR_BASE = 1.1;
+          var CARD_B_DELAY_BASE = 0.2;
+          var BADGE_A_AT_BASE = 1.45;
+          var BADGE_B_AT_BASE = 1.75;
+          var BADGE_DUR_BASE = 0.4;
+          var IN_BASE = BADGE_B_AT_BASE + BADGE_DUR_BASE;
+          var OUT_BASE = 0;
+          var STILLNESS = 0.3;
+          var FLOAT_CYCLE = 2.0;
+
+          var duration = 8;
+          var totalBase = IN_BASE + OUT_BASE;
+          var scale = duration < totalBase ? duration / totalBase : 1;
+          var IN = IN_BASE * scale;
+          var OUT = OUT_BASE * scale;
+          var HOLD = Math.max(0, duration - (IN + OUT));
+
+          /* Explicit both-endpoints state makes tl.seek(0) deterministic. */
+          gsap.set(clip, { opacity: 1, y: 0 });
+          gsap.set(wingA, { x: '-26cqw', scale: 0.85 });
+          gsap.set(wingB, { x: '26cqw', scale: 0.85 });
+          gsap.set([cardA, cardB], { opacity: 0 });
+          gsap.set([floatA, floatB], { y: '0cqh' });
+          gsap.set([badgeA, badgeB], { opacity: 0, scale: 0 });
+
+          var tl = gsap.timeline({ paused: true });
+
+          [
+            { wing: wingA, card: cardA, at: 0 },
+            { wing: wingB, card: cardB, at: CARD_B_DELAY_BASE * scale },
+          ].forEach(function (entry) {
+            tl.to(entry.card, { opacity: 1, duration: 0.5 * scale, ease: 'power2.out' }, entry.at);
+            tl.to(entry.wing, { x: '0cqw', duration: CARD_DUR_BASE * scale, ease: 'power3.out' }, entry.at);
+            tl.to(entry.wing, { scale: 1, duration: CARD_DUR_BASE * scale, ease: 'power3.out' }, entry.at);
+          });
+
+          [
+            { badge: badgeA, text: CONFIG.badge_a, at: BADGE_A_AT_BASE * scale },
+            { badge: badgeB, text: CONFIG.badge_b, at: BADGE_B_AT_BASE * scale },
+          ].forEach(function (pop) {
+            if (pop.text === '') return;
+            tl.to(pop.badge, {
+              opacity: 1, scale: 1, duration: BADGE_DUR_BASE * scale, ease: 'back.out(1.9)',
+            }, pop.at);
+          });
+
+          /* HOLD: phase-opposed barely-there idle float; whole cycles only. */
+          var floatWindow = Math.max(0, HOLD - STILLNESS);
+          var cycles = Math.floor(floatWindow / FLOAT_CYCLE);
+          var half = FLOAT_CYCLE / 2;
+          for (var i = 0; i < cycles; i += 1) {
+            var t0 = IN + i * FLOAT_CYCLE;
+            tl.to(floatA, { y: '-0.6cqh', duration: half, ease: 'sine.inOut' }, t0);
+            tl.to(floatA, { y: '0cqh', duration: half, ease: 'sine.inOut' }, t0 + half);
+            tl.to(floatB, { y: '0.6cqh', duration: half, ease: 'sine.inOut' }, t0);
+            tl.to(floatB, { y: '0cqh', duration: half, ease: 'sine.inOut' }, t0 + half);
+          }
+
+          tl.seek(0);
+          window.__timelines['C07-split-tilt-cards'] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

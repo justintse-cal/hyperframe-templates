@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* -------------------------------------------------- testimonial card */
+        .tq-clip {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+        }
+
+        .tq-card {
+          width: 1180px;
+          padding: 72px 86px;
+          border-radius: 24px;
+          border: 1px solid rgba(18, 18, 18, 0.14);
+          background: rgba(255, 255, 255, 0.72);
+          box-shadow: 0 24px 60px rgba(18, 18, 18, 0.12);
+        }
+
+        .tq-glyph {
+          font-family: 'Playfair Display', serif;
+          font-size: 110px;
+          line-height: 0.6;
+          font-weight: 600;
+          color: #8A6D00;
+          margin-bottom: 30px;
+          height: 56px;
+        }
+
+        .tq-quote {
+          margin: 0;
+          font-family: 'Playfair Display', serif;
+          font-size: var(--tq-font-size, 46px);
+          font-weight: 600;
+          line-height: 1.28;
+          letter-spacing: -0.02em;
+          color: #121212;
+          text-wrap: balance;
+        }
+
+        .tq-line-mask {
+          overflow: hidden;
+          padding: 0.12em 0.24em 0.3em;
+          margin: -0.12em -0.24em -0.3em;
+        }
+
+        .tq-line {
+          will-change: transform, opacity;
+        }
+
+        .tq-em {
+          position: relative;
+          display: inline-block;
+          white-space: nowrap;
+        }
+
+        .tq-em-text {
+          position: relative;
+          z-index: 1;
+        }
+
+        .tq-mark {
+          position: absolute;
+          left: -2%;
+          bottom: -0.14em;
+          width: 104%;
+          height: 0.24em;
+          overflow: visible;
+          z-index: 0;
+        }
+
+        .tq-byline {
+          display: flex;
+          align-items: center;
+          gap: 26px;
+          margin-top: 46px;
+          will-change: transform, opacity;
+        }
+
+        .tq-avatar {
+          width: 84px;
+          height: 84px;
+          flex: none;
+          border-radius: 50%;
+          overflow: hidden;
+          display: grid;
+          place-items: center;
+          border: 1px solid rgba(18, 18, 18, 0.16);
+          background: linear-gradient(135deg, #8A6D00, #B08A00);
+        }
+
+        .tq-avatar img,
+        .tq-avatar video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .tq-initials {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 28px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          color: #ffffff;
+        }
+
+        .tq-person {
+          display: grid;
+          gap: 6px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .tq-name {
+          font-size: 24px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+          color: #121212;
+        }
+
+        .tq-role {
+          font-size: 19px;
+          color: rgba(18, 18, 18, 0.62);
+        }
+
+        .tq-company {
+          margin-left: auto;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 18px;
+          font-weight: 600;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: #8A6D00;
+        }
+      </style>
+
+      <div data-hf-id="hf-e11a" id="root" data-composition-id="E11-testimonial-card" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-e11f" class="frame-border"></div>
+
+        <div data-hf-id="hf-e11c" id="e11-clip" class="tq-clip">
+          <figure class="tq-card" style="margin: 0">
+            <div class="tq-glyph" aria-hidden="true">&#8220;</div>
+            <blockquote class="tq-quote" style="margin: 0"></blockquote>
+            <figcaption class="tq-byline">
+              <div class="tq-avatar" data-slot="avatar">
+                <span class="tq-initials"></span>
+              </div>
+              <div class="tq-person">
+                <span class="tq-name"></span>
+                <span class="tq-role"></span>
+              </div>
+              <span class="tq-company"></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters ----
+             A testimonial quote card: the quote reveals per measured line
+             through a soft mask, then a hand-swiped accent underline draws
+             under the emphasised words. Entrance-only: it holds to the clip
+             end (no exit). */
+          var CONFIG = {
+            quote: "We shipped our launch video in a single afternoon",
+            name: "Maya Chen",
+            role: "Head of Product",
+            company: "NORTHWIND",
+            emphasis: "single afternoon",
+            accent: "#C2185B", // design-system pink for the hand-swiped underline
+          };
+
+          var root = document.getElementById("root");
+          var card = root.querySelector(".tq-card");
+          var quoteEl = root.querySelector(".tq-quote");
+          var bylineEl = root.querySelector(".tq-byline");
+
+          root.querySelector(".tq-name").textContent = CONFIG.name;
+          var roleEl = root.querySelector(".tq-role");
+          if (CONFIG.role) roleEl.textContent = CONFIG.role;
+          else roleEl.setAttribute("hidden", "");
+          var companyEl = root.querySelector(".tq-company");
+          if (CONFIG.company) companyEl.textContent = CONFIG.company;
+          else companyEl.setAttribute("hidden", "");
+
+          var initialsEl = root.querySelector(".tq-avatar .tq-initials");
+          if (initialsEl) {
+            initialsEl.textContent = CONFIG.name
+              .split(" ")
+              .filter(Boolean)
+              .slice(0, 2)
+              .map(function (part) {
+                return Array.from(part)[0].toUpperCase();
+              })
+              .join("");
+          }
+
+          // Emphasis match expanded to whole words so the underline never splits one.
+          var quote = CONFIG.quote;
+          var emphasis = CONFIG.emphasis;
+          var matchStart = -1;
+          var matchEnd = -1;
+          if (emphasis.length > 0) {
+            var index = quote.toLowerCase().indexOf(emphasis.toLowerCase());
+            if (index >= 0) {
+              matchStart = quote.lastIndexOf(" ", index) + 1;
+              matchEnd = quote.indexOf(" ", index + emphasis.length);
+              if (matchEnd < 0) matchEnd = quote.length;
+            }
+          }
+
+          // Deterministic fit: font size rides 1/sqrt(chars) so the quote lands
+          // around two to three lines at the fixed card width.
+          var characters = Math.max(1, Array.from(quote).length);
+          var fitted = Math.max(34, Math.min(62, 400 / Math.sqrt(characters)));
+          root.style.setProperty("--tq-font-size", fitted.toFixed(2) + "px");
+
+          var tokens = [];
+          function pushWords(text) {
+            text.split(" ").forEach(function (wordText) {
+              if (!wordText) return;
+              var span = document.createElement("span");
+              span.style.display = "inline-block";
+              span.textContent = wordText;
+              tokens.push(span);
+            });
+          }
+          var pathEl = null;
+          var emEl = null;
+          if (matchStart >= 0) {
+            pushWords(quote.slice(0, matchStart));
+            emEl = document.createElement("span");
+            emEl.className = "tq-em";
+            var svgNS = "http://www.w3.org/2000/svg";
+            var svg = document.createElementNS(svgNS, "svg");
+            svg.setAttribute("class", "tq-mark");
+            svg.setAttribute("viewBox", "0 0 100 12");
+            svg.setAttribute("preserveAspectRatio", "none");
+            svg.setAttribute("aria-hidden", "true");
+            pathEl = document.createElementNS(svgNS, "path");
+            pathEl.setAttribute("d", "M 2 7 C 20 4.5, 46 8.5, 66 6 C 80 4.5, 92 7.5, 98 5.5");
+            pathEl.setAttribute("fill", "none");
+            pathEl.setAttribute("stroke-width", "4.5");
+            pathEl.setAttribute("stroke-linecap", "round");
+            pathEl.setAttribute("stroke-linejoin", "round");
+            pathEl.style.stroke = CONFIG.accent;
+            svg.appendChild(pathEl);
+            var emText = document.createElement("span");
+            emText.className = "tq-em-text";
+            emText.textContent = quote.slice(matchStart, matchEnd);
+            emEl.appendChild(svg);
+            emEl.appendChild(emText);
+            tokens.push(emEl);
+            pushWords(quote.slice(matchEnd));
+          } else {
+            pushWords(quote);
+          }
+          tokens.forEach(function (token, i) {
+            if (i > 0) quoteEl.appendChild(document.createTextNode(" "));
+            quoteEl.appendChild(token);
+          });
+          quoteEl.setAttribute("aria-label", quote);
+
+          // Group tokens by rendered row, then rebuild per-line masks.
+          var rows = [];
+          var lastTop = null;
+          tokens.forEach(function (token) {
+            var top = token.offsetTop;
+            if (lastTop === null || Math.abs(top - lastTop) > 2) {
+              rows.push([]);
+              lastTop = top;
+            }
+            rows[rows.length - 1].push(token);
+          });
+          quoteEl.textContent = "";
+          var lineEls = rows.map(function (row) {
+            var mask = document.createElement("div");
+            mask.className = "tq-line-mask";
+            var line = document.createElement("div");
+            line.className = "tq-line";
+            row.forEach(function (token, i) {
+              if (i > 0) line.appendChild(document.createTextNode(" "));
+              line.appendChild(token);
+            });
+            mask.appendChild(line);
+            quoteEl.appendChild(mask);
+            return line;
+          });
+
+          /* fixed phases; the HOLD is the only elastic span (entrance-only) */
+          var CARD_BASE = 0.5;
+          var LINE_BASE = 0.6;
+          var STAG_BASE = 0.18;
+          var LINES_AT_BASE = 0.15;
+          var BYLINE_BASE = 0.5;
+          var DRAW_BASE = 0.55;
+          var quoteEndBase =
+            LINES_AT_BASE + Math.max(0, lineEls.length - 1) * STAG_BASE + LINE_BASE;
+          var bylineAtBase = Math.max(0, quoteEndBase - 0.15);
+          var drawAtBase = quoteEndBase + 0.1;
+
+          gsap.set(card, { opacity: 0, y: 40 });
+          gsap.set(lineEls, { yPercent: 130, opacity: 0 });
+          gsap.set(bylineEl, { opacity: 0, y: 24 });
+
+          var tl = gsap.timeline({ paused: true });
+
+          tl.fromTo(
+            card,
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: CARD_BASE, ease: "power3.out" },
+            0,
+          );
+
+          lineEls.forEach(function (line, i) {
+            tl.fromTo(
+              line,
+              { yPercent: 130, opacity: 0 },
+              { yPercent: 0, opacity: 1, duration: LINE_BASE, ease: "power3.out" },
+              LINES_AT_BASE + i * STAG_BASE,
+            );
+          });
+
+          tl.fromTo(
+            bylineEl,
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: BYLINE_BASE, ease: "power3.out" },
+            bylineAtBase,
+          );
+
+          if (pathEl) {
+            var length = pathEl.getTotalLength();
+            pathEl.style.strokeDasharray = String(length);
+            gsap.set(pathEl, { strokeDashoffset: length, opacity: 0 });
+            tl.set(pathEl, { opacity: 1 }, drawAtBase);
+            tl.fromTo(
+              pathEl,
+              { strokeDashoffset: length },
+              { strokeDashoffset: 0, duration: DRAW_BASE, ease: "power2.inOut" },
+              drawAtBase,
+            );
+          }
+          /* last beat settles well before 3s; the frame holds to the clip end at 8s */
+
+          window.__timelines["E11-testimonial-card"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

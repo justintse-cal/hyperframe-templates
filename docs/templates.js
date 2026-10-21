@@ -95,6 +95,18 @@ window.TEMPLATES = [
     description: 'Sketch a simple step-by-step workflow as a wobbly hand-drawn flowchart that draws itself on.',
   },
   {
+    code: 'C06',
+    id: 'C06-radial-surround',
+    duration: 8,
+    description: 'Surround a central subject with labeled chips on a ring, then let them converge inward.',
+  },
+  {
+    code: 'C07',
+    id: 'C07-split-tilt-cards',
+    duration: 8,
+    description: 'Compare two states as mirrored 3D book-tilt cards that swing in from opposite wings.',
+  },
+  {
     code: 'D01',
     id: 'D01-breaking-news',
     duration: 8,
@@ -177,5 +189,23 @@ window.TEMPLATES = [
     id: 'E10-reddit-post',
     duration: 8,
     description: 'Present a social post card that settles in as the upvote count ticks up and highlights.',
+  },
+  {
+    code: 'E11',
+    id: 'E11-testimonial-card',
+    duration: 8,
+    description: 'Reveal a testimonial quote line by line, then draw a hand-swiped underline under the key phrase.',
+  },
+  {
+    code: 'E12',
+    id: 'E12-typed-prompt',
+    duration: 8,
+    description: 'Type a single prompt line in human cadence behind a blinking caret, then hold.',
+  },
+  {
+    code: 'E13',
+    id: 'E13-notes-typing',
+    duration: 8,
+    description: 'Type a notes-app title and body lines on a measured human keystroke rhythm.',
   },
 ];

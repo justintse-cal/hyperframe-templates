@@ -49,6 +49,36 @@
       "name": "reddit-post",
       "type": "hyperframes:block",
       "target": "compositions/reddit-post.html"
+    },
+    {
+      "name": "radial-surround",
+      "type": "hyperframes:component",
+      "target": "compositions/components/radial-surround.html"
+    },
+    {
+      "name": "testimonial-proof-card",
+      "type": "hyperframes:component",
+      "target": "compositions/components/testimonial-proof-card.html"
+    },
+    {
+      "name": "split-tilt-cards",
+      "type": "hyperframes:component",
+      "target": "compositions/components/split-tilt-cards.html"
+    },
+    {
+      "name": "notes-typing",
+      "type": "hyperframes:component",
+      "target": "compositions/components/notes-typing.html"
+    },
+    {
+      "name": "typed-prompt",
+      "type": "hyperframes:component",
+      "target": "compositions/components/typed-prompt.html"
+    },
+    {
+      "name": "claude-exchange",
+      "type": "hyperframes:block",
+      "target": "compositions/claude-exchange.html"
     }
   ]
 }

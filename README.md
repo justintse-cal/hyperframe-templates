@@ -1,6 +1,6 @@
 # HyperFrames Editorial Templates
 
-A library of 28 drop-in video templates — each an 8-second, 1920×1080, 30 fps
+A library of 33 drop-in video templates — each an 8-second, 1920×1080, 30 fps
 HyperFrames composition built on one warm editorial design system. Preview every
 template, then copy its composition id into your own project.
 
@@ -14,12 +14,12 @@ template, then copy its composition id into your own project.
 | --- | --- | --- |
 | **A** | Explaining a concept | A01–A04 |
 | **B** | Data charts | B01–B05 |
-| **C** | Workflow | C01–C05 |
+| **C** | Workflow | C01–C07 |
 | **D** | News highlight text | D01–D04 |
-| **E** | Narrative & emphasis | E01–E10 |
+| **E** | Narrative & emphasis | E01–E13 |
 
 Every template is exactly **8 seconds**, so they stack into a uniform grid. The
-root reel in `index.html` plays all 28 back-to-back (224s total).
+root reel in `index.html` plays all 33 back-to-back (264s total).
 
 ## Design system
 
