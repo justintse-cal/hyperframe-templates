@@ -8,5 +8,47 @@
   },
   "media": {
     "autoProxy": true
-  }
+  },
+  "registryItems": [
+    {
+      "name": "whip-pan-cut",
+      "type": "hyperframes:component",
+      "target": "compositions/components/whip-pan-cut.html"
+    },
+    {
+      "name": "light-leak",
+      "type": "hyperframes:block",
+      "target": "compositions/light-leak.html"
+    },
+    {
+      "name": "before-after-wipe",
+      "type": "hyperframes:component",
+      "target": "compositions/components/before-after-wipe.html"
+    },
+    {
+      "name": "cross-warp-morph",
+      "type": "hyperframes:block",
+      "target": "compositions/cross-warp-morph.html"
+    },
+    {
+      "name": "hw-arrow",
+      "type": "hyperframes:component",
+      "target": "compositions/components/hw-arrow.html"
+    },
+    {
+      "name": "hw-box-label",
+      "type": "hyperframes:component",
+      "target": "compositions/components/hw-box-label.html"
+    },
+    {
+      "name": "yt-comment-card",
+      "type": "hyperframes:block",
+      "target": "compositions/yt-comment-card.html"
+    },
+    {
+      "name": "reddit-post",
+      "type": "hyperframes:block",
+      "target": "compositions/reddit-post.html"
+    }
+  ]
 }

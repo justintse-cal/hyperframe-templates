@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+          color: #121212;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* Flex-centered stage — the card gets GSAP y tweens, so it must not
+           carry a CSS translate() of its own (gsap_css_transform_conflict). */
+        #e10-stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .reddit-card {
+          width: 860px;
+          background: rgba(255, 255, 255, 0.72);
+          border: 1px solid rgba(18, 18, 18, 0.14);
+          border-radius: 16px;
+          padding: 32px 36px;
+          box-shadow: 0 24px 60px rgba(18, 18, 18, 0.12);
+          font-family: 'Inter', sans-serif;
+        }
+
+        .sub-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+
+        .subreddit-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #8A6D00;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 20px;
+          color: #ffffff;
+        }
+
+        .subreddit-name {
+          font-weight: 700;
+          font-size: 26px;
+          color: #121212;
+        }
+
+        .post-author {
+          font-size: 24px;
+          color: rgba(18, 18, 18, 0.55);
+          font-weight: 400;
+          margin-left: 8px;
+        }
+
+        .post-title {
+          font-family: 'Playfair Display', serif;
+          font-weight: 700;
+          font-size: 38px;
+          line-height: 1.18;
+          margin-bottom: 12px;
+          color: #121212;
+        }
+
+        .post-body {
+          font-size: 24px;
+          color: rgba(18, 18, 18, 0.72);
+          margin-bottom: 24px;
+          line-height: 1.45;
+        }
+
+        .vote-section {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-top: 1px solid rgba(18, 18, 18, 0.12);
+          padding-top: 20px;
+        }
+
+        .vote-pill {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 14px;
+          background: rgba(18, 18, 18, 0.05);
+          border-radius: 999px;
+        }
+
+        .vote-pill svg {
+          width: 22px;
+          height: 22px;
+        }
+
+        .vote-pill svg path {
+          fill: rgba(18, 18, 18, 0.55);
+        }
+
+        .vote-count {
+          font-weight: 700;
+          font-size: 22px;
+          color: rgba(18, 18, 18, 0.6);
+        }
+
+        .comment-count {
+          font-size: 22px;
+          color: rgba(18, 18, 18, 0.6);
+          margin-left: 8px;
+        }
+      </style>
+
+      <div data-hf-id="hf-e10a" id="root" data-composition-id="E10-reddit-post" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-e10f" class="frame-border"></div>
+
+        <div data-hf-id="hf-e10s" id="e10-stage">
+          <div data-hf-id="hf-e10c" id="e10-card" class="reddit-card">
+            <div class="sub-header">
+              <div class="subreddit-icon">r/</div>
+              <div>
+                <span class="subreddit-name" id="e10-sub">r/hyperframes</span>
+                <span class="post-author" id="e10-author">· Posted by u/placeholder_user</span>
+              </div>
+            </div>
+            <div class="post-title" id="e10-title">This template saved me a whole day of editing</div>
+            <div class="post-body" id="e10-body">
+              Swap the subreddit, username, title, body, and vote count to match your story.
+            </div>
+            <div class="vote-section">
+              <div class="vote-pill">
+                <svg viewBox="0 0 24 24" id="e10-arrow">
+                  <path d="M12 4l8 9h-5v7H9v-7H4l8-9z" />
+                </svg>
+                <span class="vote-count" id="e10-count">4.2k</span>
+              </div>
+              <span class="comment-count">318 Comments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters ----
+             A social post card slides up and settles, then the upvote
+             "presses": the arrow pops, the count ticks up, both turn the
+             brand pink. Entrance-only (design.md §5): the pressed state
+             holds until the clip ends. */
+          var CONFIG = {
+            subreddit: "r/hyperframes",
+            author: "u/placeholder_user",
+            title: "This template saved me a whole day of editing",
+            body: "Swap the subreddit, username, title, body, and vote count to match your story.",
+            countFrom: 4.2, // displayed as e.g. "4.2k"
+            countTo: 4.3,
+            countSuffix: "k",
+            comments: "318 Comments",
+          };
+
+          /* apply parameters */
+          document.getElementById("e10-sub").textContent = CONFIG.subreddit;
+          document.getElementById("e10-author").textContent = "· Posted by " + CONFIG.author;
+          document.getElementById("e10-title").textContent = CONFIG.title;
+          document.getElementById("e10-body").textContent = CONFIG.body;
+          document.querySelector(".comment-count").textContent = CONFIG.comments;
+
+          var PINK = "#C2185B";
+          var countEl = document.getElementById("e10-count");
+          countEl.textContent = CONFIG.countFrom.toFixed(1) + CONFIG.countSuffix;
+
+          var tl = gsap.timeline({ paused: true });
+
+          /* card slides up and settles */
+          tl.fromTo("#e10-card",
+            { opacity: 0, y: 320 },
+            { opacity: 1, y: 0, duration: 1.1, ease: "power3.out" },
+            0.25
+          );
+
+          /* upvote "press" — subtle bounce */
+          tl.to("#e10-arrow", { scale: 0.85, duration: 0.06, ease: "power2.in" }, 1.5);
+          tl.to("#e10-arrow", { scale: 1, duration: 0.24, ease: "back.out(3)" }, 1.56);
+
+          /* count-up through a proxy so it stays seek-safe (design.md §5) */
+          var countState = { val: CONFIG.countFrom };
+          tl.to(countState, {
+            val: CONFIG.countTo,
+            duration: 0.5,
+            ease: "power2.out",
+            onUpdate: function () {
+              countEl.textContent = countState.val.toFixed(1) + CONFIG.countSuffix;
+            },
+          }, 1.62);
+
+          /* arrow + count turn brand pink (no exit — holds to clip end) */
+          tl.to("#e10-arrow path", { attr: { fill: PINK }, duration: 0.4, ease: "power2.out" }, 1.75);
+          tl.to(countEl, { color: PINK, duration: 0.4, ease: "power2.out" }, 1.75);
+          /* last beat settles ~2.2s; the frame holds to the clip end at 8s */
+
+          window.__timelines["E10-reddit-post"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

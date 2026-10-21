@@ -89,6 +89,12 @@ window.TEMPLATES = [
     description: 'Visualize a network of connected entities — supply chains, org graphs, ecosystems.',
   },
   {
+    code: 'C05',
+    id: 'C05-handdrawn-flowchart',
+    duration: 8,
+    description: 'Sketch a simple step-by-step workflow as a wobbly hand-drawn flowchart that draws itself on.',
+  },
+  {
     code: 'D01',
     id: 'D01-breaking-news',
     duration: 8,
@@ -159,5 +165,17 @@ window.TEMPLATES = [
     id: 'E08-article-circle',
     duration: 8,
     description: 'Highlight a sentence inside an article screenshot with a marker sweep and spotlight.',
+  },
+  {
+    code: 'E09',
+    id: 'E09-yt-comment-card',
+    duration: 8,
+    description: 'Feature creator comments — avatars pop in as the text types on, comment by comment.',
+  },
+  {
+    code: 'E10',
+    id: 'E10-reddit-post',
+    duration: 8,
+    description: 'Present a social post card that settles in as the upvote count ticks up and highlights.',
   },
 ];
