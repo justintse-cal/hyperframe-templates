@@ -1,5 +1,26 @@
 # HyperFrames Composition Project
 
+## Design system — FOLLOW IT FOR EVERY FRAME
+
+**This project is a library of video templates, and it has a design system:
+[`design.md`](./design.md).** Read it before writing or modifying any frame.
+It defines the canvas, the background gradient, the primary and secondary
+colors, media treatment, composition rules, the subtitle safe area, and
+typography. If a request conflicts with `design.md`, follow `design.md` and
+flag the conflict.
+
+### The standard workflow for a new project
+
+1. **Reference this template folder** — start from an existing composition in
+   `compositions/` rather than authoring from a blank file.
+2. **Reuse when a template fits.** Duplicate the closest template and adapt its
+   content, keeping every rule in `design.md` (background, colors, no corner
+   text, subtitle safe area, entrance-only motion).
+3. **Author new animation only when no template fits.** A new frame must still
+   obey the entire design system — same background, palette, typography, safe
+   areas, and deterministic entrance-only motion.
+4. Run `npm run check` after any change and fix all errors before finishing.
+
 ## Skills — USE THESE FIRST
 
 **Always invoke the relevant skill before writing or modifying compositions.** Skills encode framework-specific patterns (e.g., `window.__timelines` registration, `data-*` attribute semantics, shader-compatible CSS rules) that are NOT in generic web docs. Skipping them produces broken compositions.
@@ -77,6 +98,7 @@ https://hyperframes.heygen.com/llms.txt
 
 ## Project Structure
 
+- `design.md` — **the design system** (colors, background, composition rules, subtitle safe area, typography). Read before editing any frame.
 - `index.html` — main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (25 templates, `data-duration="284"`)
 - `compositions/` — one sub-composition per template, named by letter-id (e.g. `A01-core-definition.html`, `E05-unit-chart.html`)
 - `stock media/` — placeholder images and footage used by the templates; referenced from `compositions/` with the space URL-encoded as `../stock%20media/<file>`
@@ -88,13 +110,14 @@ https://hyperframes.heygen.com/llms.txt
 
 ### Letter-id scheme
 
-Every template is identified by `<LETTER><NN>` — a category letter plus two digits — used consistently in all five places:
+Every template is identified by `<LETTER><NN>` — a category letter plus two digits — used consistently in four places:
 
 1. **Filename**: `compositions/B02-barchart-growth.html`
 2. **`data-composition-id`**: `B02-barchart-growth` (on the sub-composition's `#root` *and* on its slot in `index.html`)
 3. **Timeline key**: `window.__timelines["B02-barchart-growth"]`
 4. **Slot id** in `index.html`: `id="B02"`
-5. **Footer label** in the sub-composition: `TEMPLATE B02`
+
+There is no in-frame template label — corner text was removed (see `design.md`).
 
 Categories:
 
@@ -108,9 +131,16 @@ Categories:
 
 ### Format & palette
 
-- **1920×1080**, enforced white background `#ffffff` (`data-width="1920" data-height="1080"`, `background-color: #ffffff` on `#root`)
-- **AA-contrast palette**: text `#121212`, gold `#8A6D00`, pink `#C2185B`, red `#C0392B`; chip/marker accents `#FFF3A8` / `#FFE34F`. Never put white text on white or dark-on-dark.
-- **Editorial chrome** on every template: `.frame-border` (outer solid + inner dashed), header badge (category tag left, "Use It For" chip right), footer bar (`SAMPLE … TEMPLATE Exx` left, `EDITORIAL` wordmark right). E02/E03 sit over full-bleed media, so their chrome is light (white/yellow) instead of dark — keep that pattern for any full-bleed template.
+> **The full design system lives in [`design.md`](./design.md). Read it before
+> modifying any frame — it governs canvas, background, color, media treatment,
+> composition rules, the subtitle safe area, and typography.**
+
+- **1920×1080** (`data-width="1920" data-height="1080"`).
+- **Background**: warm editorial gradient `linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%)` on `#root` — never white.
+- **Primary colors**: ink `#121212`, gold `#8A6D00`, pink `#C2185B` (plus red `#C0392B` for emphasis); accents `#FFF3A8` / `#FFE34F`.
+- **Secondary colors**: sky `#7fa8e9`, teal `#77a3b9`, mauve `#bcabb3` — supporting use only.
+- **No corner text.** Do not add header badges, category tags, "Use It For" chips, footer bars, sample labels, or brand wordmarks. A textless `.frame-border` is optional decoration.
+- **Subtitle safe area**: keep the bottom ~15% (below y≈920px) clear of content.
 - Each composition is a `<template>` wrapper containing `<style>` + `<div id="root">` + `<script>`, and registers exactly one paused timeline: `window.__timelines["Exx-slug"] = gsap.timeline({ paused: true });`
 - **Entrance animations only** — no exit animations; scenes hold their final state until the clip ends.
 

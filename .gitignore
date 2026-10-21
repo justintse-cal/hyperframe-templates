@@ -1,0 +1,12 @@
+# HyperFrames generated caches, artifacts, and local state — regenerated on preview/check/render.
+.thumbnails/
+.hyperframes/
+
+# Renders
+*.mp4
+renders/
+out/
+
+# OS / editor noise
+.DS_Store
+*.log

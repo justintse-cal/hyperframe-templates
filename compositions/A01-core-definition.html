@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -36,38 +36,6 @@
           border: 1px dashed rgba(194, 24, 91, 0.3);
         }
 
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
-        }
-
         /* Center Content */
         .content-container {
           position: absolute;
@@ -78,17 +46,17 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start;
+          justify-content: center;
           text-align: center;
         }
 
         .title-block {
-          margin-top: 40px;
+          margin-top: 0;
         }
 
         .concept-title {
           font-family: 'Playfair Display', serif;
-          font-size: 64px;
+          font-size: 66px;
           font-weight: 800;
           color: #8A6D00;
           line-height: 1.15;
@@ -96,7 +64,7 @@
         }
 
         .definition-text {
-          margin-top: 28px;
+          margin-top: 24px;
           font-family: 'Inter', sans-serif;
           font-size: 26px;
           font-weight: 400;
@@ -113,14 +81,13 @@
 
         /* Pillars 3-Column Split */
         .pillars-grid {
-          position: absolute;
-          bottom: 40px;
-          left: 0;
-          right: 0;
+          position: relative;
+          margin-top: 40px;
           display: flex;
-          gap: 28px;
+          gap: 18px;
           justify-content: center;
           width: 100%;
+          max-width: 1280px;
         }
 
         .pillar-card {
@@ -136,7 +103,7 @@
 
         .pillar-num {
           font-family: 'Playfair Display', serif;
-          font-size: 20px;
+          font-size: 21px;
           font-style: italic;
           color: #C0392B;
           margin-bottom: 8px;
@@ -144,48 +111,17 @@
 
         .pillar-title {
           font-family: 'Inter', sans-serif;
-          font-size: 20px;
+          font-size: 21px;
           font-weight: 700;
           color: #8A6D00;
         }
 
         /* Footer & Logo */
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          opacity: 0;
-          z-index: 10;
-        }
 
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-w0n8" id="root" data-composition-id="A01-core-definition" data-width="1920" data-height="1080" data-duration="12">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
-
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-8mcp" class="category-tag">Concept Breakdown</span>
-          <span data-hf-id="hf-611p" class="use-it-for-tag">Use It For: Core Definition & 3 Key Pillars</span>
-        </div>
 
         <div data-hf-id="hf-ydj1" class="content-container">
           <div data-hf-id="hf-qag9" class="title-block" id="c1-title-block">
@@ -225,10 +161,6 @@
           </div>
         </div>
 
-        <div data-hf-id="hf-amjd" class="footer-bar" id="c1-footer">
-          <span data-hf-id="hf-0xaz" class="sample-label">SAMPLE CONCEPT • TEMPLATE A01</span>
-          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
-        </div>
       </div>
 
       <script>
@@ -273,11 +205,6 @@
           { borderColor: "rgba(18, 18, 18, 0.18)" },
           { borderColor: "#C2185B", duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut" },
           10.0
-        );
-        tl.fromTo("#c1-footer",
-          { opacity: 0, y: 10 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          10.2
         );
 
         window.__timelines["A01-core-definition"] = tl;

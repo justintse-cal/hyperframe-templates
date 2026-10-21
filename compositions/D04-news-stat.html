@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -28,36 +28,6 @@
           z-index: 20;
         }
 
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
-        }
-
         .stat-stage {
           position: absolute;
           inset: 160px 112px 120px 112px;
@@ -69,7 +39,7 @@
         }
 
         .context-source {
-          font-size: 16px;
+          font-size: 17px;
           letter-spacing: 0.15em;
           text-transform: uppercase;
           color: #C0392B;
@@ -89,7 +59,7 @@
         }
 
         .stat-description {
-          font-size: 32px;
+          font-size: 34px;
           font-weight: 600;
           color: #121212;
           max-width: 1100px;
@@ -98,41 +68,10 @@
           opacity: 0;
         }
 
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-6xi0" id="root" data-composition-id="D04-news-stat" data-width="1920" data-height="1080" data-duration="10">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
-
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-ay30" class="category-tag">Statistic Spotlight</span>
-          <span data-hf-id="hf-s31n" class="use-it-for-tag">Use It For: Dramatic Survey Data & News Stats</span>
-        </div>
 
         <div data-hf-id="hf-4nbb" class="stat-stage">
           <div data-hf-id="hf-v43w" class="context-source" id="c19-source">Source: 2026 Annual Threat & Vulnerability Report</div>
@@ -140,10 +79,6 @@
           <div data-hf-id="hf-nenu" class="stat-description" id="c19-desc">of enterprise organizations experienced cloud vulnerabilities in 2026.</div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-6p69" class="sample-label">SAMPLE NEWS STAT • TEMPLATE D04</span>
-          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
-        </div>
       </div>
 
       <script>
@@ -156,11 +91,26 @@
           0
         );
 
-        // 2–7s: Scale up core statistic
+        // 2–7s: Scale up core statistic (address only — text is driven by the count-up below)
         tl.fromTo("#c19-number",
           { opacity: 0, scale: 0.6 },
           { opacity: 1, scale: 1, duration: 1.4, ease: "back.out(1.4)" },
           2.0
+        );
+
+        // 2.2–6.5s: Count up the number (deterministic, part of the seekable timeline)
+        const countEl = document.querySelector("#c19-number");
+        const countState = { val: 0 };
+        tl.to(countState,
+          {
+            val: 88,
+            duration: 4.3,
+            ease: "power2.out",
+            onUpdate: function () {
+              countEl.textContent = Math.round(countState.val) + "%";
+            }
+          },
+          2.2
         );
 
         // 7–10s: Reveal description & logo

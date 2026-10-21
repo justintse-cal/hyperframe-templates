@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -26,36 +26,6 @@
           border: 1px solid rgba(18, 18, 18, 0.18);
           pointer-events: none;
           z-index: 20;
-        }
-
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
         }
 
         /* Stage Containers */
@@ -84,7 +54,7 @@
 
         .problem-tag {
           font-family: 'Playfair Display', serif;
-          font-size: 24px;
+          font-size: 26px;
           font-style: italic;
           color: #C0392B;
           margin-bottom: 20px;
@@ -94,7 +64,7 @@
 
         .problem-title {
           font-family: 'Playfair Display', serif;
-          font-size: 48px;
+          font-size: 50px;
           font-weight: 800;
           color: #121212;
           line-height: 1.25;
@@ -120,7 +90,7 @@
 
         .solution-tag {
           font-family: 'Playfair Display', serif;
-          font-size: 24px;
+          font-size: 26px;
           font-style: italic;
           color: #C2185B;
           margin-bottom: 20px;
@@ -130,48 +100,17 @@
 
         .solution-title {
           font-family: 'Playfair Display', serif;
-          font-size: 48px;
+          font-size: 50px;
           font-weight: 800;
           color: #8A6D00;
           line-height: 1.25;
           max-width: 1100px;
         }
 
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-edhj" id="root" data-composition-id="A04-problem-solution" data-width="1920" data-height="1080" data-duration="12">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
-
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-swy2" class="category-tag">Problem & Solution</span>
-          <span data-hf-id="hf-xm5u" class="use-it-for-tag">Use It For: Pain Points & Resolutions</span>
-        </div>
 
         <!-- Stage 1: Problem -->
         <div data-hf-id="hf-m1dv" class="stage-box problem-stage" id="c4-problem">
@@ -186,10 +125,6 @@
           <div data-hf-id="hf-mc40" class="solution-title">Automated pipelines scale effortlessly with instant rollback.</div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-o091" class="sample-label">SAMPLE PROBLEM-SOLUTION • TEMPLATE A04</span>
-          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
-        </div>
       </div>
 
       <script>
@@ -220,13 +155,7 @@
           6.6
         );
 
-        // 10–12s: Anchor solution with company logo at bottom
-        tl.fromTo(".brand-logo",
-          { color: "#8A6D00" },
-          { color: "#C2185B", duration: 0.8, yoyo: true, repeat: 1 },
-          10.0
-        );
-
+        // 10–12s: settle final lockup
         window.__timelines["A04-problem-solution"] = tl;
       </script>
     </template>

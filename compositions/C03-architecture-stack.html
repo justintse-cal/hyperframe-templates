@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -26,36 +26,6 @@
           border: 1px solid rgba(18, 18, 18, 0.18);
           pointer-events: none;
           z-index: 20;
-        }
-
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
         }
 
         .stack-title {
@@ -113,52 +83,21 @@
 
         .layer-tag {
           font-family: 'Playfair Display', serif;
-          font-size: 22px;
+          font-size: 23px;
           font-style: italic;
           color: #C0392B;
         }
 
         .layer-name {
-          font-size: 28px;
+          font-size: 30px;
           font-weight: 700;
           color: #121212;
         }
 
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-9o4z" id="root" data-composition-id="C03-architecture-stack" data-width="1920" data-height="1080" data-duration="12">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
-
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-r1th" class="category-tag">Architecture Stack</span>
-          <span data-hf-id="hf-1714" class="use-it-for-tag">Use It For: Hierarchical System Layers</span>
-        </div>
 
         <div data-hf-id="hf-k79y" class="stack-title">Enterprise Tech Stack</div>
 
@@ -182,10 +121,6 @@
           </div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-jypt" class="sample-label">SAMPLE STACK • TEMPLATE C03</span>
-          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
-        </div>
       </div>
 
       <script>
@@ -217,13 +152,6 @@
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
           8.0
-        );
-
-        // 11–12s: Stamp logo side highlight
-        tl.fromTo(".brand-logo",
-          { scale: 1 },
-          { scale: 1.1, duration: 0.5, yoyo: true, repeat: 1 },
-          11.0
         );
 
         window.__timelines["C03-architecture-stack"] = tl;

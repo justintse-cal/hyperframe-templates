@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -34,38 +34,6 @@
           position: absolute;
           inset: 6px;
           border: 1px dashed rgba(194, 24, 91, 0.3);
-        }
-
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
         }
 
         /* Editor stage */
@@ -125,7 +93,7 @@
 
         .line-numbers {
           font-family: 'Courier New', monospace;
-          font-size: 22px;
+          font-size: 23px;
           line-height: 1.65;
           color: rgba(255, 255, 255, 0.35);
           text-align: right;
@@ -135,7 +103,7 @@
 
         .code-block {
           font-family: 'Courier New', monospace;
-          font-size: 22px;
+          font-size: 23px;
           line-height: 1.65;
           color: #E8E8E8;
           padding-right: 26px;
@@ -149,41 +117,11 @@
         .tok-comment { color: #9AA0A6; }
 
         /* Footer & Logo */
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
 
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-mxsv" id="root" data-composition-id="E04-terminal-editor" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
-
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
-          <span data-hf-id="hf-8eer" class="use-it-for-tag">Use It For: Code / Terminal Topic</span>
-        </div>
 
         <div data-hf-id="hf-iaa6" class="editor-stage">
           <div data-hf-id="hf-fn3t" class="editor-window" id="e4-editor">
@@ -208,10 +146,6 @@
           </div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-befd" class="sample-label">SAMPLE CODE EDITOR • TEMPLATE E04</span>
-          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
-        </div>
       </div>
 
       <script>

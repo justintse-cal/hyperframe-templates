@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -26,36 +26,6 @@
           border: 1px solid rgba(18, 18, 18, 0.18);
           pointer-events: none;
           z-index: 20;
-        }
-
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
         }
 
         .quote-stage {
@@ -73,21 +43,22 @@
 
         .quote-mark {
           font-family: 'Playfair Display', serif;
-          font-size: 180px;
+          font-size: 130px;
           font-weight: 800;
           color: #C2185B;
-          line-height: 0.6;
-          opacity: 0;
+          line-height: 0;
+          vertical-align: -0.28em;
+          font-style: normal;
         }
 
         .quote-body {
           font-family: 'Playfair Display', serif;
-          font-size: 48px;
+          font-size: 64px;
           font-weight: 700;
           font-style: italic;
           color: #8A6D00;
           line-height: 1.3;
-          max-width: 1150px;
+          max-width: 1250px;
           margin-top: 20px;
           opacity: 0;
         }
@@ -101,85 +72,40 @@
         }
 
         .attr-name {
-          font-size: 24px;
+          font-size: 26px;
           font-weight: 700;
           color: #121212;
         }
 
         .attr-title {
-          font-size: 16px;
+          font-size: 17px;
           color: rgba(18, 18, 18, 0.6);
           margin-top: 4px;
         }
 
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-9d6m" id="root" data-composition-id="D02-press-quote" data-width="1920" data-height="1080" data-duration="12">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-s0z9" class="category-tag">Press Quote Pull-Out</span>
-          <span data-hf-id="hf-zuw7" class="use-it-for-tag">Use It For: Executive Statements & Quotes</span>
-        </div>
-
         <div data-hf-id="hf-h4hh" class="quote-stage">
-          <div data-hf-id="hf-xt39" class="quote-mark" id="c17-mark">“</div>
-          <div data-hf-id="hf-m6yt" class="quote-body" id="c17-body">
-            This acquisition accelerates our AI product roadmap by three full years.
-          </div>
+          <div data-hf-id="hf-m6yt" class="quote-body" id="c17-body"><span class="quote-mark">“</span>This acquisition accelerates our AI product roadmap by three full years.<span class="quote-mark">”</span></div>
           <div data-hf-id="hf-untk" class="attribution-box" id="c17-attr">
             <div data-hf-id="hf-bqkz" class="attr-name">Jane Doe</div>
             <div data-hf-id="hf-mde6" class="attr-title">Chief Executive Officer • Aura Enterprises</div>
           </div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-ofrz" class="sample-label">SAMPLE PRESS QUOTE • TEMPLATE D02</span>
-          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
-        </div>
       </div>
 
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Oversized quotation mark
-        tl.fromTo("#c17-mark",
-          { opacity: 0, scale: 0.5 },
-          { opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.5)" },
-          0
-        );
-
-        // 2–8s: Fade in quote text
+        // 0–2s: Bring in quote text
         tl.fromTo("#c17-body",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
-          2.0
+          0
         );
 
         // 8–10s: Bring in attribution
@@ -187,13 +113,6 @@
           { opacity: 0, x: -20 },
           { opacity: 1, x: 0, duration: 1.0, ease: "power2.out" },
           8.0
-        );
-
-        // 10–12s: Conclude with press insignia
-        tl.fromTo(".brand-logo",
-          { opacity: 0.8 },
-          { opacity: 1, color: "#C2185B", duration: 0.8 },
-          10.0
         );
 
         window.__timelines["D02-press-quote"] = tl;

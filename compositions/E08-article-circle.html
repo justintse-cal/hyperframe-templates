@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -34,38 +34,6 @@
           position: absolute;
           inset: 6px;
           border: 1px dashed rgba(194, 24, 91, 0.3);
-        }
-
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
         }
 
         /* Article stage */
@@ -98,19 +66,6 @@
           box-shadow: 12px 14px 0 rgba(18, 18, 18, 0.08);
         }
 
-        /* Outline drawn around the target text */
-        .highlight-box {
-          position: absolute;
-          top: 300px;
-          left: 300px;
-          width: 744px;
-          height: 170px;
-          border: 3px solid #E6B800;
-          border-radius: 8px;
-          opacity: 0;
-          z-index: 3;
-        }
-
         /* Yellow highlighter sweeping across the target text */
         .highlighter {
           position: absolute;
@@ -118,66 +73,31 @@
           left: 318px;
           width: 708px;
           height: 62px;
-          background: rgba(255, 227, 79, 0.85);
+          background: #FFE34F;
+          mix-blend-mode: multiply;
           transform-origin: left center;
           transform: scaleX(0);
           z-index: 4;
         }
 
         /* Footer & Logo */
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
 
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-x4uq" id="root" data-composition-id="E08-article-circle" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-ggug" class="category-tag">Narrative &amp; Emphasis</span>
-          <span data-hf-id="hf-ys0h" class="use-it-for-tag">Use It For: Quote From An Article</span>
-        </div>
-
         <div data-hf-id="hf-mafj" class="article-stage">
           <div data-hf-id="hf-lv7m" class="article-frame" id="e8-article-frame">
             <img data-hf-id="hf-gvk1" class="article-img" id="e8-article-img" src="../stock%20media/article1.png" alt="Article screenshot placeholder" width="1344" height="760">
-            <div data-hf-id="hf-qow9" class="highlight-box" id="e8-box"></div>
             <div data-hf-id="hf-ikai" class="highlighter" id="e8-highlighter"></div>
           </div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-6ebx" class="sample-label">SAMPLE ARTICLE SPOTLIGHT • TEMPLATE E08</span>
-          <span data-hf-id="hf-57et" class="brand-logo">Editorial</span>
-        </div>
       </div>
 
       <script>
 gsap.set("#e8-highlighter", { x: -53.383, y: -74.736 });
-gsap.set("#e8-box", { x: -53.383, y: -74.736 });
         const tl = gsap.timeline({ paused: true });
 
         // 0–1s: article screenshot slides in from below at 70% size
@@ -192,13 +112,6 @@ gsap.set("#e8-box", { x: -53.383, y: -74.736 });
           { scale: 1 },
           { scale: 1.143, duration: 0.5, ease: "power2.inOut" },
           1.0
-        );
-
-        // 1.6–2.2s: highlight box appears over the target text
-        tl.fromTo("#e8-box",
-          { opacity: 0, scale: 1.06 },
-          { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
-          1.6
         );
 
         // 2–3s: yellow highlighter sweeps left to right across the target text

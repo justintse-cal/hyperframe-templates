@@ -13,7 +13,7 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background-color: #ffffff;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
           color: #121212;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
@@ -26,36 +26,6 @@
           border: 1px solid rgba(18, 18, 18, 0.18);
           pointer-events: none;
           z-index: 20;
-        }
-
-        .header-badge {
-          position: absolute;
-          top: 56px;
-          left: 80px;
-          right: 80px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .use-it-for-tag {
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #121212;
-          background-color: #FFF3A8;
-          padding: 6px 14px;
-          border-radius: 20px;
-        }
-
-        .category-tag {
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #C2185B;
         }
 
         .summary-title {
@@ -105,7 +75,7 @@
           align-items: center;
           justify-content: center;
           font-weight: 800;
-          font-size: 18px;
+          font-size: 19px;
           flex-shrink: 0;
         }
 
@@ -115,41 +85,10 @@
           color: #121212;
         }
 
-        .footer-bar {
-          position: absolute;
-          bottom: 52px;
-          left: 96px;
-          right: 96px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 10;
-        }
-
-        .brand-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #8A6D00;
-          text-transform: uppercase;
-        }
-
-        .sample-label {
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          color: rgba(18, 18, 18, 0.6);
-          text-transform: uppercase;
-        }
       </style>
 
       <div data-hf-id="hf-t1aa" id="root" data-composition-id="D03-news-summary" data-width="1920" data-height="1080" data-duration="15">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
-
-        <div data-hf-id="hf-6jrl" class="header-badge">
-          <span data-hf-id="hf-gvt8" class="category-tag">Press Release Summary</span>
-          <span data-hf-id="hf-xe2l" class="use-it-for-tag">Use It For: 3 Key Takeaways & News Bulletins</span>
-        </div>
 
         <div data-hf-id="hf-auzf" class="summary-title" id="c18-title">Q3 Product Launch Highlights</div>
 
@@ -170,10 +109,6 @@
           </div>
         </div>
 
-        <div data-hf-id="hf-shlt" class="footer-bar">
-          <span data-hf-id="hf-m5ii" class="sample-label">SAMPLE NEWS SUMMARY • TEMPLATE D03</span>
-          <span data-hf-id="hf-k5vp" class="brand-logo">EDITORIAL</span>
-        </div>
       </div>
 
       <script>
@@ -205,13 +140,6 @@
           { opacity: 0, x: -40 },
           { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
           10.0
-        );
-
-        // 14–15s: Display company logo
-        tl.fromTo(".brand-logo",
-          { color: "#8A6D00" },
-          { color: "#C2185B", duration: 0.8 },
-          14.0
         );
 
         window.__timelines["D03-news-summary"] = tl;
