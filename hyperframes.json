@@ -79,6 +79,11 @@
       "name": "claude-exchange",
       "type": "hyperframes:block",
       "target": "compositions/claude-exchange.html"
+    },
+    {
+      "name": "grid-card-assemble",
+      "type": "hyperframes:component",
+      "target": "compositions/components/grid-card-assemble.html"
     }
   ]
 }

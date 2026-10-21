@@ -184,6 +184,43 @@ Chinese text uses `'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei',
 sans-serif`. Pair a Chinese term (display scale, raise-in per character) with a
 smaller English term and a body-size definition (E07 pattern).
 
+### Icons & symbols
+
+Use **Google Material Symbols** for icons and symbols when a frame needs one
+(arrows, checks, warnings, chart/UI glyphs, status marks):
+
+```
+https://fonts.google.com/icons
+```
+
+- **Import the variable icon font** (already deterministic — fonts are fetched
+  and cached at compile time, so this stays seek-safe):
+  ```css
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+  ```
+- Render an icon as a ligature inside a span; the font name carries the style:
+  ```html
+  <span class="material-symbols-outlined">trending_up</span>
+  ```
+  ```css
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;
+    font-size: 40px;
+    line-height: 1;
+  }
+  ```
+- **Colour icons with the palette** (§3) — ink `#121212` by default, gold
+  `#8A6D00` or pink `#C2185B` for emphasis. Never introduce an off-palette
+  icon colour.
+- Size icons to the type they sit beside (roughly the label or body size) and
+  keep them inside the subtitle safe band (§5).
+- **Prefer Material Symbols over hand-drawn SVG glyphs** for standard symbols;
+  reserve inline SVG for genuinely bespoke marks (hand-drawn arrows, logo
+  shapes) already used by existing templates.
+- Icons are decoration, not content: give them `aria-hidden="true"` when a
+  nearby text label already names the thing.
+
 ---
 
 ## 7. Template catalog

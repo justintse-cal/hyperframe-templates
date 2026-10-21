@@ -107,6 +107,12 @@ window.TEMPLATES = [
     description: 'Compare two states as mirrored 3D book-tilt cards that swing in from opposite wings.',
   },
   {
+    code: 'C08',
+    id: 'C08-grid-card-assemble',
+    duration: 8,
+    description: 'Assemble a grid of capability cards, each with an icon that lands as its card arrives.',
+  },
+  {
     code: 'D01',
     id: 'D01-breaking-news',
     duration: 8,
