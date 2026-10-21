@@ -126,7 +126,7 @@
 
       </style>
 
-      <div data-hf-id="hf-12nu" id="root" data-composition-id="B05-milestone-timeline" data-width="1920" data-height="1080" data-duration="15">
+      <div data-hf-id="hf-12nu" id="root" data-composition-id="B05-milestone-timeline" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-esoh" class="title-block" id="c10-title">Product Evolution Roadmap</div>
@@ -167,27 +167,27 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Introduce title & timeline path
+        // 0–1.2s: Introduce title & timeline path
         tl.fromTo("#c10-title",
           { opacity: 0, y: -20 },
           { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
           0
         );
 
-        // 2–6s: Pulse 1st date node & card
-        tl.to("#c10-line", { scaleX: 0.15, duration: 1.2, ease: "power2.out" }, 2.0);
-        tl.fromTo("#c10-dot1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 2.6);
-        tl.fromTo("#c10-card1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 3.0);
+        // 1.4–3s: Pulse 1st date node & card
+        tl.to("#c10-line", { scaleX: 0.15, duration: 1.2, ease: "power2.out" }, 1.4);
+        tl.fromTo("#c10-dot1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 1.8);
+        tl.fromTo("#c10-card1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 2.1);
 
-        // 6–10s: Extend line to 2nd date node & card
-        tl.to("#c10-line", { scaleX: 0.55, duration: 1.5, ease: "power2.inOut" }, 6.0);
-        tl.fromTo("#c10-dot2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 7.2);
-        tl.fromTo("#c10-card2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 7.6);
+        // 3.4–5.2s: Extend line to 2nd date node & card
+        tl.to("#c10-line", { scaleX: 0.55, duration: 1.5, ease: "power2.inOut" }, 3.4);
+        tl.fromTo("#c10-dot2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 4.2);
+        tl.fromTo("#c10-card2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 4.5);
 
-        // 10–14s: Extend line to final date node & highlight current state
-        tl.to("#c10-line", { scaleX: 1.0, duration: 1.5, ease: "power2.inOut" }, 10.0);
-        tl.fromTo("#c10-dot3", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1.2, duration: 0.6, ease: "back.out(2)" }, 11.2);
-        tl.fromTo("#c10-card3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 11.6);
+        // 5.6–7.4s: Extend line to final date node & highlight current state
+        tl.to("#c10-line", { scaleX: 1.0, duration: 1.5, ease: "power2.inOut" }, 5.6);
+        tl.fromTo("#c10-dot3", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1.2, duration: 0.6, ease: "back.out(2)" }, 6.4);
+        tl.fromTo("#c10-card3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 6.7);
 
         window.__timelines["B05-milestone-timeline"] = tl;
       </script>

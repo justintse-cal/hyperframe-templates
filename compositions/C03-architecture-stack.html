@@ -96,7 +96,7 @@
 
       </style>
 
-      <div data-hf-id="hf-9o4z" id="root" data-composition-id="C03-architecture-stack" data-width="1920" data-height="1080" data-duration="12">
+      <div data-hf-id="hf-9o4z" id="root" data-composition-id="C03-architecture-stack" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-k79y" class="stack-title">Enterprise Tech Stack</div>
@@ -126,32 +126,32 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Introduce system name
+        // 0–1s: Introduce system name
         tl.fromTo(".stack-title",
           { opacity: 0, y: -20 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
           0
         );
 
-        // 2–5s: Bottom layer slides in from below
+        // 1.6–2.6s: Bottom layer slides in from below
         tl.fromTo("#c14-bottom",
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-          2.0
+          1.6
         );
 
-        // 5–8s: Middle layer stacks on top
+        // 3.2–4.2s: Middle layer stacks on top
         tl.fromTo("#c14-middle",
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-          5.0
+          3.2
         );
 
-        // 8–11s: Top layer caps the stack
+        // 4.8–5.8s: Top layer caps the stack
         tl.fromTo("#c14-top",
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-          8.0
+          4.8
         );
 
         window.__timelines["C03-architecture-stack"] = tl;

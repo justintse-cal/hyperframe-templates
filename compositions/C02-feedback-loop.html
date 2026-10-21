@@ -87,7 +87,7 @@
 
       </style>
 
-      <div data-hf-id="hf-va3g" id="root" data-composition-id="C02-feedback-loop" data-width="1920" data-height="1080" data-duration="12">
+      <div data-hf-id="hf-va3g" id="root" data-composition-id="C02-feedback-loop" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-7xjv" class="loop-stage">
@@ -105,22 +105,22 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Reveal circular graphic & loop name
+        // 0–1.2s: Reveal circular graphic & loop name
         tl.fromTo("#c13-ring",
           { opacity: 0, scale: 0.8 },
           { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
           0
         );
 
-        // 2–9s: Illuminate stages sequentially along circular path
-        tl.fromTo("#c13-build", { opacity: 0, y: -15 }, { opacity: 1, y: 0, duration: 0.8 }, 2.0);
-        tl.fromTo("#c13-measure", { opacity: 0, x: 15 }, { opacity: 1, x: 0, duration: 0.8 }, 4.2);
-        tl.fromTo("#c13-learn", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.8 }, 6.4);
+        // 1.4–4s: Illuminate stages sequentially along circular path
+        tl.fromTo("#c13-build", { opacity: 0, y: -15 }, { opacity: 1, y: 0, duration: 0.8 }, 1.4);
+        tl.fromTo("#c13-measure", { opacity: 0, x: 15 }, { opacity: 1, x: 0, duration: 0.8 }, 2.4);
+        tl.fromTo("#c13-learn", { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.8 }, 3.4);
 
-        // 9–12s: Rotate loop ring slightly & settle on logo
+        // 4.8–7s: Rotate loop ring slightly & settle on logo
         tl.to("#c13-ring",
-          { rotation: 360, duration: 2.5, ease: "power2.inOut" },
-          9.0
+          { rotation: 360, duration: 2.2, ease: "power2.inOut" },
+          4.8
         );
 
         window.__timelines["C02-feedback-loop"] = tl;

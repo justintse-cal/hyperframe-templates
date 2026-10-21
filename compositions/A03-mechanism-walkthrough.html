@@ -129,7 +129,7 @@
         }
       </style>
 
-      <div data-hf-id="hf-73fg" id="root" data-composition-id="A03-mechanism-walkthrough" data-width="1920" data-height="1080" data-duration="15">
+      <div data-hf-id="hf-73fg" id="root" data-composition-id="A03-mechanism-walkthrough" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-hzyw" class="process-title" id="c3-title">Photosynthesis Process</div>
@@ -164,48 +164,48 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Introduce process name
+        // 0–1.2s: Introduce process name
         tl.fromTo("#c3-title",
           { opacity: 0, y: -20 },
           { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
           0
         );
 
-        // 2–5s: Step 1 slides in from left
+        // 1.4–2.4s: Step 1 slides in from left
         tl.fromTo("#c3-step1",
           { opacity: 0, x: -40 },
           { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
-          2.0
+          1.4
         );
 
-        // 5–9s: Connect line 1-2 & Step 2
+        // 2.8–3.8s: Connect line 1-2 & Step 2
         tl.fromTo("#c3-line1",
           { scaleX: 0 },
           { scaleX: 1, duration: 0.8, ease: "power2.inOut" },
-          5.0
+          2.8
         );
         tl.fromTo("#c3-step2",
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-          5.6
+          3.2
         );
 
-        // 9–13s: Connect line 2-3 & Step 3
+        // 4.2–5.6s: Connect line 2-3 & Step 3
         tl.fromTo("#c3-line2",
           { scaleX: 0 },
           { scaleX: 1, duration: 0.8, ease: "power2.inOut" },
-          9.0
+          4.2
         );
         tl.fromTo("#c3-step3",
           { opacity: 0, x: 40 },
           { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
-          9.6
+          4.6
         );
 
-        // 13–15s: Highlight outcome & glow
+        // 6.2–6.8s: Highlight outcome & glow
         tl.to([ "#c3-line1", "#c3-line2" ],
           { opacity: 0.3, duration: 0.6 },
-          13.0
+          6.2
         );
 
         window.__timelines["A03-mechanism-walkthrough"] = tl;

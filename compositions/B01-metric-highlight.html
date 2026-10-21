@@ -95,7 +95,7 @@
 
       </style>
 
-      <div data-hf-id="hf-1ulv" id="root" data-composition-id="B01-metric-highlight" data-width="1920" data-height="1080" data-duration="10">
+      <div data-hf-id="hf-1ulv" id="root" data-composition-id="B01-metric-highlight" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-6d9m" class="grid-bg" id="c6-grid">
@@ -113,32 +113,32 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Subtle grid / ring fade in
+        // 0–1.5s: Subtle grid / ring fade in
         tl.fromTo("#c6-grid",
           { opacity: 0, scale: 0.85 },
           { opacity: 1, scale: 1, duration: 1.5, ease: "power2.out" },
           0
         );
 
-        // 2–6s: Scale in large metric value
+        // 1.6–3s: Scale in large metric value
         tl.fromTo("#c6-value",
           { opacity: 0, scale: 0.7, y: 30 },
           { opacity: 1, scale: 1, y: 0, duration: 1.4, ease: "back.out(1.4)" },
-          2.0
+          1.6
         );
 
-        // 6–8s: Reveal label
+        // 3.8–4.6s: Reveal label
         tl.fromTo("#c6-label",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          6.0
+          3.8
         );
 
-        // 8–10s: Source context & logo corner
+        // 5.2–6s: Source context & logo corner
         tl.fromTo("#c6-context",
           { opacity: 0 },
           { opacity: 1, duration: 0.8 },
-          8.0
+          5.2
         );
 
         window.__timelines["B01-metric-highlight"] = tl;

@@ -99,7 +99,7 @@
 
       </style>
 
-      <div data-hf-id="hf-1cga" id="root" data-composition-id="B04-pie-donut-share" data-width="1920" data-height="1080" data-duration="12">
+      <div data-hf-id="hf-1cga" id="root" data-composition-id="B04-pie-donut-share" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-z2bm" class="chart-title">2026 Q1 Budget Allocation</div>
@@ -140,39 +140,39 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Donut outline
+        // 0–1.2s: Donut outline
         tl.fromTo(".donut-container",
           { opacity: 0, scale: 0.8 },
           { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
           0
         );
 
-        // 2–8s: Fill segments sequentially with percentage labels
+        // 1.2–5.4s: Fill segments sequentially with percentage labels
         tl.fromTo("#c9-s1",
           { strokeDashoffset: 628 },
           { strokeDashoffset: 314, duration: 1.8, ease: "power2.out" },
-          2.0
+          1.2
         );
-        tl.fromTo("#c9-l1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 2.8);
+        tl.fromTo("#c9-l1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 1.8);
 
         tl.fromTo("#c9-s2",
           { strokeDashoffset: 628 },
           { strokeDashoffset: 440, duration: 1.8, ease: "power2.out" },
-          4.0
+          2.4
         );
-        tl.fromTo("#c9-l2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 4.8);
+        tl.fromTo("#c9-l2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 3.0);
 
         tl.fromTo("#c9-s3",
           { strokeDashoffset: 628 },
           { strokeDashoffset: 503, duration: 1.8, ease: "power2.out" },
-          6.0
+          3.6
         );
-        tl.fromTo("#c9-l3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 6.8);
+        tl.fromTo("#c9-l3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 4.2);
 
-        // 8–10s: Expand largest segment outward slightly
+        // 5.8–6.6s: Expand largest segment outward slightly
         tl.to("#c9-s1",
           { strokeWidth: 68, duration: 0.8, ease: "power2.out" },
-          8.0
+          5.8
         );
 
         window.__timelines["B04-pie-donut-share"] = tl;

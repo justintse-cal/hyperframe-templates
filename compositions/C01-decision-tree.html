@@ -115,7 +115,7 @@
 
       </style>
 
-      <div data-hf-id="hf-u183" id="root" data-composition-id="C01-decision-tree" data-width="1920" data-height="1080" data-duration="15">
+      <div data-hf-id="hf-u183" id="root" data-composition-id="C01-decision-tree" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-xqcp" class="tree-stage">
@@ -152,29 +152,29 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Root condition box
+        // 0–1s: Root condition box
         tl.fromTo("#c12-root",
           { opacity: 0, y: -20 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
           0
         );
 
-        // 2–5s: Split connection lines
+        // 1.4–3.2s: Split connection lines
         tl.to([ "#c12-l1", "#c12-l2", "#c12-l3" ],
-          { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" },
-          2.0
+          { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" },
+          1.4
         );
 
-        // 5–10s: Reveal branch labels
-        tl.fromTo("#c12-b1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 5.0);
-        tl.fromTo("#c12-b2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 6.2);
-        tl.fromTo("#c12-b3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 7.4);
+        // 3.4–5.4s: Reveal branch labels
+        tl.fromTo("#c12-b1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 3.4);
+        tl.fromTo("#c12-b2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 4.0);
+        tl.fromTo("#c12-b3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 4.6);
 
-        // 10–13s: Pulse optimal conversion path
+        // 5.8–7.4s: Pulse optimal conversion path
         tl.fromTo("#c12-b2",
           { scale: 1 },
           { scale: 1.08, duration: 0.8, yoyo: true, repeat: 1, ease: "sine.inOut" },
-          10.0
+          5.8
         );
 
         window.__timelines["C01-decision-tree"] = tl;

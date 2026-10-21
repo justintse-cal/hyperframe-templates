@@ -109,7 +109,7 @@
 
       </style>
 
-      <div data-hf-id="hf-edhj" id="root" data-composition-id="A04-problem-solution" data-width="1920" data-height="1080" data-duration="12">
+      <div data-hf-id="hf-edhj" id="root" data-composition-id="A04-problem-solution" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <!-- Stage 1: Problem -->
@@ -130,32 +130,32 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Flash problem statement in stark warning palette
+        // 0–0.8s: Flash problem statement in stark warning palette
         tl.fromTo("#c4-problem",
           { opacity: 0, scale: 0.92 },
           { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" },
           0
         );
 
-        // 2–6s: Hold problem steady while graphical barrier appears
+        // 1.4–2.4s: Hold problem steady while graphical barrier appears
         tl.fromTo("#c4-barrier",
           { opacity: 0, scaleX: 0 },
           { opacity: 1, scaleX: 1, duration: 1.0, ease: "power2.out" },
-          2.0
+          1.4
         );
 
-        // 6–10s: Wipe clean & reveal solution in vibrant brand colors
+        // 3.4–5s: Wipe clean & reveal solution in vibrant brand colors
         tl.to("#c4-problem",
           { opacity: 0, scale: 1.05, duration: 0.6, ease: "power2.in" },
-          6.0
+          3.4
         );
         tl.fromTo("#c4-solution",
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-          6.6
+          4.0
         );
 
-        // 10–12s: settle final lockup
+        // 5–8s: settle final lockup
         window.__timelines["A04-problem-solution"] = tl;
       </script>
     </template>

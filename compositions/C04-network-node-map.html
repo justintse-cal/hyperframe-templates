@@ -105,7 +105,7 @@
 
       </style>
 
-      <div data-hf-id="hf-31cx" id="root" data-composition-id="C04-network-node-map" data-width="1920" data-height="1080" data-duration="15">
+      <div data-hf-id="hf-31cx" id="root" data-composition-id="C04-network-node-map" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-rbf4" class="map-title">Global Supply Chain Network</div>
@@ -131,29 +131,29 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Central hub node
+        // 0–1.2s: Central hub node
         tl.fromTo("#c15-hub",
           { opacity: 0, scale: 0.5 },
           { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.7)" },
           0
         );
 
-        // 2–8s: Radiate lines outward to 4 peripheral nodes
+        // 1.4–3.4s: Radiate lines outward to 4 peripheral nodes
         tl.to([ "#c15-l1", "#c15-l2", "#c15-l3", "#c15-l4" ],
-          { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" },
-          2.0
+          { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" },
+          1.4
         );
 
-        tl.fromTo("#c15-pn1", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 3.0);
-        tl.fromTo("#c15-pn2", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 4.2);
-        tl.fromTo("#c15-pn3", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 5.4);
-        tl.fromTo("#c15-pn4", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 6.6);
+        tl.fromTo("#c15-pn1", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 2.0);
+        tl.fromTo("#c15-pn2", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 2.8);
+        tl.fromTo("#c15-pn3", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 3.6);
+        tl.fromTo("#c15-pn4", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6 }, 4.4);
 
-        // 8–12s: Pulse hub
+        // 5.4–7.4s: Pulse hub
         tl.fromTo("#c15-hub",
           { boxShadow: "0 0 30px rgba(138, 109, 0, 0.15)" },
           { boxShadow: "0 0 60px rgba(194, 24, 91, 0.35)", duration: 1.0, yoyo: true, repeat: 1 },
-          8.0
+          5.4
         );
 
         window.__timelines["C04-network-node-map"] = tl;

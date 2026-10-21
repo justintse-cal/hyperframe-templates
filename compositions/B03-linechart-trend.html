@@ -82,7 +82,7 @@
 
       </style>
 
-      <div data-hf-id="hf-o4uk" id="root" data-composition-id="B03-linechart-trend" data-width="1920" data-height="1080" data-duration="12">
+      <div data-hf-id="hf-o4uk" id="root" data-composition-id="B03-linechart-trend" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-l67v" class="chart-title">Monthly Active Users Growth</div>
@@ -130,30 +130,30 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Establish grid axes
+        // 0–1.2s: Establish grid axes
         tl.fromTo(".svg-container line, .svg-container text",
           { opacity: 0 },
           { opacity: 1, duration: 1.2 },
           0
         );
 
-        // 2–8s: Draw line graph smoothly
+        // 1.4–5.9s: Draw line graph smoothly
         tl.fromTo("#c8-line",
           { strokeDashoffset: 1000 },
-          { strokeDashoffset: 0, duration: 5.5, ease: "power2.inOut" },
-          2.0
+          { strokeDashoffset: 0, duration: 4.5, ease: "power2.inOut" },
+          1.4
         );
 
-        // 8–10s: Drop the growth dot on the line's peak & callout
+        // 6–6.9s: Drop the growth dot on the line's peak & callout
         tl.fromTo("#c8-dot",
           { opacity: 0, scale: 0, svgOrigin: "850 50" },
           { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" },
-          8.0
+          6.0
         );
         tl.fromTo("#c8-peak",
           { opacity: 0, y: 15 },
           { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-          8.4
+          6.3
         );
 
         window.__timelines["B03-linechart-trend"] = tl;

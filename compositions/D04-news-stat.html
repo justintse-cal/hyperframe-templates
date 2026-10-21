@@ -70,7 +70,7 @@
 
       </style>
 
-      <div data-hf-id="hf-6xi0" id="root" data-composition-id="D04-news-stat" data-width="1920" data-height="1080" data-duration="10">
+      <div data-hf-id="hf-6xi0" id="root" data-composition-id="D04-news-stat" data-width="1920" data-height="1080" data-duration="8">
         <div data-hf-id="hf-ev3u" class="frame-border"></div>
 
         <div data-hf-id="hf-4nbb" class="stat-stage">
@@ -84,40 +84,40 @@
       <script>
         const tl = gsap.timeline({ paused: true });
 
-        // 0–2s: Contextual source at top
+        // 0–1s: Contextual source at top
         tl.fromTo("#c19-source",
           { opacity: 0, y: -10 },
           { opacity: 1, y: 0, duration: 1.0 },
           0
         );
 
-        // 2–7s: Scale up core statistic (address only — text is driven by the count-up below)
+        // 1.6–3s: Scale up core statistic (address only — text is driven by the count-up below)
         tl.fromTo("#c19-number",
           { opacity: 0, scale: 0.6 },
           { opacity: 1, scale: 1, duration: 1.4, ease: "back.out(1.4)" },
-          2.0
+          1.6
         );
 
-        // 2.2–6.5s: Count up the number (deterministic, part of the seekable timeline)
+        // 1.8–4.4s: Count up the number (deterministic, part of the seekable timeline)
         const countEl = document.querySelector("#c19-number");
         const countState = { val: 0 };
         tl.to(countState,
           {
             val: 88,
-            duration: 4.3,
+            duration: 2.6,
             ease: "power2.out",
             onUpdate: function () {
               countEl.textContent = Math.round(countState.val) + "%";
             }
           },
-          2.2
+          1.8
         );
 
-        // 7–10s: Reveal description & logo
+        // 4.8–5.8s: Reveal description & logo
         tl.fromTo("#c19-desc",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
-          7.0
+          4.8
         );
 
         window.__timelines["D04-news-stat"] = tl;
