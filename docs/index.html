@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HyperFrames Template Gallery</title>
-  <meta name="description" content="A showcase of 34 HyperFrames video templates — explaining concepts, data charts, workflow diagrams, news highlights, and narrative emphasis — with preview videos and copy-ready template codes." />
+  <meta name="description" content="A showcase of 35 HyperFrames video templates — explaining concepts, data charts, workflow diagrams, news highlights, and narrative emphasis — with preview videos and copy-ready template codes." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127909;</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -105,6 +105,62 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.45);
       color: rgba(18, 18, 18, 0.75);
+    }
+
+    /* ---------- AI catalog CTA ---------- */
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--hl-strong);
+      border: 1px solid rgba(18, 18, 18, 0.32);
+      border-radius: 999px;
+      padding: 11px 24px;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--hl);
+    }
+
+    .cta-btn.copied {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--hl-strong);
+    }
+
+    .cta-btn.failed {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #ffffff;
+    }
+
+    .cta-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(18, 18, 18, 0.6);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(18, 18, 18, 0.28);
+      padding-bottom: 1px;
+    }
+
+    .cta-link:hover {
+      color: var(--pink);
+      border-color: var(--pink);
     }
 
     /* ---------- Filter bar ---------- */
@@ -362,7 +418,7 @@
     <div class="kicker">HyperFrames · Editorial Templates</div>
     <h1>Template <em>Gallery</em></h1>
     <p class="lede">
-      34 drop-in video templates for concept explainers, data charts, workflow
+      35 drop-in video templates for concept explainers, data charts, workflow
       diagrams, news highlights, and narrative beats — all following the warm
       editorial design system. Preview each one, then copy its code into your project.
     </p>
@@ -371,6 +427,10 @@
       <span class="stat-chip">5 categories</span>
       <span class="stat-chip">1920 × 1080 · 30 fps</span>
       <span class="stat-chip">Entrance-only motion</span>
+    </div>
+    <div class="cta-row">
+      <button class="cta-btn" id="copy-catalog" type="button">Copy full catalog for AI</button>
+      <a class="cta-link" href="templates.md" target="_blank" rel="noopener">raw markdown</a>
     </div>
   </header>
 
@@ -387,6 +447,12 @@
       Previews are draft renders of the compositions in
       <a href="https://github.com/justintse-cal/hyperframe-templates" target="_blank" rel="noopener">justintse-cal/hyperframe-templates</a>.
       Look &amp; feel follows <code>design.md</code> — warm editorial gradient, Playfair Display + Plus Jakarta Sans.
+    </p>
+    <p>
+      The template catalog —
+      <a href="templates.md" target="_blank" rel="noopener">templates.md</a> —
+      lists every template with a one-line description of what it is and what
+      it's used for. Copy it from the button above to feed an AI agent.
     </p>
   </footer>
 
@@ -560,6 +626,52 @@
       buildCards();
       document.getElementById('stat-count').textContent =
         window.TEMPLATES.length + ' templates';
+
+      /* ---------- Copy the full AI catalog ---------- */
+      /* Fetches templates.md (served next to this page) and copies the whole
+         thing to the clipboard, so it can be pasted straight into an agent. */
+      var catalogBtn = document.getElementById('copy-catalog');
+      var CATALOG_URL = 'templates.md';
+
+      function formatSize(text) {
+        var bytes = text.length;
+        try {
+          bytes = new Blob([text]).size;
+        } catch (e) {
+          /* fall back to the character count */
+        }
+        return bytes >= 1024 ? (bytes / 1024).toFixed(1) + ' KB' : bytes + ' B';
+      }
+
+      function flashCatalogBtn(label, cls, delay) {
+        catalogBtn.textContent = label;
+        catalogBtn.classList.add(cls);
+        setTimeout(function () {
+          catalogBtn.textContent = 'Copy full catalog for AI';
+          catalogBtn.classList.remove('copied', 'failed');
+        }, delay);
+      }
+
+      catalogBtn.addEventListener('click', function () {
+        catalogBtn.textContent = 'Copying…';
+        catalogBtn.classList.remove('copied', 'failed');
+
+        fetch(CATALOG_URL)
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.text();
+          })
+          .then(function (text) {
+            return copyText(text).then(function () {
+              flashCatalogBtn('✓ Copied · ' + formatSize(text), 'copied', 1800);
+            });
+          })
+          .catch(function () {
+            /* e.g. the page was opened straight off the filesystem, where
+               fetch() is blocked — point at the raw file instead */
+            flashCatalogBtn('Copy failed — open the raw file', 'failed', 2600);
+          });
+      });
     })();
   </script>
 </body>

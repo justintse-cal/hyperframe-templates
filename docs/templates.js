@@ -214,4 +214,10 @@ window.TEMPLATES = [
     duration: 8,
     description: 'Type a notes-app title and body lines on a measured human keystroke rhythm.',
   },
+  {
+    code: 'E14',
+    id: 'E14-yt-comment-scatter',
+    duration: 8,
+    description: 'Scatter YouTube-style comments across the frame — cards pop up one after another, each fully formed.',
+  },
 ];

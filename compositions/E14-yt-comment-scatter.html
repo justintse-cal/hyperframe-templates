@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+          color: #121212;
+          font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* ---- scattered comment card (E09 anatomy, scaled down) ---- */
+        .ycs-card {
+          position: absolute;
+          display: flex;
+          align-items: flex-start;
+          gap: 18px;
+          padding: 22px 26px;
+          border: 1px solid rgba(18, 18, 18, 0.16);
+          border-radius: 20px;
+          background: linear-gradient(150deg, rgba(255, 252, 239, 0.97) 0%, rgba(253, 243, 248, 0.93) 100%);
+          box-shadow: 0 18px 40px rgba(18, 18, 18, 0.13);
+          will-change: transform, opacity;
+        }
+
+        .ycs-avatar {
+          flex: none;
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 22px;
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(18, 18, 18, 0.18);
+        }
+
+        .ycs-avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .ycs-body {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .ycs-meta {
+          display: flex;
+          align-items: baseline;
+          gap: 12px;
+        }
+
+        .ycs-user {
+          font-weight: 700;
+          font-size: 23px;
+          color: #121212;
+        }
+
+        .ycs-time {
+          font-weight: 400;
+          font-size: 19px;
+          color: rgba(18, 18, 18, 0.72);
+        }
+
+        .ycs-text {
+          margin-top: 8px;
+          font-weight: 500;
+          font-size: 26px;
+          line-height: 1.35;
+          letter-spacing: -0.01em;
+          color: #121212;
+        }
+
+        .ycs-row {
+          margin-top: 12px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 600;
+          font-size: 19px;
+          color: rgba(18, 18, 18, 0.72);
+        }
+
+        .ycs-row svg {
+          width: 21px;
+          stroke-width: 2.4;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+        }
+
+        .ycs-row svg path {
+          stroke: rgba(18, 18, 18, 0.72);
+        }
+
+        .ycs-reply {
+          margin-left: 16px;
+          letter-spacing: 0.1em;
+        }
+      </style>
+
+      <div data-hf-id="hf-e14a" id="root" data-composition-id="E14-yt-comment-scatter" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-e14b" class="frame-border"></div>
+
+        <div data-hf-id="hf-e14c" id="ycs-stage"></div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters ----
+             The E09 comment card, scattered: several creator-style comment
+             cards pop up across the warm editorial board. Each card arrives
+             fully formed — avatar, username, time, comment text and likes row
+             all appear with the pop, nothing types on. Positions are
+             hand-authored (no randomness) so the scatter is identical on every
+             render. Entrance-only (design.md §5): holds until the clip ends. */
+          var CONFIG = {
+            cards: [
+              {
+                x: 90, y: 110, w: 540, rot: -1.6,
+                avatar: null,
+                initials: "PW",
+                accent: 0, // 0 = gold chip, 1 = pink chip
+                username: "@pixelwaves",
+                time: "2 days ago",
+                text: "Honestly the new intro sequence is so clean 🔥",
+                likes: 47,
+              },
+              {
+                x: 700, y: 70, w: 470, rot: 1.4,
+                avatar: null,
+                initials: "FR",
+                accent: 1,
+                username: "@framerate",
+                time: "1 day ago",
+                text: "That camera move at 0:12 though 👀",
+                likes: 12,
+              },
+              {
+                x: 1330, y: 140, w: 520, rot: -1.2,
+                avatar: null,
+                initials: "CR",
+                accent: 0,
+                username: "@cutroom",
+                time: "5 hours ago",
+                text: "Can I get the preset pack for this transition?",
+                likes: 88,
+              },
+              {
+                x: 140, y: 430, w: 520, rot: 1.8,
+                avatar: null,
+                initials: "NB",
+                accent: 1,
+                username: "@nina.builds",
+                time: "3 days ago",
+                text: "Watched this three times already",
+                likes: 23,
+              },
+              {
+                x: 800, y: 390, w: 570, rot: -1.5,
+                avatar: null,
+                initials: "SS",
+                accent: 0,
+                username: "@slowmo.sam",
+                time: "2 weeks ago",
+                text: "This is exactly what my edit needed, thank you!",
+                likes: 64,
+              },
+              {
+                x: 1180, y: 655, w: 640, rot: 1.2,
+                avatar: null,
+                initials: "TB",
+                accent: 1,
+                username: "@techbytom",
+                time: "6 hours ago",
+                text: "The pacing on that last beat is chef's kiss ✨",
+                likes: 131,
+              },
+            ],
+            startDelay: 0.3, // s before the first card pops
+            stagger: 0.62, // s between card pops
+          };
+
+          /* Design-system accent chips: gold & pink gradients */
+          var ACCENTS = [
+            "linear-gradient(135deg, #8A6D00, #B08A00)",
+            "linear-gradient(135deg, #C2185B, #9C1349)",
+          ];
+
+          var stage = document.getElementById("ycs-stage");
+
+          var THUMB =
+            '<svg viewBox="0 0 24 24"><path d="M7 11v9M7 11l3.2-6.4a2 2 0 0 1 3.6 1.2V9h4.6a2 2 0 0 1 2 2.4l-1.2 6a2 2 0 0 1-2 1.6H7M7 11H4a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h3"/></svg>';
+
+          /* build cards */
+          var built = CONFIG.cards.map(function (c, i) {
+            var card = document.createElement("div");
+            card.className = "ycs-card";
+            card.id = "ycs-card-" + i;
+            card.style.left = c.x + "px";
+            card.style.top = c.y + "px";
+            card.style.width = c.w + "px";
+            card.style.zIndex = String(i + 1);
+
+            var av = document.createElement("div");
+            av.className = "ycs-avatar";
+            av.id = "ycs-av-" + i;
+            if (c.avatar) {
+              var img = document.createElement("img");
+              img.src = c.avatar;
+              av.appendChild(img);
+            } else {
+              av.textContent = c.initials || "?";
+              av.style.background = ACCENTS[c.accent || 0];
+            }
+            card.appendChild(av);
+
+            var body = document.createElement("div");
+            body.className = "ycs-body";
+
+            var meta = document.createElement("div");
+            meta.className = "ycs-meta";
+            meta.id = "ycs-meta-" + i;
+            var user = document.createElement("span");
+            user.className = "ycs-user";
+            user.textContent = c.username;
+            var time = document.createElement("span");
+            time.className = "ycs-time";
+            time.textContent = c.time || "";
+            meta.appendChild(user);
+            meta.appendChild(time);
+            body.appendChild(meta);
+
+            var text = document.createElement("div");
+            text.className = "ycs-text";
+            text.id = "ycs-text-" + i;
+            text.textContent = c.text;
+            body.appendChild(text);
+
+            var row = document.createElement("div");
+            row.className = "ycs-row";
+            row.id = "ycs-row-" + i;
+            row.innerHTML =
+              THUMB + "<span>" + (c.likes || 0) + '</span><span class="ycs-reply">REPLY</span>';
+            body.appendChild(row);
+
+            card.appendChild(body);
+            stage.appendChild(card);
+            return card;
+          });
+
+          var tl = gsap.timeline({ paused: true });
+
+          /* cards pop in one after another, each one fully formed — avatar,
+             username, time, comment text and likes row all arrive at once */
+          built.forEach(function (card, i) {
+            var c = CONFIG.cards[i];
+            var t = CONFIG.startDelay + i * CONFIG.stagger;
+
+            tl.fromTo(
+              card,
+              { opacity: 0, scale: 0.62, y: 26, rotation: c.rot },
+              { opacity: 1, scale: 1, y: 0, rotation: c.rot, duration: 0.55, ease: "back.out(1.6)" },
+              t
+            );
+          });
+          /* last beat settles ~4s; the frame holds to the clip end at 8s */
+
+          tl.seek(0);
+          window.__timelines["E14-yt-comment-scatter"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
