@@ -238,4 +238,10 @@ window.TEMPLATES = [
     duration: 8,
     description: 'Close on a channel pill — avatar, name, Subscribe, Like and Share — with a cursor demonstrating each action.',
   },
+  {
+    code: 'E16',
+    id: 'E16-speech-statement',
+    duration: 8,
+    description: 'Dim a portrait behind a long audio waveform, a news-style name bar and phrase-by-phrase speech captions.',
+  },
 ];

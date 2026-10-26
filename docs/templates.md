@@ -1,12 +1,12 @@
 # HyperFrames Editorial Templates
 
-38 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
+39 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
 
 Paste this file into an AI agent to tell it what the library contains.
 
 ## The short version
 
-- **38 templates** — A concept (4) · B data charts (5) · C workflow (10) · D news text (4) · E narrative (15).
+- **39 templates** — A concept (4) · B data charts (5) · C workflow (10) · D news text (4) · E narrative (16).
 - **File** `compositions/<id>.html`. **Mount** it with `data-composition-src="compositions/<file>.html"` plus a `data-start` and `data-duration`, and register one paused timeline: `window.__timelines["<id>"] = gsap.timeline({ paused: true });`
 - **Every frame** uses the warm gradient background `#FFFCEF → #FDF3F8`, ink `#121212` / gold `#8A6D00` / pink `#C2185B`, entrance-only motion, no content below y=920, and no corner text.
 - **To adapt one**, edit the copy in the file (or its `CONFIG` block where it has one) and keep the design system intact.
@@ -173,6 +173,10 @@ Use it for: a wall of audience reaction and comment montages.
 **E15 · Subscribe Outro** (`E15-subscribe-outro`)
 A centred channel pill with an avatar, name, Subscribe, Like and Share actions, plus a cursor that demonstrates each button.
 Use it for: end cards, subscribe reminders and channel sign-offs.
+
+**E16 · Speech Statement** (`E16-speech-statement`)
+A dimmed portrait sits behind a long audio waveform, a news-style name bar and phrase-by-phrase captions.
+Use it for: soundbites, interviews, testimonials and keynote pulls.
 
 ---
 
