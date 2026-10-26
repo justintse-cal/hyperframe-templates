@@ -113,6 +113,18 @@ window.TEMPLATES = [
     description: 'Assemble a grid of capability cards, each with an icon that lands as its card arrives.',
   },
   {
+    code: 'C09',
+    id: 'C09-split-panels',
+    duration: 8,
+    description: 'Slide two equal panels in from opposite edges to meet at the centre, then reveal a gradient divider.',
+  },
+  {
+    code: 'C10',
+    id: 'C10-progress-steps',
+    duration: 8,
+    description: 'Walk a four-step process as numbered rings fill in sequence, each one pulsing as it activates.',
+  },
+  {
     code: 'D01',
     id: 'D01-breaking-news',
     duration: 8,

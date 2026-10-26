@@ -1,12 +1,12 @@
 # HyperFrames Editorial Templates
 
-36 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
+38 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
 
 Paste this file into an AI agent to tell it what the library contains.
 
 ## The short version
 
-- **36 templates** — A concept (4) · B data charts (5) · C workflow (8) · D news text (4) · E narrative (15).
+- **38 templates** — A concept (4) · B data charts (5) · C workflow (10) · D news text (4) · E narrative (15).
 - **File** `compositions/<id>.html`. **Mount** it with `data-composition-src="compositions/<file>.html"` plus a `data-start` and `data-duration`, and register one paused timeline: `window.__timelines["<id>"] = gsap.timeline({ paused: true });`
 - **Every frame** uses the warm gradient background `#FFFCEF → #FDF3F8`, ink `#121212` / gold `#8A6D00` / pink `#C2185B`, entrance-only motion, no content below y=920, and no corner text.
 - **To adapt one**, edit the copy in the file (or its `CONFIG` block where it has one) and keep the design system intact.
@@ -85,6 +85,14 @@ Use it for: before/after comparisons of screens, plans or products.
 **C08 · Grid Card Assemble** (`C08-grid-card-assemble`)
 A grid of icon cards rises into place, each icon landing as its card arrives.
 Use it for: feature grids and short "how it works" summaries.
+
+**C09 · Split Panels** (`C09-split-panels`)
+Two equal panels slide in from opposite edges to meet at the centre, then a gradient divider fades in between them.
+Use it for: side-by-side comparisons, dual perspectives and before/after reveals.
+
+**C10 · Progress Steps** (`C10-progress-steps`)
+Four numbered rings fill in sequence along a connecting rail, each one pulsing as it activates.
+Use it for: process timelines, project phases and onboarding progress.
 
 ## D — News highlight text
 
