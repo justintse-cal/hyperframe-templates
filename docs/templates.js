@@ -220,4 +220,10 @@ window.TEMPLATES = [
     duration: 8,
     description: 'Scatter YouTube-style comments across the frame — cards pop up one after another, each fully formed.',
   },
+  {
+    code: 'E15',
+    id: 'E15-subscribe-outro',
+    duration: 8,
+    description: 'Close on a channel pill — avatar, name, Subscribe, Like and Share — with a cursor demonstrating each action.',
+  },
 ];
