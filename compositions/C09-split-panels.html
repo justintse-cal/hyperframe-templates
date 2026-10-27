@@ -16,8 +16,8 @@
           width: 100%;
           height: 100%;
           overflow: hidden;
-          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
-          color: #121212;
+          background: #ffffff;
+          color: #74c368;
           font-family: 'Plus Jakarta Sans', sans-serif;
           pointer-events: none;
           isolation: isolate;
@@ -44,7 +44,7 @@
           background: linear-gradient(
             90deg,
             #FFFCEF 0%,
-            color-mix(in srgb, #FFF3A8 68%, #FFFCEF) 100%
+            color-mix(in srgb, #74c368 68%, #FFFCEF) 100%
           );
         }
 
@@ -53,7 +53,7 @@
           background: linear-gradient(
             270deg,
             #FDF3F8 0%,
-            color-mix(in srgb, #C2185B 15%, #FDF3F8) 100%
+            color-mix(in srgb, #00513c 15%, #FDF3F8) 100%
           );
         }
 
@@ -85,8 +85,8 @@
           border-radius: 999px;
         }
 
-        .c09-left .c09-rule { background: #8A6D00; }
-        .c09-right .c09-rule { background: #C2185B; }
+        .c09-left .c09-rule { background: #88d18a; }
+        .c09-right .c09-rule { background: #00513c; }
 
         .c09-title {
           margin: 0;
@@ -97,8 +97,8 @@
           letter-spacing: -0.02em;
         }
 
-        .c09-left .c09-title { color: #8A6D00; }
-        .c09-right .c09-title { color: #C2185B; }
+        .c09-left .c09-title { color: #88d18a; }
+        .c09-right .c09-title { color: #000000; }
 
         .c09-caption {
           max-width: 600px;
@@ -117,39 +117,33 @@
           bottom: 160px;
           z-index: 10;
           width: 2px;
-          background: linear-gradient(
-            180deg,
-            transparent 0%,
-            #8A6D00 30%,
-            #C2185B 70%,
-            transparent 100%
-          );
+          background: #ffffff;
           box-shadow: 0 0 26px rgba(194, 24, 91, 0.14);
           transform-origin: center center;
           will-change: transform, opacity;
         }
       </style>
 
-      <div
+      <div data-hf-id="hf-udgk"
         id="root"
         data-composition-id="C09-split-panels"
         data-width="1920"
         data-height="1080"
         data-duration="8"
       >
-        <div class="c09-panel c09-left" id="c09-left">
-          <span class="c09-rule" aria-hidden="true"></span>
-          <h2 class="c09-title">Panel A</h2>
-          <p class="c09-caption">Every detail under your control.</p>
+        <div data-hf-id="hf-i9cr" class="c09-panel c09-left" id="c09-left">
+          <span data-hf-id="hf-qz9z" class="c09-rule" aria-hidden="true"></span>
+          <h2 data-hf-id="hf-2qrn" class="c09-title">Panel A</h2>
+          <p data-hf-id="hf-4620" class="c09-caption">Every detail under your control.</p>
         </div>
 
-        <div class="c09-panel c09-right" id="c09-right">
-          <span class="c09-rule" aria-hidden="true"></span>
-          <h2 class="c09-title">Panel B</h2>
-          <p class="c09-caption">A faster start, with less to manage.</p>
+        <div data-hf-id="hf-pow9" class="c09-panel c09-right" id="c09-right">
+          <span data-hf-id="hf-4e8n" class="c09-rule" aria-hidden="true"></span>
+          <h2 data-hf-id="hf-2cgm" class="c09-title">Panel B</h2>
+          <p data-hf-id="hf-3haz" class="c09-caption">A faster start, with less to manage.</p>
         </div>
 
-        <div class="c09-divider" id="c09-divider" aria-hidden="true"></div>
+        <div data-hf-id="hf-xx4b" class="c09-divider" id="c09-divider" aria-hidden="true"></div>
       </div>
 
       <script>

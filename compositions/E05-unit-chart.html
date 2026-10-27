@@ -13,8 +13,8 @@
           inset: 0;
           width: 1920px;
           height: 1080px;
-          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
-          color: #121212;
+          background: #ffffff;
+          color: #000000;
           font-family: 'Inter', sans-serif;
           overflow: hidden;
           box-sizing: border-box;
@@ -83,11 +83,11 @@
           font-size: 84px;
           font-weight: 700;
           line-height: 1.15;
-          color: #121212;
+          color: #000000;
         }
 
         .unit-number {
-          color: #C2185B;
+          color: #ffa500;
           font-family: 'Playfair Display', serif;
           font-weight: 800;
         }
@@ -150,7 +150,7 @@
 
         // stay lit once lit (to() tweens start from the gray CSS baseline)
         tl.to(litDots, {
-          backgroundColor: "#C2185B",
+          backgroundColor: "#ffa500",
           duration: 0.18,
           ease: "power2.out",
           stagger: (index, target) => litDelay(target)

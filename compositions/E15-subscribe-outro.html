@@ -20,8 +20,8 @@
           width: 100%;
           height: 100%;
           overflow: hidden;
-          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
-          color: #121212;
+          background: #ffffff;
+          color: #000000;
           font-family: 'Plus Jakarta Sans', sans-serif;
           pointer-events: none;
           box-sizing: border-box;
@@ -59,17 +59,12 @@
         .e15-pill {
           display: flex;
           align-items: center;
-          gap: 18px;
-          padding: 18px 22px 18px 18px;
+          gap: 22px;
+          padding: 22px 26px 22px 22px;
           border-radius: 999px;
-          background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12)),
-            linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
-          border: 1px solid rgba(18, 18, 18, 0.10);
-          box-shadow:
-            0 26px 70px rgba(138, 109, 0, 0.18),
-            0 8px 20px rgba(18, 18, 18, 0.10),
-            inset 0 1px 0 rgba(255, 255, 255, 0.90);
+          background: #ffffff;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
           opacity: 0;
           will-change: transform, opacity;
         }
@@ -87,30 +82,30 @@
 
         .e15-avatar {
           display: block;
-          width: 72px;
-          height: 72px;
+          width: 82px;
+          height: 82px;
           flex: none;
           border-radius: 50%;
           object-fit: cover;
-          border: 2px solid rgba(255, 255, 255, 0.92);
-          box-shadow: 0 6px 16px rgba(18, 18, 18, 0.18);
-          background: #FFF3A8;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          box-shadow: none;
+          background: transparent;
         }
 
         .e15-name {
-          font-size: 34px;
+          font-size: 38px;
           font-weight: 700;
           line-height: 1;
           letter-spacing: -0.015em;
-          color: #121212;
+          color: #000000;
           white-space: nowrap;
         }
 
         .e15-divider {
           width: 1px;
-          height: 40px;
+          height: 48px;
           flex: none;
-          background: rgba(18, 18, 18, 0.14);
+          background: rgba(0, 0, 0, 0.16);
         }
 
         .e15-btn {
@@ -128,7 +123,7 @@
           font-weight: 600;
           line-height: 1;
           padding: 0 18px;
-          color: #121212;
+          color: #000000;
           background: rgba(255, 255, 255, 0.46);
           box-shadow: inset 0 0 0 1px rgba(18, 18, 18, 0.12);
           will-change: transform;
@@ -142,7 +137,7 @@
           font-weight: 700;
           letter-spacing: 0.02em;
           color: #FFFFFF;
-          background: #C2185B;
+          background: #ffa500;
           box-shadow: 0 8px 20px rgba(194, 24, 91, 0.28);
         }
 
@@ -160,7 +155,7 @@
           direction: ltr;
           -webkit-font-feature-settings: 'liga';
           -webkit-font-smoothing: antialiased;
-          color: #121212;
+          color: #000000;
         }
 
         /* The reply glyph points left by default; mirror it so Share reads forward. */
@@ -195,7 +190,7 @@
           height: 68px;
           z-index: 1;
           border-radius: 50%;
-          border: 2px solid #C2185B;
+          border: 2px solid #ffa500;
           opacity: 0;
           will-change: transform, opacity;
         }
@@ -218,37 +213,37 @@
 
         <div data-hf-id="hf-e15s" class="e15-stage">
           <div data-hf-id="hf-e15p" class="e15-pill" id="e15-pill">
-            <div class="e15-brand e15-item" id="e15-brand">
+            <div data-hf-id="hf-q7n1" class="e15-brand e15-item" id="e15-brand">
               <img
                 data-hf-id="hf-e15a"
                 class="e15-avatar"
                 id="e15-avatar"
-                src="../stock%20media/web_dev.jpg"
+                src="../stock%20media/Just%20Tech.jpeg"
                 alt=""
                 width="144"
                 height="144"
               />
-              <div class="e15-name">Trial Tech</div>
+              <div data-hf-id="hf-6ls5" class="e15-name">Just Tech</div>
             </div>
 
-            <div class="e15-divider e15-item" id="e15-divider"></div>
+            <div data-hf-id="hf-ahp5" class="e15-divider e15-item" id="e15-divider"></div>
 
-            <button class="e15-btn e15-sub e15-item" id="e15-sub" type="button">訂閱</button>
+            <button data-hf-id="hf-2bd8" class="e15-btn e15-sub e15-item" id="e15-sub" type="button">訂閱</button>
 
-            <button class="e15-btn e15-item" id="e15-like" type="button">
-              <span class="e15-icon material-symbols-outlined" aria-hidden="true">thumb_up</span>Like
+            <button data-hf-id="hf-juh3" class="e15-btn e15-item" id="e15-like" type="button">
+              <span data-hf-id="hf-xnfv" class="e15-icon material-symbols-outlined" aria-hidden="true">thumb_up</span>Like
             </button>
 
-            <button class="e15-btn e15-item" id="e15-share" type="button">
-              <span class="e15-icon e15-icon-mirror material-symbols-outlined" aria-hidden="true">reply</span>Share
+            <button data-hf-id="hf-9fsv" class="e15-btn e15-item" id="e15-share" type="button">
+              <span data-hf-id="hf-5qje" class="e15-icon e15-icon-mirror material-symbols-outlined" aria-hidden="true">reply</span>Share
             </button>
           </div>
         </div>
 
         <div data-hf-id="hf-e15f" class="e15-fx" id="e15-fx">
           <div data-hf-id="hf-e15c" class="e15-cursor" id="e15-cursor" aria-hidden="true">
-            <svg viewBox="0 0 26 30" width="34" height="40">
-              <path
+            <svg data-hf-id="hf-p5xw" viewBox="0 0 26 30" width="34" height="40">
+              <path data-hf-id="hf-61so"
                 d="M2.2 1.6 L2.2 24.6 L8.1 19.4 L11.7 27.5 L15.3 25.9 L11.8 17.9 L19.8 17.9 Z"
                 fill="#FFFCEF"
                 stroke="#121212"

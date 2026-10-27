@@ -26,60 +26,47 @@ agent *what to do and how to work*; this file defines *how a frame must look*.
 
 ## 2. Background
 
-Every frame uses the project's warm editorial background, defined once and
-reused:
+**All frames must use a white background.**
 
 ```css
-background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+background: #ffffff;
 ```
 
-- This gradient is **the default background for all templates** — cream
-  `#FFFCEF` top-left to soft blush `#FDF3F8` bottom-right.
-- Never leave the background white (`#ffffff`). White is no longer a valid
-  default; use the gradient above.
+- **Background is always `#ffffff`** for every template and composition, regardless of theme.
 - **Full-bleed media templates** (background photo or video covering the frame)
-  keep the gradient as their base layer; the media sits on top, dimmed per §4.
-- Cards, chips, and text boxes that need a surface should reuse the same
-  gradient, not a flat white.
+  keep `#ffffff` as their base layer; the media sits on top, dimmed per §4.
+- Cards, chips, and text boxes that need a surface should use theme tints from their assigned palette (see §3), not introduce colored backgrounds for the frame itself.
 
 ---
 
 ## 3. Color
 
-### Primary colors (the three core brand colors)
+### Thematic monochromatic color system
 
-| Token | Hex | Role |
-| ----- | --- | ---- |
-| Ink | `#121212` | Primary text, axes, outlines |
-| Gold | `#8A6D00` | Headings, primary titles, emphasis |
-| Pink | `#C2185B` | Accent, category accents, key marks |
+Every template uses **exactly one theme**. The background is always white. 
 
-Red `#C0392B` remains available as a secondary emphasis accent for numbers,
-calls to attention, and gradients.
+**Primary text must remain black (`#000000`) by default.** Only use colored text for highlighted words, key terms, or titles when emphasis is needed — and always ensure WCAG AA contrast on white.
 
-### Secondary colors (new — extend the palette, never replace the primaries)
+#### Available themes (one per template)
 
-| Token | Hex | Role |
-| ----- | --- | ---- |
-| Sky | `#7fa8e9` | Cool secondary fills, supporting data series, calm accents |
-| Teal | `#77a3b9` | Cool secondary fills, chart series, quiet UI |
-| Mauve | `#bcabb3` | Neutral-warm secondary, muted backgrounds, de-emphasized marks |
+| Theme | Colors | Suggested usage |
+| ----- | ------ | --------------- |
+| **Blue** | `#2274a5`, `#c7dce8`, `#e8f1f7`, `#617682` | Primary accent `#2274a5` for highlights/titles/rules/icons/borders/charts. Tints `#c7dce8`/`#e8f1f7` for subtle fills. |
+| **Red** | `#fa003f`, `#fc5c84`, `#f00699`, `#fe4a49` | Primary accent `#fa003f` for highlights/titles/rules/icons/borders/charts. Use others for accents/decorative elements. |
+| **Green** | `#88d18a`, `#00513c`, `#007d55`, `#74c368` | Primary accent `#00513c` or `#007d55` for highlights/titles/rules/icons/borders/charts. Tints/accent `#88d18a`/`#74c368`. |
+| **Yellow** | `#ffcf00`, `#ffa500`, `#ec8421` | Use `#ffa500` or `#ec8421` for colored text/highlights (ensure contrast). `#ffcf00` best for backgrounds/fills, not body text on white. |
+| **Orange** | `#ee6123`, `#7b2d26`, `#f4a261`, `#f8dfa0` | Primary accent `#ee6123` for highlights/titles/rules/icons/borders/charts. Deep `#7b2d26` for strong emphasis if needed. Tints `#f4a261`/`#f8dfa0`. |
 
-**Rules for secondary colors**
-- Secondary colors support the three primaries; they never become the dominant
-  brand voice. Use them for supporting data series, secondary chart segments,
-  background tints, and tertiary UI.
-- Keep primary `#121212` for all body text so AA contrast holds.
-- Available accent chips / highlighters: `#FFF3A8` and `#FFE34F` (yellow).
-- Never place white text on white, or dark text on dark. Check contrast before
-  finishing any frame.
+#### Rules
 
-### Contrast
+- **Background is always white.** No gradients on `#root` or the frame background.
+- **One theme only.** Each template uses exactly one theme from the list above. No mixing of themes.
+- **Text color:** Body text, labels, and most content must be `#000000` (black). **Only** highlighted words, key terms, or titles may be colored using the theme's accent color. Ensure any colored text meets WCAG AA contrast against white.
+- **Accents & highlights:** Use the single theme's colors for rules, borders, icons, callouts, chart series, decorative elements, and colored text/highlights. Prefer tints for subtle fills/surfaces.
+- **Contrast:** Never place white text on white, or low-contrast text on white. Verify contrast before finishing. Over dimmed media (§4), use light text and verify with `npm run check`.
 
-- Body and heading text must pass **WCAG AA** against the background they sit on.
-- On the cream/blush gradient, `#121212` text is the safe default.
-- Over dimmed media (§4), use light text (the E02/E03 light-chrome pattern) and
-  verify with `npm run check`.
+### Legacy notes
+The previous cream/blush gradient and gold/pink palette are replaced by this thematic monochromatic system with white background.
 
 ---
 
