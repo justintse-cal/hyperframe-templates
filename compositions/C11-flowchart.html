@@ -1,0 +1,213 @@
+<!DOCTYPE html>﻿
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block');
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        [data-composition-id="C11-flowchart"] {
+          width: 1920px;
+          height: 1080px;
+          background-color: #FFFCEF;
+          background-image: radial-gradient(rgba(18, 18, 18, 0.06) 1px, transparent 1px),
+            linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+          background-size: 20px 20px, 100% 100%;
+          position: absolute;
+          overflow: hidden;
+          font-family: "Inter", sans-serif;
+        }
+
+        [data-composition-id="C11-flowchart"] .canvas {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transform: scale(1.2);
+          transform-origin: 960px 300px;
+        }
+
+        [data-composition-id="C11-flowchart"] .node {
+          position: absolute;
+          transform: translate(-50%, -50%);
+          padding: 16px 24px;
+          border-radius: 12px;
+          font-size: 18px;
+          font-weight: 500;
+          color: #121212;
+          box-shadow: 0 4px 12px rgba(18, 18, 18, 0.12);
+          white-space: nowrap;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+        }
+
+        [data-composition-id="C11-flowchart"] .node.yellow {
+          background-color: #FFF3A8;
+        }
+        [data-composition-id="C11-flowchart"] .node.green {
+          background-color: #7fa8e9;
+        }
+        [data-composition-id="C11-flowchart"] .node.peach {
+          background-color: #bcabb3;
+        }
+        [data-composition-id="C11-flowchart"] .node.lavender {
+          background-color: #77a3b9;
+        }
+        [data-composition-id="C11-flowchart"] .node.blue {
+          background-color: #7fa8e9;
+        }
+        [data-composition-id="C11-flowchart"] .node.pink {
+          background-color: #bcabb3;
+        }
+
+        [data-composition-id="C11-flowchart"] .connectors {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 5;
+          pointer-events: none;
+        }
+
+        [data-composition-id="C11-flowchart"] .connector-label {
+          position: absolute;
+          font-size: 14px;
+          font-weight: 600;
+          color: #121212;
+          background: #FFFCEF;
+          padding: 2px 6px;
+          border-radius: 4px;
+          opacity: 0;
+          z-index: 6;
+          transform: translate(-50%, -50%);
+        }
+
+        [data-composition-id="C11-flowchart"] #label-yes {
+          left: 726px;
+          top: 256px;
+        }
+        [data-composition-id="C11-flowchart"] #label-not-sure {
+          left: 1089px;
+          top: 256px;
+        }
+
+        [data-composition-id="C11-flowchart"] .connector {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+        }
+      </style>
+
+      <div data-hf-id="hf-atnt" id="root" data-composition-id="C11-flowchart" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-nq1o" class="canvas">
+          <svg data-hf-id="hf-n2ut" class="connectors" width="1920" height="1080" viewBox="0 0 1920 1080">
+            <!-- Level 1 to 2 -->
+            <path data-hf-id="hf-d6ae" id="path-1-L" class="connector" d="M 852 151 L 852 230 L 600 230 L 600 311" fill="none" stroke="#121212" stroke-width="4" />
+            <path data-hf-id="hf-98d4" id="path-1-R" class="connector" d="M 852 151 L 852 230 L 1327 230 L 1327 316" fill="none" stroke="#121212" stroke-width="4" />
+
+            <!-- Level 2 to 3 (Left side) -->
+            <path data-hf-id="hf-9bdx" id="path-2-LL" class="connector" d="M 600 364 L 600 440 L 389 440 L 389 514" fill="none" stroke="#121212" stroke-width="4" />
+            <path data-hf-id="hf-s1or" id="path-2-LR" class="connector" d="M 600 364 L 600 440 L 800 440 L 800 519" fill="none" stroke="#121212" stroke-width="4" />
+
+            <!-- Level 2 to 3 (Right side) -->
+            <path data-hf-id="hf-c9il" id="path-2-RL" class="connector" d="M 1327 369 L 1327 440 L 1125 440 L 1125 519" fill="none" stroke="#121212" stroke-width="4" />
+            <path data-hf-id="hf-6ter" id="path-2-RR" class="connector" d="M 1327 369 L 1327 440 L 1520 440 L 1520 517" fill="none" stroke="#121212" stroke-width="4" />
+          </svg>
+
+          <div data-hf-id="hf-vkkx" id="label-yes" class="connector-label">Yes</div>
+          <div data-hf-id="hf-espo" id="label-not-sure" class="connector-label">Not sure</div>
+
+          <!-- Level 1 -->
+          <div data-hf-id="hf-xhkv" id="node-root" class="node yellow" style="left: 852px; top: 124px">
+            Should I learn to code?
+          </div>
+
+          <!-- Level 2 -->
+          <div data-hf-id="hf-2ez2" id="node-yes" class="node green" style="left: 600px; top: 337px">Yes</div>
+          <div data-hf-id="hf-7xpl" id="node-not-sure" class="node peach" style="left: 1327px; top: 342px">Not sure</div>
+
+          <!-- Level 3 -->
+          <div data-hf-id="hf-ysto" id="node-python" class="node lavender" style="left: 389px; top: 540px">
+            <div data-hf-id="hf-ppx6" style="position: relative; display: inline-block">
+              <span data-hf-studio-original-inline-translate="" style="translate: -138.834px -93.632px" data-hf-id="hf-lctu" id="python-text">Start with Python</span>
+            </div>
+          </div>
+          <div data-hf-id="hf-fn4t" id="node-nocode" class="node blue" style="left: 800px; top: 545px">
+            Try no-code first
+          </div>
+          <div data-hf-id="hf-e04e" id="node-website" class="node pink" style="left: 1125px; top: 545px">
+            Build a personal website
+          </div>
+          <div data-hf-id="hf-j0fl" id="node-course" class="node yellow" style="left: 1520px; top: 543px">
+            Take a free intro course
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          const S = '[data-composition-id="C11-flowchart"]';
+          const tl = gsap.timeline({ paused: true });
+
+          /* 1. Root node scales in */
+          tl.fromTo(S + " #node-root", { scale: 0 }, { scale: 1, duration: 0.4, ease: "power2.out" }, 0);
+
+          /* 2. Connectors draw, then their labels */
+          tl.to(
+            S + " .connector#path-1-L, " + S + " .connector#path-1-R",
+            { strokeDashoffset: 0, duration: 0.5, ease: "none" },
+            1,
+          );
+          tl.to(S + " #label-yes, " + S + " #label-not-sure", { opacity: 1, duration: 0.2 }, 1.25);
+
+          /* 3. Level 2 nodes */
+          tl.fromTo(S + " #node-yes", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 1.4);
+          tl.fromTo(
+            S + " #node-not-sure",
+            { scale: 0 },
+            { scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+            1.6,
+          );
+
+          /* 4. Level 2 -> 3 connectors */
+          tl.to(
+            S +
+              " .connector#path-2-LL, " +
+              S +
+              " .connector#path-2-LR, " +
+              S +
+              " .connector#path-2-RL, " +
+              S +
+              " .connector#path-2-RR",
+            { strokeDashoffset: 0, duration: 0.4, ease: "none" },
+            2.5,
+          );
+
+          /* 5. Leaf nodes */
+          const leafNodes = [
+            S + " #node-python",
+            S + " #node-nocode",
+            S + " #node-website",
+            S + " #node-course",
+          ];
+          leafNodes.forEach((id, i) => {
+            tl.fromTo(id, { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 2.8 + i * 0.15);
+          });
+
+          /* 6. The finished tree holds to 8s - no cursor, no exit motion */
+          window.__timelines["C11-flowchart"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

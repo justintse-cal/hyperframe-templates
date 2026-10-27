@@ -1,6 +1,6 @@
 # HyperFrames Editorial Templates
 
-A library of 39 drop-in video templates — each an 8-second, 1920×1080, 30 fps
+A library of 42 drop-in video templates — each an 8-second, 1920×1080, 30 fps
 HyperFrames composition built on one warm editorial design system. Preview every
 template, then copy its composition id into your own project. Some of them are adopted from [HyperFrames Catalog](https://hyperframes.heygen.com/catalog) and [React Video Editor](https://www.reactvideoeditor.com/).
 
@@ -14,12 +14,12 @@ template, then copy its composition id into your own project. Some of them are a
 | --- | --- | --- |
 | **A** | Explaining a concept | A01–A04 |
 | **B** | Data charts | B01–B05 |
-| **C** | Workflow | C01–C10 |
+| **C** | Workflow | C01–C11 |
 | **D** | News highlight text | D01–D04 |
-| **E** | Narrative & emphasis | E01–E16 |
+| **E** | Narrative & emphasis | E01–E18 |
 
 Every template is exactly **8 seconds**, so they stack into a uniform grid. The
-root reel in `index.html` plays all 39 back-to-back (312s total).
+root reel in `index.html` plays all 42 back-to-back (336s total).
 
 ### Template catalog
 
@@ -68,8 +68,8 @@ To use a template in your own HyperFrames project, copy the matching file from
 ## Project structure
 
 ```
-index.html               root reel — one slot per template, 8s each (312s)
-compositions/            one sub-composition per template (A01 … E16)
+index.html               root reel — one slot per template, 8s each (336s)
+compositions/            one sub-composition per template (A01 … E18)
 compositions/components/ paste-in effect snippets from the HyperFrames registry
 stock media/             placeholder images & footage used by the templates
 docs/                    the GitHub Pages gallery (static HTML/CSS/JS)

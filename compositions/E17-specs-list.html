@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block');
+
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        [data-composition-id="E17-specs-list"] {
+          /* ---- mk tokens: override in the host to re-skin the family ---- */
+          --mk-font: "Inter", sans-serif;
+          --mk-ink: #121212;
+          --mk-ink-dim: rgba(18, 18, 18, 0.6);
+          --mk-ink-dark: #FFFCEF;
+          --mk-ink-dim-dark: rgba(255, 252, 239, 0.72);
+          --mk-accent: #C2185B;
+          --mk-accent-dark: #FFE34F;
+          --mk-hairline: 2px;
+
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%);
+        }
+        [data-composition-id="E17-specs-list"] #mk-sl-scrim {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, rgba(18, 18, 18, 0.55) 0%, rgba(18, 18, 18, 0) 62%);
+          opacity: 0;
+        }
+        [data-composition-id="E17-specs-list"] #mk-sl-col {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+        }
+        [data-composition-id="E17-specs-list"] .mk-sl-row {
+          font-family: var(--mk-font);
+          line-height: 1;
+          opacity: 0;
+        }
+        [data-composition-id="E17-specs-list"] .mk-sl-text {
+          display: flex;
+          align-items: baseline;
+          gap: 18px;
+          white-space: nowrap;
+        }
+        [data-composition-id="E17-specs-list"] .mk-sl-label {
+          font-weight: 600;
+          font-size: 46px;
+          letter-spacing: -0.015em;
+          color: var(--mk-ink);
+        }
+        [data-composition-id="E17-specs-list"] .mk-sl-value {
+          font-weight: 400;
+          font-size: 40px;
+          letter-spacing: -0.01em;
+          color: var(--mk-ink-dim);
+        }
+        [data-composition-id="E17-specs-list"] .mk-sl-line {
+          position: relative;
+          margin-top: 22px;
+          height: var(--mk-hairline);
+          background: rgba(18, 18, 18, 0.1);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+        [data-composition-id="E17-specs-list"] .mk-sl-line-fill {
+          position: absolute;
+          inset: 0;
+          background: var(--mk-accent);
+          transform-origin: left center;
+        }
+        /* dark scheme: light rows for use over footage (overlay look) */
+        [data-composition-id="E17-specs-list"] .mk-dark .mk-sl-label {
+          color: var(--mk-ink-dark);
+        }
+        [data-composition-id="E17-specs-list"] .mk-dark .mk-sl-value {
+          color: var(--mk-ink-dim-dark);
+        }
+        [data-composition-id="E17-specs-list"] .mk-dark .mk-sl-line {
+          background: rgba(255, 252, 239, 0.18);
+        }
+        [data-composition-id="E17-specs-list"] .mk-dark .mk-sl-line-fill {
+          background: var(--mk-accent-dark);
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="E17-specs-list"
+        data-start="0"
+        data-duration="8"
+        data-width="1920"
+        data-height="1080"
+      >
+        <div id="mk-sl-scrim"></div>
+        <div id="mk-sl-col"></div>
+        <div
+          id="mk-sl-drv"
+          class="clip"
+          data-start="0"
+          data-duration="8"
+          data-track-index="0"
+          style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none"
+        ></div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters (inspector-style CONFIG) ---- */
+          var CONFIG = {
+            scheme: "light", // "light" (ink rows) | "dark" (light rows, for footage)
+            rows: [
+              { label: "Design", value: "Minimal, clean lines" },
+              { label: "Typography", value: "Inter SemiBold" },
+              { label: "Motion", value: "Restrained, no bounce" },
+              { label: "Color", value: "Stage + one accent" },
+              { label: "Shapes", value: "Capsules & rounded cards" },
+            ],
+            underline: true, // accent sweep under each row
+            lineWidth: 660, // px
+            scrim: 0, // 0–1 left-edge dark scrim for readability over footage
+            x: 160, // column left edge
+            rowGap: 44, // px between rows
+            stagger: 0.18, // s between row entrances
+            animationIn: true,
+            animationOut: false,
+          };
+
+          var root = document.getElementById("root");
+          var col = document.getElementById("mk-sl-col");
+          var scrim = document.getElementById("mk-sl-scrim");
+
+          if (CONFIG.scheme === "dark") root.classList.add("mk-dark");
+          scrim.style.opacity = String(CONFIG.scrim);
+
+          /* build rows */
+          CONFIG.rows.forEach(function (r, i) {
+            var row = document.createElement("div");
+            row.id = "mk-sl-row-" + i;
+            row.className = "mk-sl-row";
+            if (i > 0) row.style.marginTop = CONFIG.rowGap + "px";
+
+            var text = document.createElement("div");
+            text.className = "mk-sl-text";
+            var label = document.createElement("span");
+            label.className = "mk-sl-label";
+            label.textContent = r.label;
+            text.appendChild(label);
+            if (r.value) {
+              var value = document.createElement("span");
+              value.className = "mk-sl-value";
+              value.textContent = r.value;
+              text.appendChild(value);
+            }
+            row.appendChild(text);
+
+            if (CONFIG.underline) {
+              var line = document.createElement("div");
+              line.className = "mk-sl-line";
+              line.style.width = CONFIG.lineWidth + "px";
+              var fill = document.createElement("div");
+              fill.id = "mk-sl-fill-" + i;
+              fill.className = "mk-sl-line-fill";
+              line.appendChild(fill);
+              row.appendChild(line);
+            }
+            col.appendChild(row);
+          });
+
+          /* center the column vertically */
+          var colH =
+            CONFIG.rows.length * (46 + 22 + (CONFIG.underline ? 2 : 0)) +
+            (CONFIG.rows.length - 1) * CONFIG.rowGap;
+          col.style.left = CONFIG.x + "px";
+          col.style.top = Math.round((1080 - colH) / 2) + "px";
+
+          var tl = gsap.timeline({ paused: true });
+
+          CONFIG.rows.forEach(function (r, i) {
+            var row = document.getElementById("mk-sl-row-" + i);
+            var t0 = (CONFIG.animationIn ? 0.3 : 0) + i * CONFIG.stagger;
+
+            if (CONFIG.animationIn) {
+              gsap.set(row, { opacity: 0, x: -36 });
+              tl.to(row, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, t0);
+            } else {
+              gsap.set(row, { opacity: 1 });
+            }
+
+            if (CONFIG.underline) {
+              var fill = document.getElementById("mk-sl-fill-" + i);
+              gsap.set(fill, { scaleX: 0 });
+              tl.to(fill, { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, t0 + 0.15);
+            }
+          });
+
+          /* the finished list holds to the end of the clip - no exit motion */
+          window.__timelines["E17-specs-list"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

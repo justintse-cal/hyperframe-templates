@@ -125,6 +125,12 @@ window.TEMPLATES = [
     description: 'Walk a four-step process as numbered rings fill in sequence, each one pulsing as it activates.',
   },
   {
+    code: 'C11',
+    id: 'C11-flowchart',
+    duration: 8,
+    description: 'Branch a yes/no question into a three-level decision tree, connectors drawing in as each bubble lands.',
+  },
+  {
     code: 'D01',
     id: 'D01-breaking-news',
     duration: 8,
@@ -242,6 +248,18 @@ window.TEMPLATES = [
     code: 'E16',
     id: 'E16-speech-statement',
     duration: 8,
-    description: 'Dim a portrait behind a long audio waveform, a news-style name bar and phrase-by-phrase speech captions.',
+    description: 'Inset a dimmed portrait on a cream mat behind a long audio waveform, a light-type news bar and phrase-by-phrase speech captions.',
+  },
+  {
+    code: 'E17',
+    id: 'E17-specs-list',
+    duration: 8,
+    description: 'Stack label/value spec rows that slide in one by one, each underlined by an accent sweep.',
+  },
+  {
+    code: 'E18',
+    id: 'E18-progress-stat',
+    duration: 8,
+    description: 'Count a headline number up to its value while a thin accent track fills to the same proportion.',
   },
 ];

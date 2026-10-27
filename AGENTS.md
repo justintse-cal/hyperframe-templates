@@ -1,4 +1,4 @@
-# HyperFrames Composition Project
+﻿# HyperFrames Composition Project
 
 ## Design system — FOLLOW IT FOR EVERY FRAME
 
@@ -100,7 +100,7 @@ https://hyperframes.heygen.com/llms.txt
 
 - `design.md` — **the design system** (colors, background, composition rules, subtitle safe area, typography). Read before editing any frame.
 - `docs/templates.md` — **the template catalog**: one line on what each template is and one on what it's used for, plus the canvas, the design-system basics and how to mount a template. Read it before picking or duplicating a template; it is also what the gallery's "Copy full catalog for AI" button hands to an agent.
-- `index.html` - main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (39 templates, each `data-duration="8"`, total `data-duration="312"`)
+- `index.html` - main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (40 templates, each `data-duration="8"`, total `data-duration="320"`)
 - `compositions/` — one sub-composition per template, named by letter-id (e.g. `A01-core-definition.html`, `E05-unit-chart.html`)
 - `stock media/` — placeholder images and footage used by the templates; referenced from `compositions/` with the space URL-encoded as `../stock%20media/<file>`
 - `meta.json` — project metadata (id, name)
@@ -127,7 +127,7 @@ Categories:
 | ------ | -------- | ----- |
 | A | Explaining a concept | A01–A04 |
 | B | Data charts | B01–B05 |
-| C | Workflow | C01–C10 |
+| C | Workflow | C01–C11 |
 | D | News highlight text | D01–D04 |
 | E | Narrative & emphasis | E01–E16 |
 

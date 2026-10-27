@@ -1,12 +1,12 @@
 # HyperFrames Editorial Templates
 
-39 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
+40 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
 
 Paste this file into an AI agent to tell it what the library contains.
 
 ## The short version
 
-- **39 templates** — A concept (4) · B data charts (5) · C workflow (10) · D news text (4) · E narrative (16).
+- **40 templates** — A concept (4) · B data charts (5) · C workflow (11) · D news text (4) · E narrative (16).
 - **File** `compositions/<id>.html`. **Mount** it with `data-composition-src="compositions/<file>.html"` plus a `data-start` and `data-duration`, and register one paused timeline: `window.__timelines["<id>"] = gsap.timeline({ paused: true });`
 - **Every frame** uses the warm gradient background `#FFFCEF → #FDF3F8`, ink `#121212` / gold `#8A6D00` / pink `#C2185B`, entrance-only motion, no content below y=920, and no corner text.
 - **To adapt one**, edit the copy in the file (or its `CONFIG` block where it has one) and keep the design system intact.
@@ -94,6 +94,10 @@ Use it for: side-by-side comparisons, dual perspectives and before/after reveals
 Four numbered rings fill in sequence along a connecting rail, each one pulsing as it activates.
 Use it for: process timelines, project phases and onboarding progress.
 
+**C11 · Flowchart** (`C11-flowchart`)
+A yes/no question opens into a three-level decision tree, with connectors drawing in as each bubble lands on its branch.
+Use it for: decision paths, qualification questions and "which option should I pick" explainers.
+
 ## D — News highlight text
 
 **D01 · Breaking News** (`D01-breaking-news`)
@@ -175,8 +179,16 @@ A centred channel pill with an avatar, name, Subscribe, Like and Share actions, 
 Use it for: end cards, subscribe reminders and channel sign-offs.
 
 **E16 · Speech Statement** (`E16-speech-statement`)
-A dimmed portrait sits behind a long audio waveform, a news-style name bar and phrase-by-phrase captions.
+An inset, dimmed portrait sits on a cream mat behind a long audio waveform, a light-type news bar and phrase-by-phrase captions.
 Use it for: soundbites, interviews, testimonials and keynote pulls.
+
+**E17 · Specs List** (`E17-specs-list`)
+Label/value spec rows slide in one at a time, each underlined by a thin accent sweep.
+Use it for: design-system specs, product attributes and "what's inside" rundowns.
+
+**E18 · Progress Stat** (`E18-progress-stat`)
+A headline number counts up while a thin accent track fills to the same proportion.
+Use it for: goals reached, quota progress and any "x out of y" milestone.
 
 ---
 
