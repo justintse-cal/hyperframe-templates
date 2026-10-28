@@ -1,14 +1,14 @@
 # HyperFrames Editorial Templates
 
-40 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the warm editorial design system in `design.md`.
+42 drop-in video templates for concept explainers, data charts, workflow diagrams, news highlights and narrative beats. Each one is 8 seconds, 1920×1080, silent, and built on the design system in `design.md`.
 
 Paste this file into an AI agent to tell it what the library contains.
 
 ## The short version
 
-- **40 templates** — A concept (4) · B data charts (5) · C workflow (11) · D news text (4) · E narrative (16).
+- **42 templates** — A concept (4) · B data charts (5) · C workflow (11) · D news text (4) · E narrative (18).
 - **File** `compositions/<id>.html`. **Mount** it with `data-composition-src="compositions/<file>.html"` plus a `data-start` and `data-duration`, and register one paused timeline: `window.__timelines["<id>"] = gsap.timeline({ paused: true });`
-- **Every frame** uses the warm gradient background `#FFFCEF → #FDF3F8`, ink `#121212` / gold `#8A6D00` / pink `#C2185B`, entrance-only motion, no content below y=920, and no corner text.
+- **Every frame** uses a white background (`#ffffff`), black text by default, one theme per template (Blue/Red/Green/Yellow/Orange), entrance-only motion, no content below y=920, and no corner text.
 - **To adapt one**, edit the copy in the file (or its `CONFIG` block where it has one) and keep the design system intact.
 - **To check your work**, run `npm run check`.
 
