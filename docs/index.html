@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HyperFrames Template Gallery</title>
-  <meta name="description" content="A showcase of 42 HyperFrames video templates - explaining concepts, data charts, workflow diagrams, news highlights, and narrative emphasis - with preview videos and copy-ready template codes." />
+  <meta name="description" content="A showcase of 42 HyperFrames video templates - openers, explainers, comparisons, process flows, systems, data, social proof and artifacts - with preview videos and copy-ready template codes." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127909;</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -416,13 +416,14 @@
     <div class="kicker">HyperFrames · Editorial Templates</div>
     <h1>Template <em>Gallery</em></h1>
     <p class="lede">
-      42 drop-in video templates for concept explainers, data charts, workflow
-      diagrams, news highlights, and narrative beats — all following the
-      design system. Preview each one, then copy its code into your project.
+      42 drop-in video templates grouped by the job each one does in an edit —
+      openers, explainers, comparisons, process flows, systems, data, proof and
+      artifacts — all following the design system. Preview each one, then copy
+      its code into your project.
     </p>
     <div class="stats">
       <span class="stat-chip" id="stat-count">42 templates</span>
-      <span class="stat-chip">5 categories</span>
+      <span class="stat-chip">8 groups</span>
       <span class="stat-chip">1920 × 1080 · 30 fps</span>
       <span class="stat-chip">Entrance-only motion</span>
     </div>
@@ -432,7 +433,7 @@
     </div>
   </header>
 
-  <nav class="filter-bar" aria-label="Filter templates by category">
+  <nav class="filter-bar" aria-label="Filter templates by group">
     <div class="filters container" id="filters"></div>
   </nav>
 
@@ -444,7 +445,7 @@
     <p>
       Previews are draft renders of the compositions in
       <a href="https://github.com/justintse-cal/hyperframe-templates" target="_blank" rel="noopener">justintse-cal/hyperframe-templates</a>.
-      Look &amp; feel follows <code>design.md</code> — white background, thematic monochromatic palette, Playfair Display + Plus Jakarta Sans.
+      Look &amp; feel follows <code>design.md</code> — white background, thematic monochromatic palette, thematic accent per group.
     </p>
     <p>
       The template catalog —
@@ -459,12 +460,23 @@
     (function () {
       var CAT_NAMES = {};
       window.CATEGORIES.forEach(function (c) { CAT_NAMES[c.letter] = c.name; });
-      var CAT_COLORS = { A: '#2274a5', B: '#fa003f', C: '#00513c', D: '#ffa500', E: '#ee6123' };
+      var CAT_COLORS = {
+        A: '#2274a5',
+        B: '#00513c',
+        C: '#ec8421',
+        D: '#ee6123',
+        E: '#617682',
+        F: '#fa003f',
+        G: '#f00699',
+        H: '#7b2d26',
+      };
+
+      var WORD_FIX = { yt: 'YouTube', api: 'API', ui: 'UI' };
 
       function titleFromId(id) {
-        // 'A01-core-definition' -> 'Core Definition'
-        var slug = id.replace(/^[A-E]\d{2}-/, '');
-        return slug.split('-').map(function (w) {
+        // 'core-definition' -> 'Core Definition'
+        return id.split('-').map(function (w) {
+          if (WORD_FIX[w]) return WORD_FIX[w];
           return w.charAt(0).toUpperCase() + w.slice(1);
         }).join(' ');
       }
@@ -479,7 +491,7 @@
           items.push({
             letter: c.letter,
             name: c.letter + ' · ' + c.name,
-            count: window.TEMPLATES.filter(function (t) { return t.code.charAt(0) === c.letter; }).length,
+            count: window.TEMPLATES.filter(function (t) { return t.group === c.letter; }).length,
           });
         });
         items.forEach(function (item) {
@@ -512,11 +524,11 @@
 
       function buildCards() {
         window.TEMPLATES.forEach(function (t) {
-          var category = t.code.charAt(0);
+          var category = t.group;
           var card = document.createElement('article');
           card.className = 'card';
           card.dataset.category = category;
-          card.style.setProperty('--accent', CAT_COLORS[category] || '#8A6D00');
+          card.style.setProperty('--accent', CAT_COLORS[category] || '#2274a5');
 
           var thumb = document.createElement('div');
           thumb.className = 'thumb';

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: #ffffff;
+          color: #f8dfa0;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          isolation: isolate;
+        }
+
+        /* Inset portrait plate: the #root gradient frames the photo as a cream
+           mat, so the media never covers the full frame. */
+        .speech-media {
+          position: absolute;
+          inset: 64px;
+          overflow: hidden;
+        }
+
+        /* Portrait, dimmed for legibility per design.md §4. */
+        .speech-bg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 28%;
+          transform: scale(1.05);
+          transform-origin: 50% 42%;
+          will-change: transform;
+        }
+
+        /* Dim sits inside the plate so the cream mat stays bright. */
+        .speech-dim {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.55);
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.16);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* ---------------------------------------------------- name bar */
+        .namebar {
+          position: absolute;
+          left: 140px;
+          top: 260px;
+        }
+
+        .namebar-rule {
+          width: 180px;
+          height: 3px;
+          margin-bottom: 18px;
+          border-radius: 2px;
+          background: #ffffff;
+          transform: scaleX(0);
+          transform-origin: left center;
+          will-change: transform;
+        }
+
+        .namebar-panel {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          padding: 18px 30px 18px 32px;
+          border-radius: 4px;
+          will-change: transform, opacity;
+        }
+
+        .namebar-panel::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          border-radius: 4px 0 0 4px;
+          background: #ffffff;
+        }
+
+        .namebar-kicker {
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          line-height: 1;
+          color: #FFFCEF;
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.55);
+        }
+
+        .namebar-name {
+          font-family: 'Playfair Display', serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.05;
+          letter-spacing: -0.01em;
+          color: #FFFCEF;
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.55);
+          will-change: transform, opacity;
+        }
+
+        .namebar-role {
+          font-size: 18px;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          line-height: 1.1;
+          color: rgba(255, 252, 239, 0.72);
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.55);
+          will-change: transform, opacity;
+        }
+
+        /* ---------------------------------------------------- waveform */
+        .speech-wave {
+          position: absolute;
+          left: 50%;
+          top: 475px;
+          width: 1507px;
+          height: 170px;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          overflow: visible;
+        }
+
+        .wave-bar {
+          flex: 0 0 12px;
+          width: 12px;
+          height: var(--h, 80px);
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        .wave-bar-i {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 6px;
+          background: #FFFCEF;
+          box-shadow: 0 0 10px rgba(255, 227, 79, 0.28);
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* ---------------------------------------------------- captions */
+        .speech-captions {
+          position: absolute;
+          left: 50%;
+          top: 690px;
+          width: 1500px;
+          height: 140px;
+          transform: translateX(-50%);
+        }
+
+        .caption-chunk {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 24px;
+          text-align: center;
+          font-size: 46px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: -0.01em;
+          color: #FFFCEF;
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.55);
+          opacity: 0;
+          visibility: hidden;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div data-hf-id="hf-o1r4"
+        id="root"
+        data-composition-id="speech-statement"
+        data-width="1920"
+        data-height="1080"
+        data-duration="8"
+      >
+        <div data-hf-id="hf-91hh" class="speech-media">
+          <img data-hf-id="hf-8z5f"
+            id="speech-bg"
+            class="speech-bg"
+            src="../stock%20media/speech_portrait.jpg"
+            alt="Portrait of a businesswoman in an office, dimmed behind a speech caption"
+            width="1920"
+            height="1280"
+          />
+          <div data-hf-id="hf-16k7" class="speech-dim"></div>
+        </div>
+
+        <div data-hf-id="hf-ybsc" class="namebar">
+          <div data-hf-id="hf-cm76" class="namebar-rule" id="namebar-rule"></div>
+          <div data-hf-id="hf-yicg" class="namebar-panel" id="namebar-panel">
+            <span data-hf-id="hf-qz5n" class="namebar-kicker" id="namebar-kicker"></span>
+            <span data-hf-id="hf-2wo7" class="namebar-name" id="namebar-name"></span>
+            <span data-hf-id="hf-u7k3" class="namebar-role" id="namebar-role"></span>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-15i7" class="speech-wave" id="speech-wave" aria-hidden="true"></div>
+
+        <div data-hf-id="hf-cttu" class="speech-captions" id="speech-captions"></div>
+
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published copy ----
+             Edit these strings to repurpose the frame. Chunk hold times are
+             derived from word count, so the caption track retimes itself. */
+          var CONFIG = {
+            kicker: "On the record",
+            name: "Priya Raman",
+            role: "Director of Research",
+            chunks: [
+              "The most powerful technology",
+              "is the kind you stop noticing.",
+              "It quietly removes the friction",
+              "between what you imagine",
+              "and what you build.",
+            ],
+          };
+
+          var BAR_COUNT = 66;
+          var WAVE_START = 0.9;
+          var WAVE_END = 8;
+
+          var root = document.getElementById("root");
+          var wave = document.getElementById("speech-wave");
+          var captionBox = document.getElementById("speech-captions");
+
+          document.getElementById("namebar-kicker").textContent = CONFIG.kicker;
+          document.getElementById("namebar-name").textContent = CONFIG.name;
+          document.getElementById("namebar-role").textContent = CONFIG.role;
+
+          /* Deterministic hash: no Math.random(), so seeks are reproducible. */
+          function hash(i, salt) {
+            var x = Math.sin(i * 127.1 + salt * 311.7) * 43758.5453;
+            return x - Math.floor(x);
+          }
+
+          var bars = [];
+          for (var i = 0; i < BAR_COUNT; i++) {
+            var outer = document.createElement("span");
+            outer.className = "wave-bar";
+
+            var base = 18 + Math.pow(hash(i, 1), 1.35) * 152;
+            outer.style.setProperty("--h", base.toFixed(1) + "px");
+
+            var inner = document.createElement("span");
+            inner.className = "wave-bar-i";
+            outer.appendChild(inner);
+            wave.appendChild(outer);
+
+            var lo = 0.64 + hash(i, 4) * 0.2;
+            var hi = 1.04 + hash(i, 5) * 0.22;
+            var dur = 0.32 + hash(i, 2) * 0.3;
+            var start = WAVE_START + hash(i, 3) * 0.5;
+            var legs = Math.max(2, Math.floor((WAVE_END - start) / dur));
+
+            gsap.set(inner, { scaleY: lo });
+
+            bars.push({
+              outer: outer,
+              inner: inner,
+              lo: lo,
+              hi: hi,
+              dur: dur,
+              start: start,
+              legs: legs,
+            });
+          }
+
+          var chunkEls = CONFIG.chunks.map(function (text) {
+            var el = document.createElement("div");
+            el.className = "caption-chunk";
+            el.textContent = text;
+            captionBox.appendChild(el);
+            return el;
+          });
+
+          var tl = gsap.timeline({ paused: true });
+
+          /* Slow ambient push on the portrait. */
+          tl.fromTo(
+            "#speech-bg",
+            { scale: 1.05 },
+            { scale: 1.1, duration: 8, ease: "none" },
+            0,
+          );
+
+          /* Name bar: rule wipes in, panel slides, then the two text lines. */
+          tl.fromTo(
+            "#namebar-rule",
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.45, ease: "power3.out" },
+            0.15,
+          );
+          tl.fromTo(
+            "#namebar-panel",
+            { x: -70, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
+            0.25,
+          );
+          tl.fromTo(
+            "#namebar-name",
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+            0.45,
+          );
+          tl.fromTo(
+            "#namebar-role",
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+            0.55,
+          );
+
+          /* Bars rise in, then breathe until the clip ends. */
+          gsap.set(wave.children, { scaleY: 0 });
+          tl.to(
+            wave.children,
+            { scaleY: 1, duration: 0.5, ease: "back.out(1.3)", stagger: 0.006 },
+            0.5,
+          );
+
+          bars.forEach(function (bar) {
+            tl.fromTo(
+              bar.inner,
+              { scaleY: bar.lo },
+              {
+                scaleY: bar.hi,
+                duration: bar.dur,
+                ease: "sine.inOut",
+                repeat: bar.legs - 1,
+                yoyo: true,
+              },
+              bar.start,
+            );
+          });
+
+          /* Broadcast phrase chunks. The swap hides the previous chunk with a
+             set (a hard cut), then the next one enters — no exit animation. */
+          var at = 1.15;
+          chunkEls.forEach(function (el, index) {
+            if (index > 0) tl.set(chunkEls[index - 1], { autoAlpha: 0 }, at);
+
+            tl.fromTo(
+              el,
+              { autoAlpha: 0, y: 12 },
+              { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" },
+              at,
+            );
+
+            var text = CONFIG.chunks[index];
+            var words = text.split(/\s+/).filter(Boolean).length;
+            var hold = 0.2 * words + 0.12;
+            if (/[.!?]$/.test(text)) hold += 0.2;
+            at += hold;
+          });
+
+          /* Last chunk settles by ~6.75s; the frame holds to 8s. */
+
+          window.__timelines["speech-statement"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

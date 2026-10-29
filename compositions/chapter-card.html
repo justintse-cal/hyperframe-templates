@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #000000;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .bg-clip {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          object-fit: cover;
+        }
+
+        .dim-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        .chapter-center {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .chapter-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 23px;
+          font-weight: 700;
+          letter-spacing: 0.34em;
+          text-transform: uppercase;
+          color: #617682;
+          margin-bottom: 36px;
+          opacity: 0;
+          /* sits slightly above the visual center */
+          transform: translateY(-40px);
+        }
+
+        .chapter-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 92px;
+          font-weight: 800;
+          line-height: 1.18;
+          color: #ffffff;
+          max-width: 1500px;
+        }
+
+        .chapter-title .word {
+          display: inline-block;
+          white-space: nowrap;
+        }
+
+        .chapter-title .char {
+          display: inline-block;
+          opacity: 0;
+        }
+
+        /* Editorial chrome on top of the clip */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(255, 243, 168, 0.4);
+        }
+
+      </style>
+
+      <div data-hf-id="hf-uuc3" id="root" data-composition-id="chapter-card" data-width="1920" data-height="1080" data-duration="8">
+        <video data-hf-id="hf-llld" class="bg-clip clip" id="e2-bg-video" data-start="0" data-duration="8" data-track-index="0"
+          src="../stock%20media/industry.mp4" muted playsinline width="1920" height="1080"></video>
+        <div data-hf-id="hf-qmi5" class="dim-overlay"></div>
+
+        <div data-hf-id="hf-h2cr" class="chapter-center">
+          <div data-hf-id="hf-beo0" class="chapter-label" id="e2-chapter-label">Chapter 01</div>
+          <h1 data-hf-id="hf-hx1q" class="chapter-title" id="e2-title"><span data-hf-id="hf-yhox" class="word"><span data-hf-id="hf-1ge3" class="char">T</span><span data-hf-id="hf-m4bj" class="char">h</span><span data-hf-id="hf-kxeg" class="char">e</span></span> <span data-hf-id="hf-vblx" class="word"><span data-hf-id="hf-z2jx" class="char">R</span><span data-hf-id="hf-mimk" class="char">i</span><span data-hf-id="hf-c6nu" class="char">s</span><span data-hf-id="hf-jdkg" class="char">e</span></span> <span data-hf-id="hf-wij0" class="word"><span data-hf-id="hf-nb8m" class="char">o</span><span data-hf-id="hf-jqhd" class="char">f</span></span> <span data-hf-id="hf-w47z" class="word"><span data-hf-id="hf-zguy" class="char">S</span><span data-hf-id="hf-g5q4" class="char">y</span><span data-hf-id="hf-mwxl" class="char">n</span><span data-hf-id="hf-e66z" class="char">t</span><span data-hf-id="hf-2ean" class="char">h</span><span data-hf-id="hf-i6nd" class="char">e</span><span data-hf-id="hf-71uj" class="char">t</span><span data-hf-id="hf-smas" class="char">i</span><span data-hf-id="hf-ijka" class="char">c</span></span> <span data-hf-id="hf-xb52" class="word"><span data-hf-id="hf-be1s" class="char">M</span><span data-hf-id="hf-ikye" class="char">e</span><span data-hf-id="hf-kj3f" class="char">d</span><span data-hf-id="hf-rfdp" class="char">i</span><span data-hf-id="hf-jc6c" class="char">a</span></span></h1>
+        </div>
+
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1s: "Chapter 01" label fades in slightly above center
+        tl.fromTo("#e2-chapter-label",
+          { opacity: 0, y: -16 },
+          { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+          0
+        );
+
+        // 0.15–1.15s: title characters rise one by one
+        const chars = document.querySelectorAll("#e2-title .char");
+        chars.forEach((char, idx) => {
+          tl.fromTo(char,
+            { opacity: 0, y: 72 },
+            { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+            0.15 + (idx * 0.028)
+          );
+        });
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["chapter-card"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -177,7 +177,7 @@ includes the italic axis). CJK text has no italic — emphasise it with weight o
 the theme accent instead.
 
 > **Migration note.** The shipped templates in `compositions/` still import
-> Playfair Display + Plus Jakarta Sans (and `C05` also uses Caveat). They predate
+> Playfair Display + Plus Jakarta Sans (and `handdrawn-flowchart` also uses Caveat). They predate
 > this rule and must be migrated to Noto Sans before they are reused. Any new or
 > edited frame follows the Noto Sans rule above.
 
@@ -248,10 +248,27 @@ https://fonts.google.com/icons
 
 ## 7. Template catalog
 
-Templates are letter-indexed: **A** = explaining a concept, **B** = data charts,
-**C** = workflow diagrams, **D** = news highlight text, **E** = narrative &
-emphasis. See `AGENTS.md` for the full slot table and the workflow for
-adding/resequencing slots.
+42 templates, each identified by a **stable slug** (`core-definition`,
+`barchart-growth`, …). The slug is identity only — a template can move between
+groups without being renamed.
+
+Templates are grouped by **the job each one does in an edit**, not by the medium
+it imitates:
+
+| Letter | Group |
+| ------ | ----- |
+| **A** | Openers & Statements |
+| **B** | Explain & Summarize |
+| **C** | Compare & Contrast |
+| **D** | Process & Flow |
+| **E** | Structure & Systems |
+| **F** | Data & Numbers |
+| **G** | Social Proof & Audience |
+| **H** | Screens & Artifacts |
+
+The full table of which template sits in which group lives in `AGENTS.md`; the
+catalog with one line per template is `docs/templates.md`. Read either before
+picking or duplicating a template.
 
 ---
 

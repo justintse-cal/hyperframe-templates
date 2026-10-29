@@ -100,8 +100,8 @@ https://hyperframes.heygen.com/llms.txt
 
 - `design.md` — **the design system** (colors, background, composition rules, subtitle safe area, typography). Read before editing any frame.
 - `docs/templates.md` — **the template catalog**: one line on what each template is and one on what it's used for, plus the canvas, the design-system basics and how to mount a template. Read it before picking or duplicating a template; it is also what the gallery's "Copy full catalog for AI" button hands to an agent.
-- `index.html` - main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (40 templates, each `data-duration="8"`, total `data-duration="320"`)
-- `compositions/` — one sub-composition per template, named by letter-id (e.g. `A01-core-definition.html`, `E05-unit-chart.html`)
+- `index.html` - main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (42 templates, each `data-duration="8"`, total `data-duration="336"`)
+- `compositions/` — one sub-composition per template, named by slug (e.g. `core-definition.html`, `unit-chart.html`)
 - `stock media/` — placeholder images and footage used by the templates; referenced from `compositions/` with the space URL-encoded as `../stock%20media/<file>`
 - `meta.json` — project metadata (id, name)
 - `transcript.json` — whisper word-level transcript (if generated)
@@ -110,26 +110,34 @@ https://hyperframes.heygen.com/llms.txt
 
 ## Template Conventions
 
-### Letter-id scheme
+### Slug-id scheme
 
-Every template is identified by `<LETTER><NN>` — a category letter plus two digits — used consistently in four places:
+Every template is identified by a stable **slug** (e.g. `barchart-growth`), used
+consistently in four places:
 
-1. **Filename**: `compositions/B02-barchart-growth.html`
-2. **`data-composition-id`**: `B02-barchart-growth` (on the sub-composition's `#root` *and* on its slot in `index.html`)
-3. **Timeline key**: `window.__timelines["B02-barchart-growth"]`
-4. **Slot id** in `index.html`: `id="B02"`
+1. **Filename**: `compositions/barchart-growth.html`
+2. **`data-composition-id`**: `barchart-growth` (on the sub-composition's `#root` *and* on its slot in `index.html`)
+3. **Timeline key**: `window.__timelines["barchart-growth"]`
+4. **Slot id** in `index.html`: `id="barchart-growth"`
+
+The slug is an identity, **not** a category. A template can move between groups
+without renaming its file; grouping lives in `docs/templates.js` (`group`) and the
+section headings of `docs/templates.md`.
 
 There is no in-frame template label — corner text was removed (see `design.md`).
 
-Categories:
+Groups, by the job a template does in an edit:
 
-| Letter | Category | Slots |
-| ------ | -------- | ----- |
-| A | Explaining a concept | A01–A04 |
-| B | Data charts | B01–B05 |
-| C | Workflow | C01–C11 |
-| D | News highlight text | D01–D04 |
-| E | Narrative & emphasis | E01–E16 |
+| Letter | Group | Templates |
+| ------ | ----- | --------- |
+| A | Openers & Statements | breaking-news · chapter-card · headline-stack · speech-statement |
+| B | Explain & Summarize | core-definition · mechanism-walkthrough · problem-solution · news-summary · term-explanation |
+| C | Compare & Contrast | paradigm-shift · split-tilt-cards · split-panels · split-screens |
+| D | Process & Flow | milestone-timeline · decision-tree · feedback-loop · handdrawn-flowchart · progress-steps · flowchart |
+| E | Structure & Systems | architecture-stack · network-node-map · radial-surround · grid-card-assemble · specs-list |
+| F | Data & Numbers | metric-highlight · barchart-growth · linechart-trend · pie-donut-share · news-stat · chart-card · unit-chart · progress-stat |
+| G | Social Proof & Audience | press-quote · yt-comment-stack · reddit-post-card · testimonial-card · yt-comment-scatter · subscribe-outro |
+| H | Screens & Artifacts | terminal-editor · article-circle · typed-prompt · notes-typing |
 
 ### Format & palette
 
@@ -138,12 +146,12 @@ Categories:
 > composition rules, the subtitle safe area, and typography.**
 
 - **1920×1080** (`data-width="1920" data-height="1080"`).
-- **Background**: warm editorial gradient `linear-gradient(135deg, #FFFCEF 0%, #FDF3F8 100%)` on `#root` — never white.
-- **Primary colors**: ink `#121212`, gold `#8A6D00`, pink `#C2185B` (plus red `#C0392B` for emphasis); accents `#FFF3A8` / `#FFE34F`.
-- **Secondary colors**: sky `#7fa8e9`, teal `#77a3b9`, mauve `#bcabb3` — supporting use only.
+- **Background**: always `#ffffff` on `#root` — never a gradient, never a tinted frame.
+- **Text**: black `#000000` by default; one theme per template (Blue, Red, Green, Yellow, Orange) for highlights, rules, icons, charts. Theme accents are the only colored text.
+- **Typography**: Noto Sans for all Latin text, Noto Sans TC for Traditional Chinese — see `design.md` §6.
 - **No corner text.** Do not add header badges, category tags, "Use It For" chips, footer bars, sample labels, or brand wordmarks. A textless `.frame-border` is optional decoration.
 - **Subtitle safe area**: keep the bottom ~15% (below y≈920px) clear of content.
-- Each composition is a `<template>` wrapper containing `<style>` + `<div id="root">` + `<script>`, and registers exactly one paused timeline: `window.__timelines["Exx-slug"] = gsap.timeline({ paused: true });`
+- Each composition is a `<template>` wrapper containing `<style>` + `<div id="root">` + `<script>`, and registers exactly one paused timeline: `window.__timelines["<slug>"] = gsap.timeline({ paused: true });`
 - **Entrance animations only** — no exit animations; scenes hold their final state until the clip ends.
 
 ### Stock media
@@ -154,11 +162,11 @@ Categories:
 
 ### Adding a slot / resequencing
 
-1. Copy an existing slot block in `index.html`; set `id` (`Exx`), `data-composition-id`, `data-composition-src`, and `data-duration` (must match the sub-composition's `data-duration`).
+1. Copy an existing slot block in `index.html`; set `id` (the slug), `data-composition-id`, `data-composition-src`, and `data-duration` (must match the sub-composition's `data-duration`).
 2. Set `data-start` = previous slot's `data-start` + `data-duration` — slots are back-to-back with no gaps.
 3. Inserting mid-timeline? Resequence `data-start` on **every** slot after the insertion point.
 4. Bump the root `#root data-duration` to the last slot's `data-start` + `data-duration`.
-5. Add the slot to the category comment group (`<!-- Category N: … -->`) it belongs to.
+5. Add the slot under the group comment (`<!-- Group A: Openers & Statements -->` … ) it belongs to, and add the template to `docs/templates.js` + `docs/templates.md`.
 6. Run `npm run check`.
 
 ## Linting — ALWAYS RUN AFTER CHANGES

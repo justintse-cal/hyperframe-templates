@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #fe4a49;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Editorial Frame & Header */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+        }
+
+        /* Article stage */
+        .article-stage {
+          position: absolute;
+          top: 150px;
+          left: 96px;
+          right: 96px;
+          bottom: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .article-frame {
+          position: relative;
+          width: 1344px; /* 70% of 1920 */
+          height: 760px;
+          transform-origin: center center;
+        }
+
+        .article-img {
+          width: 1344px;
+          height: 760px;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+          border: 1px solid rgba(18, 18, 18, 0.14);
+          border-radius: 6px;
+          box-shadow: 12px 14px 0 rgba(18, 18, 18, 0.08);
+        }
+
+        /* Yellow highlighter sweeping across the target text */
+        .highlighter {
+          position: absolute;
+          top: 318px;
+          left: 318px;
+          width: 708px;
+          height: 62px;
+          background: #fc5c84;
+          mix-blend-mode: multiply;
+          transform-origin: left center;
+          transform: scaleX(0);
+          z-index: 4;
+        }
+
+        /* Footer & Logo */
+
+      </style>
+
+      <div data-hf-id="hf-x4uq" id="root" data-composition-id="article-circle" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-mafj" class="article-stage">
+          <div data-hf-id="hf-lv7m" class="article-frame" id="e8-article-frame">
+            <img data-hf-id="hf-gvk1" class="article-img" id="e8-article-img" src="../stock%20media/article1.png" alt="Article screenshot placeholder" width="1344" height="760">
+            <div data-hf-id="hf-ikai" class="highlighter" id="e8-highlighter"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <script>
+gsap.set("#e8-highlighter", { x: -53.383, y: -74.736 });
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1s: article screenshot slides in from below at 70% size
+        tl.fromTo("#e8-article-frame",
+          { opacity: 0, y: 320 },
+          { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+          0
+        );
+
+        // 1–1.5s: scales up to 80% size
+        tl.fromTo("#e8-article-frame",
+          { scale: 1 },
+          { scale: 1.143, duration: 0.5, ease: "power2.inOut" },
+          1.0
+        );
+
+        // 2–3s: yellow highlighter sweeps left to right across the target text
+        tl.fromTo("#e8-highlighter",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 1, ease: "power2.inOut" },
+          2.0
+        );
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["article-circle"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

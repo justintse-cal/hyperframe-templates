@@ -1,8 +1,10 @@
 # HyperFrames Editorial Templates
 
 A library of 42 drop-in video templates — each an 8-second, 1920×1080, 30 fps
-HyperFrames composition built on one warm editorial design system. Preview every
-template, then copy its composition id into your own project. Some of them are adopted from [HyperFrames Catalog](https://hyperframes.heygen.com/catalog) and [React Video Editor](https://www.reactvideoeditor.com/).
+HyperFrames composition built on one white, typographic design system. Preview
+every template, then copy its composition id into your own project. Some of them
+are adopted from [HyperFrames Catalog](https://hyperframes.heygen.com/catalog) and
+[React Video Editor](https://www.reactvideoeditor.com/).
 
 **[Browse the gallery →](https://justintse-cal.github.io/hyperframe-templates/)**
 
@@ -10,13 +12,20 @@ template, then copy its composition id into your own project. Some of them are a
 
 ## What's here
 
-| | Category | Templates |
+| | Group | Templates |
 | --- | --- | --- |
-| **A** | Explaining a concept | A01–A04 |
-| **B** | Data charts | B01–B05 |
-| **C** | Workflow | C01–C11 |
-| **D** | News highlight text | D01–D04 |
-| **E** | Narrative & emphasis | E01–E18 |
+| **A** | Openers & Statements | breaking-news · chapter-card · headline-stack · speech-statement |
+| **B** | Explain & Summarize | core-definition · mechanism-walkthrough · problem-solution · news-summary · term-explanation |
+| **C** | Compare & Contrast | paradigm-shift · split-tilt-cards · split-panels · split-screens |
+| **D** | Process & Flow | milestone-timeline · decision-tree · feedback-loop · handdrawn-flowchart · progress-steps · flowchart |
+| **E** | Structure & Systems | architecture-stack · network-node-map · radial-surround · grid-card-assemble · specs-list |
+| **F** | Data & Numbers | metric-highlight · barchart-growth · linechart-trend · pie-donut-share · news-stat · chart-card · unit-chart · progress-stat |
+| **G** | Social Proof & Audience | press-quote · yt-comment-stack · reddit-post-card · testimonial-card · yt-comment-scatter · subscribe-outro |
+| **H** | Screens & Artifacts | terminal-editor · article-circle · typed-prompt · notes-typing |
+
+Templates are grouped by the **job each one does in an edit**, not by the medium
+it imitates. Ids are stable slugs, so a template can move between groups without
+renaming its file.
 
 Every template is exactly **8 seconds**, so they stack into a uniform grid. The
 root reel in `index.html` plays all 42 back-to-back (336s total).
@@ -35,12 +44,51 @@ the **"Copy full catalog for AI"** button on the gallery site.
 All templates follow [`design.md`](./design.md) — read it before editing a frame.
 The short version:
 
-- **Canvas** — 1920×1080, `#root` on a warm gradient `#FFFCEF → #FDF3F8` (never white).
-- **Palette** — ink `#121212`, gold `#8A6D00`, pink `#C2185B`, red `#C0392B`.
-- **Type** — Playfair Display for display/section titles; Plus Jakarta Sans / Inter for body and UI.
+- **Canvas** — 1920×1080 on a white `#ffffff` frame (never a gradient).
+- **Palette** — one theme per template (Blue, Red, Green, Yellow, Orange); black text by default, theme accent for highlights only.
+- **Type** — Noto Sans for everything, with Noto Sans TC for Traditional Chinese; hierarchy comes from size and weight.
 - **Motion** — entrance-only, deterministic and seek-safe. No exit animations.
 - **Safe area** — keep the bottom ~15% (below y≈920px) clear of content.
 - **No corner text** — no badges, footers, or watermarks; a textless `.frame-border` is allowed.
+
+### Typography
+
+Frames are set in **Noto Sans**, the Google Fonts variable family, with **Noto Sans
+TC** as its Traditional Chinese companion. One family carries every role —
+display, headings, body, labels, chart text, numbers — so hierarchy comes from
+size, weight and spacing instead of mixing typefaces, and a mixed-script frame
+reads as a single voice.
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+```
+
+Each weight gets a utility class whose name and declaration agree:
+
+```css
+.noto-sans-700 {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.noto-sans-tc-500 {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+```
+
+Fallback stack: `"Noto Sans", "PingFang TC", "Microsoft JhengHei", sans-serif`.
+The full scale, weight assignments and CJK pairing rules live in
+[`design.md` §6](./design.md).
+
+> The committed preview renders and the frames themselves still carry the
+> previous Playfair Display / Plus Jakarta Sans stack; migrating the 42
+> compositions to Noto Sans is tracked separately.
 
 ## Quick start
 
@@ -55,8 +103,8 @@ To use a template in your own HyperFrames project, copy the matching file from
 
 ```html
 <div
-  data-composition-id="A01-core-definition"
-  data-composition-src="compositions/A01-core-definition.html"
+  data-composition-id="core-definition"
+  data-composition-src="compositions/core-definition.html"
   data-start="0"
   data-duration="8"
   data-track-index="1"
@@ -69,7 +117,7 @@ To use a template in your own HyperFrames project, copy the matching file from
 
 ```
 index.html               root reel — one slot per template, 8s each (336s)
-compositions/            one sub-composition per template (A01 … E18)
+compositions/            one sub-composition per template (core-definition, …)
 compositions/components/ paste-in effect snippets from the HyperFrames registry
 stock media/             placeholder images & footage used by the templates
 docs/                    the GitHub Pages gallery (static HTML/CSS/JS)

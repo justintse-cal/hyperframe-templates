@@ -26,7 +26,7 @@ const postersDir = join(root, 'docs', 'posters');
 
 const indexHtml = readFileSync(join(root, 'index.html'), 'utf8');
 const slotRe =
-  /data-composition-id="([A-E]\d{2}-[^"]+)"[\s\S]*?data-start="([\d.]+)"[\s\S]*?data-duration="([\d.]+)"/g;
+  /data-composition-id="(?!main")([^"]+)"[\s\S]*?data-start="([\d.]+)"[\s\S]*?data-duration="([\d.]+)"/g;
 const slots = [];
 for (let m; (m = slotRe.exec(indexHtml)); ) {
   slots.push({ id: m[1], start: parseFloat(m[2]), duration: parseFloat(m[3]) });

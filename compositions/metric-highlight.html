@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #f8dfa0;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* Pulsing Ring Background Grid */
+        .grid-bg {
+          position: absolute;
+          top: 100px;
+          bottom: 100px;
+          left: 0;
+          right: 0;
+          width: 880px;
+          margin: 0 auto;
+          border: 1px dashed rgba(18, 18, 18, 0.12);
+          border-radius: 50%;
+          opacity: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .ring-inner {
+          width: 600px;
+          height: 600px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+          border-radius: 50%;
+        }
+
+        .metric-stage {
+          position: absolute;
+          inset: 140px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .metric-value {
+          font-family: 'Playfair Display', serif;
+          font-size: 160px;
+          font-weight: 800;
+          color: #ee6123;
+          line-height: 1;
+          letter-spacing: -0.03em;
+          opacity: 0;
+          text-shadow: 0 0 40px rgba(138, 109, 0, 0.15);
+        }
+
+        .metric-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 34px;
+          font-weight: 600;
+          color: #f8dfa0;
+          margin-top: 24px;
+          max-width: 1000px;
+          line-height: 1.4;
+          opacity: 0;
+        }
+
+        .context-tag {
+          font-size: 17px;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #ee6123;
+          margin-top: 20px;
+          opacity: 0;
+        }
+
+      </style>
+
+      <div data-hf-id="hf-1ulv" id="root" data-composition-id="metric-highlight" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-6d9m" class="grid-bg" id="c6-grid">
+          <div data-hf-id="hf-60x9" class="ring-inner"></div>
+        </div>
+
+        <div data-hf-id="hf-x2xh" class="metric-stage">
+          <div data-hf-id="hf-egt2" class="metric-value" id="c6-value">+340%</div>
+          <div style="color: rgb(0, 0, 0)" data-hf-id="hf-3965" class="metric-label" id="c6-label">Increase in quarterly organic traffic performance</div>
+          <div data-hf-id="hf-cdmc" class="context-tag" id="c6-context">Source: Q3 Performance &amp; Analytics Report</div>
+        </div>
+
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1.5s: Subtle grid / ring fade in
+        tl.fromTo("#c6-grid",
+          { opacity: 0, scale: 0.85 },
+          { opacity: 1, scale: 1, duration: 1.5, ease: "power2.out" },
+          0
+        );
+
+        // 1.6–3s: Scale in large metric value
+        tl.fromTo("#c6-value",
+          { opacity: 0, scale: 0.7, y: 30 },
+          { opacity: 1, scale: 1, y: 0, duration: 1.4, ease: "back.out(1.4)" },
+          1.6
+        );
+
+        // 3.8–4.6s: Reveal label
+        tl.fromTo("#c6-label",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          3.8
+        );
+
+        // 5.2–6s: Source context & logo corner
+        tl.fromTo("#c6-context",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8 },
+          5.2
+        );
+
+        window.__timelines["metric-highlight"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

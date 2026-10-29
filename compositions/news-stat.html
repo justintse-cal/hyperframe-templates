@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #000000;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .stat-stage {
+          position: absolute;
+          inset: 160px 112px 120px 112px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .context-source {
+          font-size: 17px;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #ffcf00;
+          margin-bottom: 20px;
+          opacity: 0;
+        }
+
+        .stat-number {
+          font-family: 'Playfair Display', serif;
+          font-size: 200px;
+          font-weight: 800;
+          color: #ffcf00;
+          line-height: 0.9;
+          letter-spacing: -0.04em;
+          opacity: 0;
+          text-shadow: 0 0 50px rgba(255, 214, 51, 0.45);
+        }
+
+        .stat-description {
+          font-size: 34px;
+          font-weight: 600;
+          color: #000000;
+          max-width: 1100px;
+          line-height: 1.4;
+          margin-top: 28px;
+          opacity: 0;
+        }
+
+      </style>
+
+      <div data-hf-id="hf-6xi0" id="root" data-composition-id="news-stat" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-4nbb" class="stat-stage">
+          <div data-hf-id="hf-v43w" class="context-source" id="c19-source">Source: 2026 Annual Threat & Vulnerability Report</div>
+          <div data-hf-id="hf-7tdm" class="stat-number" id="c19-number">88%</div>
+          <div data-hf-id="hf-nenu" class="stat-description" id="c19-desc">of enterprise organizations experienced cloud vulnerabilities in 2026.</div>
+        </div>
+
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1s: Contextual source at top
+        tl.fromTo("#c19-source",
+          { opacity: 0, y: -10 },
+          { opacity: 1, y: 0, duration: 1.0 },
+          0
+        );
+
+        // 1.6–3s: Scale up core statistic (address only — text is driven by the count-up below)
+        tl.fromTo("#c19-number",
+          { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 1.4, ease: "back.out(1.4)" },
+          1.6
+        );
+
+        // 1.8–4.4s: Count up the number (deterministic, part of the seekable timeline)
+        const countEl = document.querySelector("#c19-number");
+        const countState = { val: 0 };
+        tl.to(countState,
+          {
+            val: 88,
+            duration: 2.6,
+            ease: "power2.out",
+            onUpdate: function () {
+              countEl.textContent = Math.round(countState.val) + "%";
+            }
+          },
+          1.8
+        );
+
+        // 4.8–5.8s: Reveal description & logo
+        tl.fromTo("#c19-desc",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+          4.8
+        );
+
+        window.__timelines["news-stat"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

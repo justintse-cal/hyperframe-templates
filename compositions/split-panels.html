@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: #ffffff;
+          color: #74c368;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          pointer-events: none;
+          isolation: isolate;
+        }
+
+        /* Each half owns one side of the frame. The outer edge stays close to
+           the page gradient; the colour deepens toward the centre seam. */
+        .c09-panel {
+          position: absolute;
+          top: 0;
+          width: 50%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 0 96px;
+          text-align: center;
+          will-change: transform;
+        }
+
+        .c09-left {
+          left: 0;
+          background: linear-gradient(
+            90deg,
+            #FFFCEF 0%,
+            color-mix(in srgb, #74c368 68%, #FFFCEF) 100%
+          );
+        }
+
+        .c09-right {
+          left: 50%;
+          background: linear-gradient(
+            270deg,
+            #FDF3F8 0%,
+            color-mix(in srgb, #00513c 15%, #FDF3F8) 100%
+          );
+        }
+
+        /* A hairline at the seam keeps each half visually anchored. */
+        .c09-left::after,
+        .c09-right::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          pointer-events: none;
+        }
+
+        .c09-left::after {
+          right: 0;
+          background: linear-gradient(180deg, transparent, rgba(138, 109, 0, 0.20), transparent);
+        }
+
+        .c09-right::after {
+          left: 0;
+          background: linear-gradient(180deg, transparent, rgba(194, 24, 91, 0.20), transparent);
+        }
+
+        .c09-rule {
+          width: 56px;
+          height: 3px;
+          margin-bottom: 28px;
+          border-radius: 999px;
+        }
+
+        .c09-left .c09-rule { background: #88d18a; }
+        .c09-right .c09-rule { background: #00513c; }
+
+        .c09-title {
+          margin: 0;
+          font-family: 'Playfair Display', serif;
+          font-size: 76px;
+          font-weight: 800;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+        }
+
+        .c09-left .c09-title { color: #88d18a; }
+        .c09-right .c09-title { color: #000000; }
+
+        .c09-caption {
+          max-width: 600px;
+          margin: 18px 0 0;
+          color: rgba(18, 18, 18, 0.78);
+          font-size: 26px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        /* The line stops at the subtitle safe band (y = 920). */
+        .c09-divider {
+          position: absolute;
+          left: calc(50% - 1px);
+          top: 160px;
+          bottom: 160px;
+          z-index: 10;
+          width: 2px;
+          background: #ffffff;
+          box-shadow: 0 0 26px rgba(194, 24, 91, 0.14);
+          transform-origin: center center;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div data-hf-id="hf-udgk"
+        id="root"
+        data-composition-id="split-panels"
+        data-width="1920"
+        data-height="1080"
+        data-duration="8"
+      >
+        <div data-hf-id="hf-i9cr" class="c09-panel c09-left" id="c09-left">
+          <span data-hf-id="hf-qz9z" class="c09-rule" aria-hidden="true"></span>
+          <h2 data-hf-id="hf-2qrn" class="c09-title">Panel A</h2>
+          <p data-hf-id="hf-4620" class="c09-caption">Every detail under your control.</p>
+        </div>
+
+        <div data-hf-id="hf-pow9" class="c09-panel c09-right" id="c09-right">
+          <span data-hf-id="hf-4e8n" class="c09-rule" aria-hidden="true"></span>
+          <h2 data-hf-id="hf-2cgm" class="c09-title">Panel B</h2>
+          <p data-hf-id="hf-3haz" class="c09-caption">A faster start, with less to manage.</p>
+        </div>
+
+        <div data-hf-id="hf-xx4b" class="c09-divider" id="c09-divider" aria-hidden="true"></div>
+      </div>
+
+      <script>
+        (function () {
+          var left = document.getElementById("c09-left");
+          var right = document.getElementById("c09-right");
+          var divider = document.getElementById("c09-divider");
+
+          var tl = gsap.timeline({ paused: true });
+
+          /* Two equal panels meet at the seam. The source spring is heavily
+             damped (damping ratio around 0.84), so power3.out reproduces its
+             fast launch and long settle without pushing either panel past
+             the centre and breaking the seam. */
+          tl.fromTo(
+            left,
+            { xPercent: -100 },
+            { xPercent: 0, duration: 0.95, ease: "power3.out" },
+            0
+          );
+          tl.fromTo(
+            right,
+            { xPercent: 100 },
+            { xPercent: 0, duration: 0.95, ease: "power3.out" },
+            0.17
+          );
+
+          /* The divider appears only after both panels have landed. */
+          tl.fromTo(
+            divider,
+            { opacity: 0, scaleY: 0.86 },
+            { opacity: 1, scaleY: 1, duration: 0.35, ease: "power2.out" },
+            1.2
+          );
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["split-panels"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

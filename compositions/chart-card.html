@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #f8dfa0;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Editorial Frame & Header */
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .frame-border::before {
+          content: '';
+          position: absolute;
+          inset: 6px;
+          border: 1px dashed rgba(194, 24, 91, 0.3);
+        }
+
+        /* Chart stage */
+        .chart-stage {
+          position: absolute;
+          top: 150px;
+          left: 96px;
+          right: 96px;
+          bottom: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1800px;
+        }
+
+        .chart-frame {
+          position: relative;
+          width: 1344px;
+          height: 720px;
+          transform-style: preserve-3d;
+        }
+
+        .chart-img {
+          width: 1344px;
+          height: 720px;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+          border: 1px solid rgba(18, 18, 18, 0.12);
+          border-radius: 6px;
+          box-shadow: 12px 14px 0 rgba(18, 18, 18, 0.08);
+        }
+
+        /* Highlight — dims everything outside its box via a huge outward shadow,
+           so content inside the box stays at full brightness */
+        .highlight-box {
+          position: absolute;
+          top: 210px;
+          left: 760px;
+          width: 380px;
+          height: 180px;
+          border: 3px solid #E6B800;
+          border-radius: 8px;
+          opacity: 0;
+          z-index: 6;
+          box-shadow: 0 0 0 3000px rgba(0, 0, 0, 0.45);
+        }
+
+        .callout-box {
+          position: absolute;
+          top: 60px;
+          left: 700px;
+          background: #ffffff;
+          border: 2px solid #f8dfa0;
+          border-radius: 8px;
+          padding: 16px 22px;
+          opacity: 0;
+          z-index: 7;
+          box-shadow: 6px 8px 0 rgba(18, 18, 18, 0.15);
+        }
+
+        .callout-title {
+          font-family: 'Inter', sans-serif;
+          font-size: 17px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #7b2d26;
+        }
+
+        .callout-text {
+          font-family: 'Inter', sans-serif;
+          font-size: 23px;
+          font-weight: 600;
+          color: #f8dfa0;
+          margin-top: 4px;
+        }
+
+        /* Footer & Logo */
+
+      </style>
+
+      <div data-hf-id="hf-bmln" id="root" data-composition-id="chart-card" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-nh8x" class="chart-stage">
+          <div data-hf-id="hf-mlqz" class="chart-frame" id="e1-chart-frame">
+            <img data-hf-id="hf-rwgl" class="chart-img" id="e1-chart-img" src="../stock%20media/ai_price.jpg" alt="Chart screenshot placeholder" width="1344" height="720" />
+            <div data-hf-id="hf-rnwb" class="highlight-box" id="e1-highlight"></div>
+            <div data-hf-id="hf-xzuj" class="callout-box" id="e1-callout">
+              <div data-hf-id="hf-e304" class="callout-title">Key Insight</div>
+              <div data-hf-id="hf-n5pi" class="callout-text">Price spikes 3× after the announcement</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–2s: chart screenshot slides in from the right with a 3D perspective
+        tl.fromTo("#e1-chart-frame",
+          { opacity: 0, x: 980, rotationY: -35 },
+          { opacity: 1, x: 0, rotationY: 0, duration: 2, ease: "power3.out" },
+          0
+        );
+
+        // 2–3s: highlight box + callout fade in together
+        tl.fromTo("#e1-highlight",
+          { opacity: 0, scale: 1.08 },
+          { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" },
+          2.2
+        );
+        tl.fromTo("#e1-callout",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          2.4
+        );
+
+        // No exit animation — holds until the clip ends at 8s
+
+        window.__timelines["chart-card"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

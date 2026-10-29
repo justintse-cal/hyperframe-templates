@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #fe4a49;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+          isolation: isolate;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        /* ------------------------------------------------------ notes page */
+        .nty-page {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 1400px;
+          height: 800px;
+          border: 1px solid rgba(18, 18, 18, 0.16);
+          border-radius: 22px;
+          background: rgba(255, 255, 255, 0.78);
+          box-shadow: 0 26px 64px rgba(18, 18, 18, 0.12);
+          overflow: hidden;
+        }
+
+        .nty-nav {
+          position: absolute;
+          left: 44px;
+          top: 40px;
+          width: 62px;
+          height: 62px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 1px solid rgba(18, 18, 18, 0.12);
+        }
+
+        .nty-nav svg {
+          position: absolute;
+          left: 32%;
+          top: 30%;
+          width: 36%;
+          height: 40%;
+        }
+
+        .nty-check {
+          position: absolute;
+          right: 44px;
+          top: 40px;
+          width: 62px;
+          height: 62px;
+          border-radius: 50%;
+          background: #fa003f;
+        }
+
+        .nty-check svg {
+          position: absolute;
+          left: 26%;
+          top: 30%;
+          width: 50%;
+          height: 42%;
+        }
+
+        .nty-body {
+          position: absolute;
+          left: 78px;
+          right: 78px;
+          top: 158px;
+        }
+
+        .nty-title {
+          font-size: 66px;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          color: #fe4a49;
+          line-height: 1.15;
+          margin: 0 0 44px;
+        }
+
+        .nty-line {
+          font-size: 38px;
+          font-weight: 500;
+          color: rgba(18, 18, 18, 0.86);
+          line-height: 1.5;
+          margin: 0 0 24px;
+          white-space: pre-wrap;
+          min-height: 1.5em;
+        }
+
+        .nty-ch {
+          opacity: 0;
+        }
+
+        #nty-caret {
+          position: absolute;
+          width: 3px;
+          height: 42px;
+          background: #fc5c84;
+          border-radius: 2px;
+          left: 0;
+          top: 0;
+          will-change: transform;
+        }
+
+        .nty-fmt {
+          position: absolute;
+          left: 78px;
+          right: 78px;
+          bottom: 34px;
+          height: 78px;
+          background: rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(18, 18, 18, 0.1);
+          border-radius: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
+
+        .nty-fmt .aa {
+          font-size: 30px;
+          font-weight: 700;
+          color: #fe4a49;
+        }
+
+        .nty-fmt .aa small {
+          font-size: 0.65em;
+          font-weight: 400;
+        }
+
+        .nty-fmt svg {
+          width: 34px;
+          height: 34px;
+        }
+      </style>
+
+      <div data-hf-id="hf-e13a" id="root" data-composition-id="notes-typing" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-e13f" class="frame-border"></div>
+
+        <div data-hf-id="hf-e13c" id="e13-clip" class="clip" data-start="0" data-duration="8" data-track-index="0" style="position: absolute; inset: 0">
+          <div data-hf-id="hf-rirp" class="nty-page">
+            <div data-hf-id="hf-o57v" class="nty-nav">
+              <svg data-hf-id="hf-sav0" viewBox="0 0 40 40" aria-hidden="true">
+                <path data-hf-id="hf-gxkb" d="M26 4 L10 20 L26 36" fill="none" stroke="#fe4a49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div data-hf-id="hf-libg" class="nty-check">
+              <svg data-hf-id="hf-1shx" viewBox="0 0 56 46" aria-hidden="true">
+                <path data-hf-id="hf-yhnn" d="M6 24 L21 38 L50 6" fill="none" stroke="#FFFCEF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div data-hf-id="hf-n7iq" class="nty-body" id="nty-body">
+              <div data-hf-id="hf-59pw" class="nty-title" id="nty-title" data-layout-allow-overlap></div>
+              <div data-hf-id="hf-8jx6" id="nty-lines"></div>
+              <div data-hf-id="hf-cvra" id="nty-caret"></div>
+            </div>
+            <div data-hf-id="hf-xyb9" class="nty-fmt">
+              <span data-hf-id="hf-zwna" class="aa">A<small data-hf-id="hf-2qin">a</small></span>
+              <svg data-hf-id="hf-ivh0" viewBox="0 0 62 62" aria-hidden="true">
+                <rect data-hf-id="hf-w928" x="3" y="3" width="56" height="56" rx="8" fill="none" stroke="#fe4a49" stroke-width="4" />
+                <line data-hf-id="hf-0nls" x1="3" y1="22" x2="59" y2="22" stroke="#fe4a49" stroke-width="4" />
+                <line data-hf-id="hf-4xg4" x1="22" y1="3" x2="22" y2="59" stroke="#fe4a49" stroke-width="4" />
+              </svg>
+              <svg data-hf-id="hf-mbtt" viewBox="0 0 64 54" aria-hidden="true">
+                <circle data-hf-id="hf-g6b8" cx="10" cy="12" r="9" fill="none" stroke="#fe4a49" stroke-width="4" />
+                <path data-hf-id="hf-22fe" d="M6 12 l3 3 6 -7" fill="none" stroke="#fe4a49" stroke-width="3" stroke-linecap="round" />
+                <line data-hf-id="hf-ltrt" x1="28" y1="12" x2="60" y2="12" stroke="#fe4a49" stroke-width="4" stroke-linecap="round" />
+                <circle data-hf-id="hf-yxw7" cx="10" cy="42" r="9" fill="none" stroke="#fe4a49" stroke-width="4" />
+                <line data-hf-id="hf-1qry" x1="28" y1="42" x2="52" y2="42" stroke="#fe4a49" stroke-width="4" stroke-linecap="round" />
+              </svg>
+              <svg data-hf-id="hf-6k4b" viewBox="0 0 46 70" aria-hidden="true">
+                <path data-hf-id="hf-udyj" d="M33 14 v34 a11 11 0 0 1 -22 0 V16 a8 8 0 0 1 16 0 v30 a4 4 0 0 1 -8 0 V20" fill="none" stroke="#fe4a49" stroke-width="4" stroke-linecap="round" />
+              </svg>
+              <svg data-hf-id="hf-zdgs" viewBox="0 0 62 62" aria-hidden="true">
+                <circle data-hf-id="hf-ju94" cx="31" cy="31" r="27" fill="none" stroke="#fc5c84" stroke-width="4" />
+                <path data-hf-id="hf-26zg" d="M22 40 L36 18 a5 5 0 0 1 8 6 L30 46 l-10 4 z" fill="#fc5c84" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters ----
+             A bold note title, then body lines typed a character at a time on
+             a measured human keystroke rhythm, caret riding every landed
+             character. Deterministic: schedule from a gap table, caret
+             positions measured at mount. Entrance-only, holds to 8s. */
+          var vars = {
+            title: 'Things nobody told me|about video.',
+            lines: 'my edits took all night|my tools cost a fortune|and nothing ever shipped.',
+            speed: 1,
+          };
+
+          function clampNumber(v, min, max, fb) {
+            var n = typeof v === 'number' ? v : parseFloat(v);
+            if (!isFinite(n)) return fb;
+            return Math.min(max, Math.max(min, n));
+          }
+
+          var titleEl = document.getElementById('nty-title');
+          titleEl.innerHTML = '';
+          String(vars.title)
+            .split('|')
+            .forEach(function (line, i) {
+              if (i > 0) titleEl.appendChild(document.createElement('br'));
+              titleEl.appendChild(document.createTextNode(line));
+            });
+
+          var lines = String(vars.lines)
+            .split('|')
+            .map(function (l) {
+              return l.trim();
+            })
+            .filter(Boolean)
+            .slice(0, 6);
+          if (lines.length === 0) lines = ['my edits took all night'];
+          var speed = clampNumber(vars.speed, 0.5, 2, 1);
+
+          var linesEl = document.getElementById('nty-lines');
+          var chars = [];
+          lines.forEach(function (line, li) {
+            var p = document.createElement('div');
+            p.className = 'nty-line';
+            p.setAttribute('data-layout-allow-overlap', '');
+            p.setAttribute('data-layout-allow-occlusion', '');
+            line.split('').forEach(function (ch) {
+              var s = document.createElement('span');
+              s.className = 'nty-ch';
+              s.textContent = ch;
+              p.appendChild(s);
+              chars.push({ el: s, line: li });
+            });
+            linesEl.appendChild(p);
+          });
+
+          /* the measured human keystroke rhythm, cycled */
+          var KEY_GAPS = [
+            0.1, 0.033, 0.2, 0.133, 0.2, 0.033, 0.067, 0.033, 0.1, 0.067, 0.033, 0.067, 0.067,
+            0.067, 0.133, 0.067, 0.033, 0.067, 0.1, 0.1, 0.067, 0.133, 0.1, 0.033, 0.1, 0.033,
+            0.167, 0.033, 0.1, 0.1,
+          ];
+          var LINE_PAUSE = 0.85; /* the measured breath before a new thought */
+          var DURATION = 8;
+
+          var caret = document.getElementById('nty-caret');
+          var body = document.getElementById('nty-body');
+          var tl = gsap.timeline({ paused: true });
+          var finalT = 0;
+
+          function build() {
+            tl.clear();
+            var bodyRect = body.getBoundingClientRect();
+            var scale = bodyRect.width / body.offsetWidth || 1;
+            gsap.set(caret, { autoAlpha: 0 });
+            var t = 0.5;
+            var lastLine = -1;
+            chars.forEach(function (c, i) {
+              if (c.line !== lastLine) {
+                if (lastLine >= 0) t += LINE_PAUSE / speed;
+                lastLine = c.line;
+              }
+              var r = c.el.getBoundingClientRect();
+              var x = (r.right - bodyRect.left) / scale;
+              var y = (r.top - bodyRect.top) / scale;
+              tl.set(c.el, { opacity: 1 }, t);
+              tl.set(caret, { x: x + 2, y: y, autoAlpha: 1 }, t);
+              t += KEY_GAPS[i % KEY_GAPS.length] / speed;
+            });
+            /* settle blink, then rest */
+            for (var b = 0; b < 4; b += 1) {
+              tl.set(caret, { autoAlpha: b % 2 === 0 ? 0 : 1 }, t + 0.4 + b * 0.5333);
+            }
+            finalT = t;
+            /* pad the timeline to the clip duration (entrance-only hold) */
+            var pad = Math.max(DURATION, t + 0.1);
+            tl.set({}, {}, pad);
+            tl.seek(0);
+          }
+          build();
+          if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function () {
+              build();
+              tl.pause(0);
+            });
+          }
+
+          window.__timelines['notes-typing'] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          background: #ffffff;
+          color: #fe4a49;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .stack-title {
+          position: absolute;
+          top: 140px;
+          left: 96px;
+          right: 96px;
+          text-align: center;
+          font-family: 'Playfair Display', serif;
+          font-size: 52px;
+          font-weight: 800;
+          color: #fa003f;
+        }
+
+        /* Stacked Layers Container */
+        .stack-stage {
+          position: absolute;
+          top: 260px;
+          left: 168px;
+          right: 168px;
+          height: 540px;
+          display: flex;
+          flex-direction: column-reverse; /* Bottom to top stacking */
+          align-items: center;
+          gap: 24px;
+        }
+
+        .stack-layer {
+          width: 100%;
+          height: 120px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 40px;
+          box-sizing: border-box;
+          opacity: 0;
+        }
+
+        .layer-bottom {
+          background: rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(18, 18, 18, 0.12);
+        }
+
+        .layer-middle {
+          background: rgba(194, 24, 91, 0.06);
+          border: 1px solid #fc5c84;
+        }
+
+        .layer-top {
+          background: rgba(255, 243, 168, 0.6);
+          border: 2px solid #fa003f;
+          box-shadow: 0 0 30px rgba(138, 109, 0, 0.15);
+        }
+
+        .layer-tag {
+          font-family: 'Playfair Display', serif;
+          font-size: 23px;
+          font-style: italic;
+          color: #fa003f;
+        }
+
+        .layer-name {
+          font-size: 30px;
+          font-weight: 700;
+          color: #fe4a49;
+        }
+
+      </style>
+
+      <div data-hf-id="hf-9o4z" id="root" data-composition-id="architecture-stack" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-ev3u" class="frame-border"></div>
+
+        <div data-hf-id="hf-k79y" class="stack-title">Enterprise Tech Stack</div>
+
+        <div data-hf-id="hf-24y9" class="stack-stage">
+          <!-- Bottom Layer -->
+          <div data-hf-id="hf-d98j" class="stack-layer layer-bottom" id="c14-bottom">
+            <span data-hf-id="hf-95y6" class="layer-tag">Layer 01 • Foundation</span>
+            <span data-hf-id="hf-5n3x" class="layer-name">Secure Distributed Database</span>
+          </div>
+
+          <!-- Middle Layer -->
+          <div data-hf-id="hf-0vef" class="stack-layer layer-middle" id="c14-middle">
+            <span data-hf-id="hf-ssuh" class="layer-tag">Layer 02 • Core Logic</span>
+            <span data-hf-id="hf-diq7" class="layer-name" style="color: #fc5c84;">Business Logic & API Gateway</span>
+          </div>
+
+          <!-- Top Layer -->
+          <div data-hf-id="hf-dpzj" class="stack-layer layer-top" id="c14-top">
+            <span data-hf-id="hf-lbcd" class="layer-tag">Layer 03 • Experience</span>
+            <span data-hf-id="hf-twun" class="layer-name" style="color: #fa003f;">UI / UX Modern Interface</span>
+          </div>
+        </div>
+
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // 0–1s: Introduce system name
+        tl.fromTo(".stack-title",
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+          0
+        );
+
+        // 1.6–2.6s: Bottom layer slides in from below
+        tl.fromTo("#c14-bottom",
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+          1.6
+        );
+
+        // 3.2–4.2s: Middle layer stacks on top
+        tl.fromTo("#c14-middle",
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+          3.2
+        );
+
+        // 4.8–5.8s: Top layer caps the stack
+        tl.fromTo("#c14-top",
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+          4.8
+        );
+
+        window.__timelines["architecture-stack"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

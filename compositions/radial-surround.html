@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          isolation: isolate;
+          background: #ffffff;
+          color: #f8dfa0;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          pointer-events: none;
+        }
+
+        .frame-border {
+          position: absolute;
+          inset: 32px;
+          border: 1px solid rgba(18, 18, 18, 0.18);
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .rs-clip { position: absolute; inset: 0; overflow: hidden; }
+
+        .rs-stage { position: absolute; inset: 0; will-change: transform, opacity; }
+
+        .rs-center-layer {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+        }
+
+        .rs-center {
+          display: grid;
+          place-items: center;
+          will-change: transform, opacity;
+        }
+
+        .rs-center > img,
+        .rs-center > video {
+          max-width: 34cqw;
+          max-height: 30cqh;
+          object-fit: cover;
+          border-radius: 2.2cqmin;
+        }
+
+        .rs-card {
+          width: 28cqw;
+          min-height: 22cqh;
+          padding: 2.2cqmin;
+          border: 0.16cqmin solid rgba(18, 18, 18, 0.22);
+          border-radius: 2.2cqmin;
+          background: rgba(255, 255, 255, 0.82);
+          box-shadow: 0 3cqh 9cqh rgba(18, 18, 18, 0.14);
+        }
+
+        .rs-card-label {
+          overflow: hidden;
+          color: #f8dfa0;
+          font-family: 'Playfair Display', serif;
+          font-size: var(--rs-center-font, 4cqmin);
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: 0.01em;
+          text-align: center;
+          white-space: nowrap;
+        }
+
+        .rs-ring { position: absolute; inset: 0; }
+
+        /* Positioning wrapper: the baked ring offsets live in the --rs-ox
+           and --rs-oy custom properties (plain cq values) and the close-in
+           tweens THOSE, never x/y or a GSAP-written calc() string. */
+        .rs-pos {
+          position: absolute;
+          top: calc(50% + var(--rs-oy, 0cqh));
+          left: calc(50% + var(--rs-ox, 0cqw));
+          width: max-content;
+          transform: translate(-50%, -50%);
+          will-change: top, left;
+        }
+
+        .rs-chip {
+          padding: 1.15cqmin 2.1cqmin;
+          border: 0.14cqmin solid rgba(18, 18, 18, 0.2);
+          border-radius: 0.6cqmin;
+          background: rgba(255, 255, 255, 0.86);
+          color: #f8dfa0;
+          font-size: 2.1cqmin;
+          font-weight: 600;
+          line-height: 1;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        /* Close-in edge dim: very subtle, content stays legible. */
+        .rs-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            ellipse at center,
+            transparent 60%,
+            rgba(18, 18, 18, 0.12) 100%
+          );
+          opacity: 0;
+          pointer-events: none;
+        }
+      </style>
+
+      <div data-hf-id="hf-c06a" id="root" data-composition-id="radial-surround" data-width="1920" data-height="1080" data-duration="8">
+        <div data-hf-id="hf-c06f" class="frame-border"></div>
+
+        <div data-hf-id="hf-c06c" id="c06-clip" class="rs-clip clip" data-start="0" data-duration="8" data-track-index="0">
+          <div data-hf-id="hf-ebic" class="rs-stage" role="img">
+            <div data-hf-id="hf-i7hp" class="rs-center-layer">
+              <div data-hf-id="hf-mpx2" class="rs-center" data-slot="center"></div>
+            </div>
+            <div data-hf-id="hf-ecxf" class="rs-ring" aria-hidden="true"></div>
+            <div data-hf-id="hf-2584" class="rs-vignette"></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters ----
+             Labeled hairline chips assemble around a centered subject on an
+             elliptical ring, then converge inward (the subject never moves).
+             Entrance-only: the crowded hold runs to the clip end at 8s. */
+          var CONFIG = {
+            center_label: 'Your team',
+            chips: 'Docs,Tickets,Dashboards,Inbox,Chat,Sheets',
+            close_in: true,
+          };
+
+          var root = document.getElementById('root');
+          var stage = root.querySelector('.rs-stage');
+          var center = root.querySelector('[data-slot="center"]');
+          var ring = root.querySelector('.rs-ring');
+          var vignette = root.querySelector('.rs-vignette');
+
+          var centerLabel = CONFIG.center_label;
+          var labels = String(CONFIG.chips)
+            .split(',')
+            .map(function (token) { return token.trim(); })
+            .filter(function (token) { return token !== ''; })
+            .slice(0, 12);
+          if (labels.length === 0) labels = ['Docs', 'Tickets', 'Dashboards', 'Inbox', 'Chat', 'Sheets'];
+          var closeIn = CONFIG.close_in === true;
+          var exit = 'none'; // entrance-only
+
+          root.style.setProperty('--rs-accent', '#7b2d26');
+
+          if (center.children.length === 0) {
+            center.classList.add('rs-card');
+            var label = document.createElement('span');
+            label.className = 'rs-card-label';
+            label.textContent = centerLabel;
+            center.appendChild(label);
+          }
+          stage.setAttribute('aria-label', centerLabel + ': ' + labels.join(', '));
+
+          var chars = Array.from(centerLabel).length;
+          var fontCqw = Math.min(3.4, 23 / (Math.max(1, chars) * 0.62));
+          root.style.setProperty('--rs-center-font', 'min(' + fontCqw.toFixed(3) + 'cqw, 6cqh)');
+
+          /* Elliptical ring, baked once (deterministic). */
+          var FAR_RX = 30, FAR_RY = 31, NEAR_RX = 20, NEAR_RY = 23;
+          var count = labels.length;
+          var step = 360 / count;
+          function ringPosition(index, rx, ry) {
+            var degrees = -90 + Math.ceil(index / 2) * step * (index % 2 === 1 ? 1 : -1);
+            var a = (degrees * Math.PI) / 180;
+            return {
+              ox: (Math.cos(a) * rx).toFixed(3) + 'cqw',
+              oy: (Math.sin(a) * ry).toFixed(3) + 'cqh',
+            };
+          }
+          var positions = [];
+          var chips = labels.map(function (text, index) {
+            var pos = document.createElement('div');
+            pos.className = 'rs-pos';
+            var far = ringPosition(index, FAR_RX, FAR_RY);
+            pos.style.setProperty('--rs-ox', far.ox);
+            pos.style.setProperty('--rs-oy', far.oy);
+            var chip = document.createElement('div');
+            chip.className = 'rs-chip';
+            chip.textContent = text;
+            pos.appendChild(chip);
+            ring.appendChild(pos);
+            positions.push(pos);
+            return chip;
+          });
+
+          var CENTER_AT = 0.05, BASE_START = 0.9, GAP = 0.3, ENTRY = 0.55;
+          var CLOSE_DUR = 0.75, CLOSE_STAG = 0.09, BREATH = 0.35;
+          var duration = 8;
+          var OUT = 0;
+          var avail = duration - OUT;
+          var closeSpan = closeIn ? (count - 1) * CLOSE_STAG + CLOSE_DUR : 0;
+          var latestStart = Math.max(0, avail - ENTRY - closeSpan);
+          var gap = count > 1 ? Math.min(GAP, Math.max(0, latestStart - BASE_START) / (count - 1)) : GAP;
+
+          var starts = chips.map(function (chip, index) {
+            var start = Math.min(BASE_START, latestStart) + gap * index;
+            return Math.max(0, Math.min(start, latestStart));
+          });
+
+          var tl = gsap.timeline({ paused: true });
+
+          /* Center seats first, then never moves again. */
+          gsap.set(center, { opacity: 0, scale: 0.94 });
+          tl.fromTo(center, { opacity: 0, scale: 0.94 }, {
+            opacity: 1, scale: 1,
+            duration: Math.min(0.7, Math.max(0.2, avail * 0.25)),
+            ease: 'power3.out',
+          }, Math.min(CENTER_AT, latestStart));
+
+          /* IN: chips assemble on the FAR ring in a measured stagger. */
+          chips.forEach(function (chip, index) {
+            gsap.set(chip, { scale: 0, opacity: 0 });
+            tl.fromTo(chip, { scale: 0, opacity: 0 }, {
+              scale: 1, opacity: 1, duration: ENTRY, ease: 'power3.out',
+            }, starts[index]);
+          });
+
+          /* Close-in: chips converge toward the subject, edges dim. */
+          if (closeIn) {
+            var maxEntryEnd = starts.reduce(function (max, start) { return Math.max(max, start); }, 0) + ENTRY;
+            var closeStart = Math.max(maxEntryEnd, Math.min(maxEntryEnd + BREATH, avail - closeSpan));
+            positions.forEach(function (pos, index) {
+              var far = ringPosition(index, FAR_RX, FAR_RY);
+              var near = ringPosition(index, NEAR_RX, NEAR_RY);
+              tl.fromTo(pos, { '--rs-ox': far.ox, '--rs-oy': far.oy }, {
+                '--rs-ox': near.ox, '--rs-oy': near.oy,
+                duration: CLOSE_DUR, ease: 'power2.inOut',
+              }, closeStart + index * CLOSE_STAG);
+            });
+            gsap.set(vignette, { opacity: 0 });
+            tl.fromTo(vignette, { opacity: 0 }, {
+              opacity: 1,
+              duration: Math.min(0.9, Math.max(0.2, closeSpan)),
+              ease: 'power1.inOut',
+            }, closeStart + 0.05);
+          }
+
+          /* HOLD: intentionally still. */
+
+          tl.seek(0);
+          window.__timelines['radial-surround'] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

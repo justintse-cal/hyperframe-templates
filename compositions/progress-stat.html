@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block');
+
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        [data-composition-id="progress-stat"] {
+          /* ---- mk tokens: override in the host to re-skin the family ---- */
+          --mk-font: "Inter", sans-serif;
+          --mk-ink: #fe4a49;
+          --mk-ink-dim: rgba(18, 18, 18, 0.6);
+          --mk-ink-dark: #FFFCEF;
+          --mk-ink-dim-dark: rgba(255, 252, 239, 0.72);
+          --mk-accent: #fc5c84;
+          --mk-accent-dark: #fc5c84;
+
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: #ffffff;
+        }
+        [data-composition-id="progress-stat"] #mk-ps-group {
+          position: absolute;
+          font-family: var(--mk-font);
+        }
+        [data-composition-id="progress-stat"] #mk-ps-num {
+          font-weight: 600;
+          font-size: 190px;
+          line-height: 1;
+          letter-spacing: -0.03em;
+          color: var(--mk-ink);
+          font-variant-numeric: tabular-nums;
+        }
+        [data-composition-id="progress-stat"] #mk-ps-label {
+          margin-top: 10px;
+          font-weight: 500;
+          font-size: 42px;
+          letter-spacing: -0.01em;
+          color: var(--mk-ink);
+        }
+        [data-composition-id="progress-stat"] #mk-ps-track {
+          position: relative;
+          margin-top: 28px;
+          height: 6px;
+          border-radius: 3px;
+          background: rgba(18, 18, 18, 0.1);
+          overflow: hidden;
+        }
+        [data-composition-id="progress-stat"] #mk-ps-fill {
+          position: absolute;
+          inset: 0;
+          border-radius: 3px;
+          background: var(--mk-accent);
+          transform-origin: left center;
+        }
+        [data-composition-id="progress-stat"] #mk-ps-caption {
+          margin-top: 22px;
+          font-weight: 400;
+          font-size: 30px;
+          color: var(--mk-ink-dim);
+        }
+        [data-composition-id="progress-stat"] .mk-dark #mk-ps-num,
+        [data-composition-id="progress-stat"] .mk-dark #mk-ps-label {
+          color: var(--mk-ink-dark);
+        }
+        [data-composition-id="progress-stat"] .mk-dark #mk-ps-caption {
+          color: var(--mk-ink-dim-dark);
+        }
+        [data-composition-id="progress-stat"] .mk-dark #mk-ps-track {
+          background: rgba(255, 252, 239, 0.18);
+        }
+        [data-composition-id="progress-stat"] .mk-dark #mk-ps-fill {
+          background: var(--mk-accent-dark);
+        }
+      </style>
+
+      <div data-hf-id="hf-7n7y"
+        id="root"
+        data-composition-id="progress-stat"
+        data-start="0"
+        data-duration="8"
+        data-width="1920"
+        data-height="1080"
+      >
+        <div data-hf-id="hf-3i87" id="mk-ps-group">
+          <div data-hf-id="hf-1asa" id="mk-ps-num">0</div>
+          <div data-hf-id="hf-eqbs" id="mk-ps-label"></div>
+          <div data-hf-id="hf-8tar" id="mk-ps-track"><div data-hf-id="hf-ccdp" id="mk-ps-fill"></div></div>
+          <div data-hf-id="hf-c1b0" id="mk-ps-caption"></div>
+        </div>
+        <div data-hf-id="hf-zyf4"
+          id="mk-ps-drv"
+          class="clip"
+          data-start="0"
+          data-duration="8"
+          data-track-index="0"
+          style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none"
+        ></div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+
+          /* ---- published parameters (inspector-style CONFIG) ----
+             A "22 · Goals reached" progress card: big count-up
+             numeral, label, thin accent track filling to value/max, caption. */
+          var CONFIG = {
+            scheme: "light", // "light" | "dark"
+            value: 22,
+            suffix: "", // e.g. "%", "K"
+            label: "Goals reached",
+            caption: "Great job, we are getting closer!",
+            max: 30, // track fills to value/max
+            trackWidth: 480, // px
+            x: 1300, // group left edge; null = centered
+            y: 250, // group top edge; null = centered
+            animationIn: true,
+            animationOut: false,
+          };
+
+          var root = document.getElementById("root");
+          var group = document.getElementById("mk-ps-group");
+          var num = document.getElementById("mk-ps-num");
+          var fill = document.getElementById("mk-ps-fill");
+
+          if (CONFIG.scheme === "dark") root.classList.add("mk-dark");
+          document.getElementById("mk-ps-label").textContent = CONFIG.label;
+          document.getElementById("mk-ps-caption").textContent = CONFIG.caption;
+          document.getElementById("mk-ps-track").style.width = CONFIG.trackWidth + "px";
+
+          /* position (measure after filling text) */
+          var rect = group.getBoundingClientRect();
+          group.style.left =
+            (CONFIG.x === null ? Math.round((1920 - rect.width) / 2) : CONFIG.x) + "px";
+          group.style.top =
+            (CONFIG.y === null ? Math.round((1080 - rect.height) / 2) : CONFIG.y) + "px";
+
+          var tl = gsap.timeline({ paused: true });
+
+          if (CONFIG.animationIn) {
+            gsap.set(group, { opacity: 0, y: 28 });
+            tl.to(group, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.3);
+          }
+
+          /* count-up + track fill on the same ease (the data-viz recipe) */
+          var st = { v: 0 };
+          tl.to(
+            st,
+            {
+              v: CONFIG.value,
+              duration: 1.6,
+              ease: "power2.out",
+              onUpdate: function () {
+                num.textContent = Math.round(st.v) + CONFIG.suffix;
+              },
+            },
+            0.5,
+          );
+          gsap.set(fill, { scaleX: 0 });
+          tl.to(fill, { scaleX: CONFIG.value / CONFIG.max, duration: 1.6, ease: "power2.out" }, 0.5);
+
+          /* the settled stat holds to the end of the clip - no exit motion */
+          window.__timelines["progress-stat"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
