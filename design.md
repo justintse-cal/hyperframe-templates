@@ -131,33 +131,67 @@ margin and ends above the subtitle safe band.
 
 ## 6. Typography
 
-Two typefaces carry the system:
+**One family carries the system: Noto Sans.** Hierarchy comes from size, weight,
+and spacing — never from mixing typefaces. `Noto Sans TC` is the Traditional
+Chinese companion of the same family, so mixed-script frames read as one voice.
 
 | Family | Usage |
 | ------ | ----- |
-| **Playfair Display** (serif) | Display headings, big titles, quote text, brand-adjacent emphasis |
-| **Plus Jakarta Sans / Inter** (sans) | Body copy, labels, chart text, UI, numbers |
+| **Noto Sans** | All Latin text — display headings, big titles, quote text, body copy, labels, chart text, UI, numbers |
+| **Noto Sans TC** | All Traditional Chinese text, paired with Noto Sans in the same frame |
 
-Import (already in every template):
+Import (required in every composition):
 
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 ```
 
-Fallback stack: `'Inter', sans-serif` for body; `'Playfair Display', serif` for
-display.
+Fallback stack: `"Noto Sans", "PingFang TC", "Microsoft JhengHei", sans-serif`.
+
+Both faces are variable fonts: always set `font-optical-sizing: auto` and drive
+weight through `font-weight`. The utility class name carries the weight, and the
+declaration must repeat that same number — replace both `<uniquifier>` and
+`<weight>` (e.g. `.noto-sans-800 { … font-weight: 800; }`,
+`.noto-sans-tc-500 { … font-weight: 500; }`):
+
+```css
+.noto-sans-<uniquifier> {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.noto-sans-tc-<uniquifier> {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+```
+
+For italic Latin text use the same class with `font-style: italic` (the import
+includes the italic axis). CJK text has no italic — emphasise it with weight or
+the theme accent instead.
+
+> **Migration note.** The shipped templates in `compositions/` still import
+> Playfair Display + Plus Jakarta Sans (and `C05` also uses Caveat). They predate
+> this rule and must be migrated to Noto Sans before they are reused. Any new or
+> edited frame follows the Noto Sans rule above.
 
 ### Scale (at 1920×1080)
 
 | Role | Family | Size | Weight |
 | ---- | ------ | ---- | ------ |
-| Hero / display title | Playfair Display | 60–98px | 800 |
-| Section / frame title | Playfair Display | 38–50px | 700–800 |
-| Large quote | Playfair Display | 56–72px | 700 (italic allowed) |
-| Emphasis number / stat | Playfair Display or sans | 48–120px | 800 |
-| Body copy | Inter / Plus Jakarta | 24–30px | 400 |
-| Label / UI / chart text | Inter / Plus Jakarta | 14–20px | 600–700 |
-| Corner-free footnote / small | Inter | 13–16px | 400–600 |
+| Hero / display title | Noto Sans | 60–98px | 800 |
+| Section / frame title | Noto Sans | 38–50px | 700–800 |
+| Large quote | Noto Sans | 56–72px | 700 (italic optional) |
+| Emphasis number / stat | Noto Sans | 48–120px | 800 |
+| Body copy | Noto Sans | 24–30px | 400 |
+| Label / UI / chart text | Noto Sans | 14–20px | 600–700 |
+| Corner-free footnote / small | Noto Sans | 13–16px | 400–600 |
 
 - Headings: `letter-spacing: -0.02em` for large display text; labels use
   `letter-spacing: 0.1em` and `text-transform: uppercase`.
@@ -168,8 +202,10 @@ display.
 ### CJK
 
 Chinese text uses `'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei',
-sans-serif`. Pair a Chinese term (display scale, raise-in per character) with a
-smaller English term and a body-size definition (E07 pattern).
+sans-serif` via a `.noto-sans-tc-<weight>` class — the same family voice as the
+Latin text, so a mixed-script frame stays visually unified. Pair a Chinese term
+(display scale, raise-in per character) with a smaller English term and a
+body-size definition (E07 pattern).
 
 ### Icons & symbols
 
