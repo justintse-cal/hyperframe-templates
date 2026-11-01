@@ -83,6 +83,14 @@ The previous cream/blush gradient and gold/pink palette are replaced by this the
 - **Highlighter.** Text highlighters use `#FFE34F` with
   `mix-blend-mode: multiply` so the text reads through the mark instead of
   being covered.
+- **Never crop images.** Every image — screenshots, photos, stock placeholders,
+  avatars and logos (including channel avatars inside end-card / subscribe
+  pills) — must be shown in full. Size the placeholder frame to the media's
+  native aspect ratio and use `object-fit: contain`; never use
+  `object-fit: cover`, circular masks (`border-radius: 50%` on media), or any
+  overflow/clipping to force media into a differently-shaped box. Where a
+  headline row needs a visual anchor, use vector icons (e.g. Google Material
+  Symbols) instead of cropped screenshots.
 - Media placeholders live in `stock media/` (space in path → always URL-encode:
   `src="../stock%20media/ai_price.jpg"`).
 
@@ -126,6 +134,39 @@ The previous cream/blush gradient and gold/pink palette are replaced by this the
 
 The four corners must remain free of text (§1). Content starts below the top
 margin and ends above the subtitle safe band.
+
+### Caption tempo
+
+**All scenes in a project read at one uniform caption pace.** Per-scene
+variation is the main cause of a video feeling inconsistent; pick the pace
+once and derive every scene's duration from it.
+
+- **Pick one reference pace per project** — anchor it on one hand-tuned scene
+  (e.g. the opener), then freeze that anchor: later retimes must never
+  regenerate the reference scene's captions without re-deriving the pace.
+- **Weight characters by visual length**: CJK chars count 1, ASCII chars/Latin
+  digits count 0.55. Reading pace = visual length ÷ caption seconds.
+  (≈6 visual chars/s is comfortable for zh-Hant narration at 720p-in-frame
+  caption sizes; adjust per project, but use the same value everywhere.)
+- **Per caption group:** `duration = round3(vlen(text) / pace)`.
+- **Per scene window:**
+  `duration = ceil-to-grid( Σ group durations + gap × (groups − 1) + 1.0 )`,
+  with a fixed 1.0s = 0.25s lead-in + 0.45s tail + 0.3s breathing room and
+  `gap ≈ 0.12s` between groups. Keep scene durations on a common grid (0.075s
+  multiples) so slot timings stay frame-aligned.
+- **Scene starts** are the running sum of durations; the project's timing
+  manifest (e.g. `scenes.json`) is the single source of truth — slot timings
+  in `index.html` and the caption track must be generated from it and must
+  tile every scene window with no gaps or overlaps (validate with the
+  caption build's `--check`).
+- **Scale motion with captions.** Every scene's entrance beats must scale by
+  the same factor as its captions so visuals stay on their narration lines:
+  a scene's timeline is stretched so `fit × tempo-stretch = newDur / oldDur`
+  (typical shape: a fit block mapping the authored timeline into
+  `newDur / K`, followed by a uniform `K` post-build stretch, e.g. K = 1.35
+  for 26% slower motion).
+- Scenes may be *shorter* than the pace implies only when they carry more
+  dead air than the formula needs — cut dead air, never caption seconds.
 
 ---
 
