@@ -130,6 +130,97 @@ The previous cream/blush gradient and gold/pink palette are replaced by this the
 - When a frame has no subtitles, still honor the safe band so the frame stays
   drop-in compatible with any video that adds them.
 
+### Stage, edge padding & vertical rhythm
+
+All frames share one content stage. These are hard values, not suggestions.
+
+| Token | Value |
+| ----- | ----- |
+| Content gutter (left/right) | **96px** |
+| Stage top | **84px** |
+| Stage bottom | **160px** (content floor at y = 920) |
+| Content stage size | **1728 × 836px** |
+| Title block ends | **y = 200px** |
+| Content starts | **y = 200px** |
+| Content ends | **y = 920px** |
+| Frame border inset | **32px**, 1px accent at 18% opacity |
+| Blueprint grid | **96 × 96px**, accent at 7% opacity |
+| Caption gutter | **130px** |
+| Caption max-width | **1640px** |
+| Caption bottom offset | **44px** |
+
+```css
+.stage {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  top: 84px;
+  bottom: 160px;
+}
+```
+
+**Vertical rhythm** — fixed steps, not per-scene guesses:
+
+| Step | Value |
+| ---- | ----- |
+| Label → title | **16px** |
+| Title → content | **48px** |
+| Content → bottom note | **32px** |
+| Bottom note baseline | **y ≈ 900px** |
+| Note → caption band | never crosses **920px** |
+
+The title block finishes by y = 200px. Primary content starts at y = 200px. A
+bottom note belongs at the stage bottom (y ≈ 900px), never inside the caption
+band.
+
+### Column & alignment rules
+
+**Single column: center it.**
+
+- Use `text-align: center`, `align-items: center`, and
+  `justify-content: center`.
+- Center the text block, not just the text inside a full-width box.
+- Statement line max-width: **1400px**.
+- Body paragraph max-width: **1200px**.
+- Never left-align a single editorial column.
+
+**Artifact exception.** Terminal, code, article, notes, and UI-mockup frames may
+left-align their internal content because they simulate a real interface. The
+stage, 96px gutter, and 920px floor still apply.
+
+**Two columns.**
+
+- Split **48 / 52**, divider at **x = 960px**, **1px** accent at 28% opacity.
+- Column gutter: **96px**.
+- Each column is internally centered.
+- Minimum text-bearing column: **672px**.
+- Never mix a centered column with a left-aligned column in one row.
+
+**Three or more columns.**
+
+- Column width: **560px**, gap: **24px**.
+- Content centered in each cell.
+- Use only for parallel items (roles, steps, tools), never prose.
+
+### Component spacing & defaults
+
+| Component | Value |
+| --------- | ----- |
+| Card / panel padding | **24px 32px** |
+| Card border | **1px**, accent at 34% opacity |
+| Card top rule | **5px** accent |
+| Card radius | **0** editorial / **12px** artifact |
+| Chip / pill padding | **16px 24px** |
+| Chip border | **2px** accent |
+| Row / list item height | **96px** |
+| Row rule | **1px** |
+| Stack gap | **24px** |
+| Accent rule | **4px × 120px** |
+| Divider | **1px** |
+
+- Cards and panels use white or theme tints, never a colored frame background.
+- Prefer a top rule or left bar over a drop shadow.
+
 ### Corner clearance
 
 The four corners must remain free of text (§1). Content starts below the top
@@ -224,21 +315,65 @@ the theme accent instead.
 
 ### Scale (at 1920×1080)
 
-| Role | Family | Size | Weight |
-| ---- | ------ | ---- | ------ |
-| Hero / display title | Noto Sans | 60–98px | 800 |
-| Section / frame title | Noto Sans | 38–50px | 700–800 |
-| Large quote | Noto Sans | 56–72px | 700 (italic optional) |
-| Emphasis number / stat | Noto Sans | 48–120px | 800 |
-| Body copy | Noto Sans | 24–30px | 400 |
-| Label / UI / chart text | Noto Sans | 14–20px | 600–700 |
-| Corner-free footnote / small | Noto Sans | 13–16px | 400–600 |
+**One hard ladder.** Scenes pick a step; they do not invent sizes. Any size
+outside this table is a documented addendum exception.
 
-- Headings: `letter-spacing: -0.02em` for large display text; labels use
-  `letter-spacing: 0.1em` and `text-transform: uppercase`.
-- Body line-height ≈ `1.4–1.5`; display line-height ≈ `1.1–1.3`.
-- Increase sizes for emphasis, never below the body floor of ~24px for content
-  text that must be read.
+| Role | Size | Weight | Line-height | Tracking |
+| ---- | ---- | ------ | ----------- | -------- |
+| Hero / display | **96px** | 900 | 1.06 | +0.02em CJK / −0.02em Latin |
+| Section title | **72px** | 900 | 1.10 | +0.01em |
+| Pull quote | **64px** | 700 | 1.20 | +0.01em |
+| Sub-section title | **56px** | 800 | 1.12 | +0.01em |
+| Scene title (dense / artifact) | **46px** | 800 | 1.15 | +0.01em |
+| Large body / lead-in | **34px** | 500 | 1.40 | +0.01em |
+| Body | **30px** | 500 | 1.45 | +0.01em |
+| Body small | **26px** | 500 | 1.45 | +0.01em |
+| Secondary note | **22px** | 600 | 1.40 | +0.01em |
+| Label / eyebrow / UI | **18px** | 700 | 1.20 | **0.20em**, uppercase |
+| Footnote | **16px** | 500 | 1.35 | +0.01em |
+| Micro / chart tick | **14px** | 700 | 1.20 | **0.16em**, uppercase |
+| Subtitle / caption | **40px** | 600 | 1.32 | +0.01em |
+
+- **CJK display** uses positive tracking (+0.01–0.02em) and line-height
+  1.12–1.20. CJK has no italic; emphasise with weight or the theme accent.
+- **Latin display** may use −0.02em tracking.
+- Only labels and micro-text use uppercase + wide tracking.
+- Never use a size between steps to make a line fit. Choose the next step down
+  and rebalance the layout.
+
+### Subtitle / caption type
+
+**Every subtitle is exactly 40px.** There is no project-level caption size
+variation.
+
+| Property | Value |
+| -------- | ----- |
+| Size | **40px** |
+| Weight | **600** |
+| Line-height | **1.32** |
+| Letter-spacing | **0.01em** |
+| Colour | **#000000** |
+| Alignment | **centered** |
+| Max width | **1640px** |
+| Bottom offset | **44px** |
+| Lines | **1–2** |
+| Background | **none** |
+| Card / fill / border / shadow | **none** |
+| Karaoke highlight | **none** |
+
+- Captions live in one separate bottom track, never inside a scene
+  composition.
+- The caption band owns **y = 920–1080**. Scene content ends at **y = 920**.
+- The caption gutter is wider than the content gutter: **130px**, or a
+  **1640px** max-width.
+- Use `text-wrap: balance`; keep each line to one clause and never exceed two
+  lines.
+- Pick the caption pace once per project (see “Caption tempo”) and freeze it;
+  the 40px size is already fixed.
+
+> **Legacy note.** Existing frames that use a different caption size predate
+> this rule. New and edited frames use 40px; migrate legacy caption tracks
+> before reusing them.
 
 ### CJK
 
@@ -284,6 +419,47 @@ https://fonts.google.com/icons
   shapes) already used by existing templates.
 - Icons are decoration, not content: give them `aria-hidden="true"` when a
   nearby text label already names the thing.
+
+### Design tokens (copy into every composition)
+
+```css
+:root {
+  /* Layout */
+  --gutter: 96px;
+  --stage-top: 84px;
+  --stage-bottom: 160px;
+  --content-floor: 920px;
+  --frame-inset: 32px;
+  --caption-gutter: 130px;
+  --caption-max: 1640px;
+  --caption-bottom: 44px;
+
+  /* Type ladder */
+  --type-hero: 96px;
+  --type-title: 72px;
+  --type-quote: 64px;
+  --type-subtitle: 56px;
+  --type-scene: 46px;
+  --type-body-lg: 34px;
+  --type-body: 30px;
+  --type-body-sm: 26px;
+  --type-note: 22px;
+  --type-label: 18px;
+  --type-footnote: 16px;
+  --type-micro: 14px;
+  --type-caption: 40px;
+
+  /* Components */
+  --card-pad-y: 24px;
+  --card-pad-x: 32px;
+  --stack-gap: 24px;
+  --rule-thickness: 4px;
+  --rule-width: 120px;
+}
+```
+
+These tokens are the contract. A frame that needs a different value is a
+documented addendum exception, not a local override.
 
 ---
 
