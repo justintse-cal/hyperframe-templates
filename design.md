@@ -261,6 +261,65 @@ once and derive every scene's duration from it.
 
 ---
 
+
+### 5.7 Creative grammar
+Device vocabulary for beatsCreator.md to reference. One line in the file is sufficient — not a restatement of skill rules. Reference `/hyperframes-animation` before naming a device; reference `/hyperframes-registry` if a block already exists for it, name that block.
+
+### 5.8 Diagram tokens
+Systematic diagram construction rules for beatsCreator.md visual concepts:
+- **Stroke weight:** 1.5px default, 3px for emphasis, never >4px
+- **Arrowheads:** Standard >, hollow for guides, filled for final outcomes
+- **Node size:** 24px minimum, 48px for key terms, aligned to 96px grid
+- **Connection style:** 96px-grid aligned, 7% opacity for guide lines
+- **Label hierarchy:** Title (32px), subtitle (20px), caption (15px), all black `#000000`
+- **Colour coding:** Single theme accent only (Blue/Red/Green/Yellow/Orange), tints for secondary elements
+- **No gradients, no shadows** on diagram elements; flat fills only
+
+### 5.9 Graphic ground
+Three optional graphic grounds may be applied behind content (not as base background, which is always `#ffffff`):
+- **Blueprint grid:** 96 × 96px grid, accent colour at 7% opacity, vertical lines at 96px intervals from 96px gutter, horizontal lines at 96px intervals from stage top (84px)
+- **Dot grid:** 24px pitch dots, 8% opacity, staggered row offset of 12px per row
+- **Diagonal hatch:** 45° lines, 3px stroke, 5% spacing, aligned to 96px grid origin
+
+Use at most one ground per frame. If applied, the ground sits behind content but above `#root`, never below y=920. Ground must not carry text or read as on-screen labels.
+
+### 5.10 Visual-engagement contract
+This section is the shared standard both beatsCreator.md and contentCreator.md anchor on when they judge whether a frame is visually strong. It is guidance, not a new set of pixel rules; where it conflicts with a mechanical rule in §5, the mechanical rule wins.
+
+**What "intentionally designed" means here.** A frame reads as intentionally designed when a viewer can name the single element that should be seen first, and everything else in the frame exists to support that element or to be ignored. A white box with text in the middle and no other reason to exist is under-designed.
+
+**Figure dominance.** In a figure-led scene, the device (metaphor, chart, icon illustration, card assembly, etc.) must own a meaningful part of the 1728×836 stage. A device that sits in a corner and leaves the rest blank is not figure-led; reclassify the scene as idea-dense or light-punctuation and redesign.
+
+**Density tiers.** beatsCreator.md prints a VISUAL MODE per scene. Map it to a posture:
+- **figure-led:** one dominant gesture, supporting labels only. On-screen text stays at label/ eyebrow scale unless a term is the point.
+- **idea-dense:** the beat is a chain of claims or a direct quote. Compensate, do not just pack more text: step the primary type up the ladder, drop competing elements, or add one dominant gesture. A quote scene is allowed to be text-heavy, but it still needs one dominant gesture (quote card, underline, spotlight, etc.).
+- **light-punctuation:** a short pacing beat. Keep it visually light; it does not need a large device.
+
+**Approved ways to keep a light scene from feeling empty.** When a scene is genuinely sparse by design, use one of these rather than leaving the frame to default to a white box:
+- A graphic ground (§5.9) — at most one, behind content, above `#root`, never below y=920.
+- A larger dominant element or type scale from the §6 ladder.
+- A single stronger accent gesture (rule, underline, spotlight box, halo) that frames the content.
+- A single well-placed device, not several small ones that compete.
+
+**Whitespace.** Empty space is allowed only when it frames a dominant element. Accidental empty space — a frame that could hold more without crowding — is under-filled, not minimal. When in doubt, enlarge the dominant element before adding another text element.
+
+**Text-heavy is not a crime; unengaged is.** A scene may be text-heavy because it is a quote or an idea-dense beat. It is only a problem when it has no dominant gesture and no compensation. The fix is always one of: stronger gesture, larger type, fewer competing elements — never shrink the text and add a second row.
+
+### Flowbite — https://flowbite.com/
+| Asset | URL | Use it for |
+| ----- | --- | ---------- |
+| Icons | https://flowbite.com/icons/ | Pictorial icons Material Symbols lacks — people, devices, objects, brands. Free SVG set. |
+| Illustrations | https://flowbite.com/illustrations/ | Metaphor figures a diagram can't carry: head chef / kitchen, the spiral, the guardrail wall, the cloud, the blindfolded agent, the reviewer reading PRs. |
+| Blocks | https://flowbite.com/blocks/ | **Layout references only.** |
+
+**Rules**
+- **Blocks: reference, never paste.** Flowbite blocks are Tailwind markup and this project has no Tailwind build. Lift the *composition idea*, rebuild it with the tokens in this file. Pasting classes produces unstyled HTML.
+- **Prefer an illustration over a text card when the beat is metaphorical.** A figure beats three labelled boxes for "you are the head chef."
+- **Download once, commit to `assets/`.** Never fetch an SVG at render time — this breaks determinism (§5).
+- **Recolour.** Flowbite's own blues/oranges are ignored; assets take the frame's single theme palette (§3). Keep fills flat; no gradients, no shadows.
+- **Illustrations are content, not decoration.** They may sit inside the essay area but must respect the 96px gutter, y=200 start and y=920 floor (§5).
+- **Alt/aria:** mark illustrations `aria-hidden="true"` when an on-screen label already names the concept.
+- Licensing: Flowbite's free tier is permissive, but verify the license of any individual asset before it ships in a published video.
 ## 6. Typography
 
 **One family carries the system: Noto Sans.** Hierarchy comes from size, weight,
@@ -498,3 +557,68 @@ The workflow for a new project:
    keeping every rule in this file.
 3. Only build a brand-new animation when **no** existing template fits. When you
    do, it must still obey this entire design system.
+
+---
+
+## 9. Project addendum — *Scaling AI Agents*
+
+This project reuses the design system above with five documented exceptions.
+Each is a bounded addendum, not a licence to drift.
+
+### 9.1 Display addendum (type size)
+
+The §6 ladder is the default. Exactly two roles may exceed it:
+
+| Role | Size | Constraint |
+| ---- | ---- | ---------- |
+| Hero numeral | **300px**, weight 900 | Single number only, max 4 glyphs |
+| Chinese display term | **150px**, weight 900 | Single term, max 6 Han characters, tracking **+0.12em** |
+
+Nothing else leaves the ladder. Headlines, quotes and body copy stay at
+96 / 72 / 64 / 56 / 46 / 34 / 30 / 26 / 22 / 18 / 16 / 14.
+
+### 9.2 Card surface substitution
+
+The storyboard calls for a "cream mat" behind speech cards. Cream is not in the
+§3 palette, so speech cards use the Blue tint `#e8f1f7` instead. No other
+surface substitution is allowed.
+
+### 9.3 Timing authority
+
+`scenes.json` is the timing source of truth: 64 scenes, 744s total. Durations
+are authored deliberately slower than the §5 caption tempo (≈4.6 Han characters
+per second) because the voiceover has not been recorded and the cut needs
+breathing room. Do not "correct" a scene to the tempo formula.
+
+### 9.4 Real people
+
+Never place a stock photograph behind a named person's words. Speech frames use
+the labelled placeholder at `assets/media/speaker.jpg`, sized to the asset's
+**native 3:2 ratio** with `object-fit: contain`. Replace that one file when the
+real image is sourced; if its aspect ratio differs, change the frame's
+`width`/`height` in the speech compositions to match — never crop, never mask
+into a circle.
+
+### 9.5 Motion budget
+
+Entrance motion completes within **3.0s** of every scene. A scene may carry one
+secondary beat at `min(3.0, DUR × 0.5)`, after which the frame holds 
+**perfectly static** — no drift, no continuous scale, no loop. Changing a
+scene's duration must never require rewriting its timeline.
+
+### 9.6 Template visual fidelity
+
+When a composition derives from a template in `hyperframe-templates/`,
+**the template's visual identity must be preserved exactly**: the channel name,
+avatar, button labels, icon glyphs, layout structure, class naming, and element
+ordering must match the template. The **only** permitted deviation is colour:
+replace the template's accent colour with the project's current theme accent
+(`--accent`, `#ee6123` for this project) wherever the template uses its own
+accent (subscribe button background, ripple borders, halo gradient stops, box-
+shadow tint). Do not rename the channel, swap the avatar, translate button
+labels, change icon glyphs, or alter the layout — those are template-identity
+changes, not colour changes. If the template references an image file, copy it into the project's
+`assets/` tree so the source path in the composition resolves locally; do not
+swap in the speaker placeholder or invent a substitute. For this project the
+template's channel icon is `stock media/Just Tech.jpeg` → `assets/media/Just
+Tech.jpeg`.
