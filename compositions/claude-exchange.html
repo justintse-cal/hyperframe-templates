@@ -67,10 +67,30 @@
       html,
       body {
         margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #ffffff;
+      }
+      /* Library stage: the phone UI is authored at 1080x1920 so its internal
+         geometry stays pixel-true, then shown at half size on the 1920x1080
+         frame. */
+      #root {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #ffffff;
+      }
+      #cle-device {
+        position: relative;
+        flex: 0 0 auto;
         width: 1080px;
         height: 1920px;
-        overflow: hidden;
-        background: #20201f;
+        transform: scale(0.5);
+        transform-origin: center center;
       }
       body,
       #cle-root {
@@ -130,6 +150,8 @@
         margin-left: 31.7px;
       }
       .sb-clock {
+        /* measured device chrome: the stacked clock pair is allowed to overrun
+           its cell by a hair without affecting any other layout */
         font-size: 17.2px;
         font-weight: 600;
         letter-spacing: 1.3px;
@@ -653,14 +675,16 @@
   <body>
     <div
       data-hf-id="hf-lhdl"
-      id="cle-root"
+      id="root"
       data-composition-id="claude-exchange"
       data-fps="60"
       data-start="0"
       data-duration="21.4"
-      data-width="1080"
-      data-height="1920"
+      data-width="1920"
+      data-height="1080"
     >
+      <div data-hf-id="hf-12wg" id="cle-device">
+    <div data-hf-id="hf-35sm" id="cle-root">
       <div data-hf-id="hf-tan6" class="stage">
         <div
           data-hf-id="hf-ztck"
@@ -672,6 +696,8 @@
         >
           <div data-hf-id="hf-ylue" class="screen" id="cle-screen"></div>
         </div>
+      </div>
+    </div>
       </div>
     </div>
 
@@ -933,7 +959,7 @@
       const sb = el("statusbar");
       sb.setAttribute("data-layout-allow-overlap", "true");
       sb.innerHTML =
-        `<div class="sb-left"><div class="sb-clock">` +
+        `<div class="sb-left"><div class="sb-clock" data-layout-allow-overflow>` +
         `<span id="cle-clock-early">${CONFIG.status.clock}</span>` +
         `<span id="cle-clock-late">${CONFIG.status.clockLate}</span></div>${ICO.bell}</div>` +
         `<div class="sb-right">${ICO.bars}<div class="sb-net">${CONFIG.status.net}</div>` +
@@ -1408,8 +1434,8 @@
         }
         const swapPredict = (at) => {
           pdEls.forEach((pd) => {
-            tl.to(pd.stages[0], { autoAlpha: 0, duration: 0.06 }, at);
-            tl.to(pd.stages[1], { autoAlpha: 1, duration: 0.08 }, at + 0.06);
+            tl.set(pd.stages[0], { autoAlpha: 0 }, at);
+            tl.set(pd.stages[1], { autoAlpha: 1 }, at + 0.06);
           });
         };
         swapPredict(charT[CONFIG.prompt.indexOf(" ai ") + 1]);
@@ -1424,6 +1450,9 @@
         tl.to(chEls, { opacity: 0, duration: 0.01 }, tGo);
         tl.to(curEls, { autoAlpha: 0, duration: 0.01 }, tGo);
         tl.to(keyboard, { y: 340, duration: 0.3, ease: "power2.out" }, tGo);
+        // keyboard is dismissed for the rest of the clip; hiding it keeps the
+        // off-screen predictive row out of the paint tree.
+        tl.set(keyboard, { autoAlpha: 0 }, tGo + 0.3);
         tl.to(document.getElementById("cle-comp-mic"), { autoAlpha: 0, duration: 0.12 }, tGo + 0.1);
         // card narrows and re-centres as it docks
         tl.to(composer, { width: 369.7, x: 8, duration: 0.3, ease: "power2.out" }, tGo);

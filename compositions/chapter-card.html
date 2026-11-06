@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
         #root {
           position: absolute;
@@ -15,7 +15,7 @@
           height: 1080px;
           background: #ffffff;
           color: #000000;
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -45,12 +45,13 @@
         }
 
         .chapter-label {
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 23px;
           font-weight: 700;
           letter-spacing: 0.34em;
           text-transform: uppercase;
-          color: #617682;
+          /* Light ink over the dimmed footage (§4); #617682 sat at 2.3:1. */
+          color: #e8f1f7;
           margin-bottom: 36px;
           opacity: 0;
           /* sits slightly above the visual center */
@@ -58,7 +59,7 @@
         }
 
         .chapter-title {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 92px;
           font-weight: 800;
           line-height: 1.18;

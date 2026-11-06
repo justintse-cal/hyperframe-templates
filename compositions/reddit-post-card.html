@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
         #root {
           position: absolute;
@@ -15,7 +15,7 @@
           height: 1080px;
           background: #ffffff;
           color: #000000;
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -40,12 +40,14 @@
 
         .reddit-card {
           width: 860px;
-          background: rgba(255, 255, 255, 0.72);
+          /* Opaque card surface (§2) — alpha surfaces made muted text drop
+             below AA against the white frame. */
+          background: #ffffff;
           border: 1px solid rgba(18, 18, 18, 0.14);
           border-radius: 16px;
           padding: 32px 36px;
           box-shadow: 0 24px 60px rgba(18, 18, 18, 0.12);
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
         }
 
         .sub-header {
@@ -65,7 +67,7 @@
           justify-content: center;
           font-weight: 700;
           font-size: 20px;
-          color: #ffffff;
+          color: #000000;
         }
 
         .subreddit-name {
@@ -76,13 +78,13 @@
 
         .post-author {
           font-size: 24px;
-          color: rgba(18, 18, 18, 0.55);
+          color: #4a4a4a;
           font-weight: 400;
           margin-left: 8px;
         }
 
         .post-title {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-weight: 700;
           font-size: 38px;
           line-height: 1.18;
@@ -92,7 +94,7 @@
 
         .post-body {
           font-size: 24px;
-          color: rgba(18, 18, 18, 0.72);
+          color: #3a3a3a;
           margin-bottom: 24px;
           line-height: 1.45;
         }
@@ -110,7 +112,9 @@
           align-items: center;
           gap: 6px;
           padding: 6px 14px;
-          background: rgba(18, 18, 18, 0.05);
+          /* White pill so the accent count keeps 3:1 when it inks. */
+          background: #ffffff;
+          border: 1px solid rgba(18, 18, 18, 0.14);
           border-radius: 999px;
         }
 
@@ -120,18 +124,18 @@
         }
 
         .vote-pill svg path {
-          fill: rgba(18, 18, 18, 0.55);
+          fill: #4a4a4a;
         }
 
         .vote-count {
           font-weight: 700;
           font-size: 22px;
-          color: rgba(18, 18, 18, 0.6);
+          color: #3a3a3a;
         }
 
         .comment-count {
           font-size: 22px;
-          color: rgba(18, 18, 18, 0.6);
+          color: #3a3a3a;
           margin-left: 8px;
         }
       </style>
@@ -192,7 +196,7 @@
           document.getElementById("e10-body").textContent = CONFIG.body;
           document.querySelector(".comment-count").textContent = CONFIG.comments;
 
-          var PINK = "#ffa500";
+          var PINK = "#ee6123";
           var countEl = document.getElementById("e10-count");
           countEl.textContent = CONFIG.countFrom.toFixed(1) + CONFIG.countSuffix;
 

@@ -308,4 +308,32 @@ window.TEMPLATES = [
     duration: 8,
     description: 'Type a notes-app title and body lines on a measured human keystroke rhythm.',
   },
+  {
+    group: 'H',
+    code: 'H05',
+    id: 'code-diff',
+    duration: 6,
+    description: 'Show a before/after code change as a diff inside an editor card.',
+  },
+  {
+    group: 'H',
+    code: 'H06',
+    id: 'ai-chat-reveal',
+    duration: 12.6333,
+    description: 'Reveal a short AI chat as prompt and answer bubbles, one beat at a time.',
+  },
+  {
+    group: 'H',
+    code: 'H07',
+    id: 'claude-exchange',
+    duration: 21.4,
+    description: 'Play out a longer back-and-forth chat exchange between a user and an assistant.',
+  },
+  {
+    group: 'H',
+    code: 'H08',
+    id: 'ai-answer-rank',
+    duration: 9,
+    description: 'Rank three AI answer picks, then slide a highlighted brand into the top slot.',
+  },
 ];

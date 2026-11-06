@@ -100,7 +100,7 @@ https://hyperframes.heygen.com/llms.txt
 
 - `design.md` — **the design system** (colors, background, composition rules, subtitle safe area, typography). Read before editing any frame.
 - `docs/templates.md` — **the template catalog**: one line on what each template is and one on what it's used for, plus the canvas, the design-system basics and how to mount a template. Read it before picking or duplicating a template; it is also what the gallery's "Copy full catalog for AI" button hands to an agent.
-- `index.html` - main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (42 templates, each `data-duration="8"`, total `data-duration="336"`)
+- `index.html` - main composition (root timeline): one slot per template, played back-to-back on `data-track-index="1"` (46 templates, most `data-duration="8"` — `code-diff` 6s, `ai-chat-reveal` 12.6333s, `claude-exchange` 21.4s, `ai-answer-rank` 9s — total `data-duration="385.0333"`)
 - `compositions/` — one sub-composition per template, named by slug (e.g. `core-definition.html`, `unit-chart.html`)
 - `stock media/` — placeholder images and footage used by the templates; referenced from `compositions/` with the space URL-encoded as `../stock%20media/<file>`
 - `meta.json` — project metadata (id, name)
@@ -137,7 +137,7 @@ Groups, by the job a template does in an edit:
 | E | Structure & Systems | architecture-stack · network-node-map · radial-surround · grid-card-assemble · specs-list |
 | F | Data & Numbers | metric-highlight · barchart-growth · linechart-trend · pie-donut-share · news-stat · chart-card · unit-chart · progress-stat |
 | G | Social Proof & Audience | press-quote · yt-comment-stack · reddit-post-card · testimonial-card · yt-comment-scatter · subscribe-outro |
-| H | Screens & Artifacts | terminal-editor · article-circle · typed-prompt · notes-typing |
+| H | Screens & Artifacts | terminal-editor · article-circle · typed-prompt · notes-typing · code-diff · ai-chat-reveal · claude-exchange · ai-answer-rank |
 
 ### Format & palette
 

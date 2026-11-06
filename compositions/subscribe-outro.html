@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
 
         /* OS-bundled CJK fonts — declared locally, no network file needed. */
@@ -22,7 +22,7 @@
           overflow: hidden;
           background: #ffffff;
           color: #000000;
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           pointer-events: none;
           box-sizing: border-box;
           isolation: isolate;
@@ -85,8 +85,10 @@
           width: 82px;
           height: 82px;
           flex: none;
-          border-radius: 50%;
-          object-fit: cover;
+          /* Square source shown in full — no circular mask, no crop (§4). */
+          border-radius: 12px;
+          object-fit: contain;
+          background: #ffffff;
           border: 1px solid rgba(0, 0, 0, 0.25);
           box-shadow: none;
           background: transparent;
@@ -118,7 +120,7 @@
           border: 0;
           border-radius: 999px;
           white-space: nowrap;
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 23px;
           font-weight: 600;
           line-height: 1;

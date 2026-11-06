@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
         #root {
           position: absolute;
@@ -15,7 +15,7 @@
           height: 1080px;
           background: #ffffff;
           color: #f8dfa0;
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -49,18 +49,20 @@
           perspective: 1800px;
         }
 
+        /* Frame takes the chart image's native 1173x625 aspect so the image is
+           shown in full (design.md §4) at the same content scale as before. */
         .chart-frame {
           position: relative;
-          width: 1344px;
+          width: 1351px;
           height: 720px;
           transform-style: preserve-3d;
         }
 
         .chart-img {
-          width: 1344px;
+          width: 1351px;
           height: 720px;
-          object-fit: cover;
-          object-position: top center;
+          object-fit: contain;
+          object-position: center center;
           display: block;
           border: 1px solid rgba(18, 18, 18, 0.12);
           border-radius: 6px;
@@ -72,7 +74,7 @@
         .highlight-box {
           position: absolute;
           top: 210px;
-          left: 760px;
+          left: 764px;
           width: 380px;
           height: 180px;
           border: 3px solid #E6B800;
@@ -85,7 +87,7 @@
         .callout-box {
           position: absolute;
           top: 60px;
-          left: 700px;
+          left: 704px;
           background: #ffffff;
           border: 2px solid #f8dfa0;
           border-radius: 8px;
@@ -96,7 +98,7 @@
         }
 
         .callout-title {
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 17px;
           font-weight: 700;
           letter-spacing: 0.08em;
@@ -105,10 +107,10 @@
         }
 
         .callout-text {
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 23px;
           font-weight: 600;
-          color: #f8dfa0;
+          color: #000000;
           margin-top: 4px;
         }
 
@@ -121,7 +123,7 @@
 
         <div data-hf-id="hf-nh8x" class="chart-stage">
           <div data-hf-id="hf-mlqz" class="chart-frame" id="e1-chart-frame">
-            <img data-hf-id="hf-rwgl" class="chart-img" id="e1-chart-img" src="../stock%20media/ai_price.jpg" alt="Chart screenshot placeholder" width="1344" height="720" />
+            <img data-hf-id="hf-rwgl" class="chart-img" id="e1-chart-img" src="../stock%20media/ai_price.jpg" alt="Chart screenshot placeholder" width="1173" height="625" />
             <div data-hf-id="hf-rnwb" class="highlight-box" id="e1-highlight"></div>
             <div data-hf-id="hf-xzuj" class="callout-box" id="e1-callout">
               <div data-hf-id="hf-e304" class="callout-title">Key Insight</div>

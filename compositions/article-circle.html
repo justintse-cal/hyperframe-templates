@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
         #root {
           position: absolute;
@@ -15,7 +15,7 @@
           height: 1080px;
           background: #ffffff;
           color: #fe4a49;
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -48,18 +48,20 @@
           justify-content: center;
         }
 
+        /* Frame takes the screenshot's native 1626x900 aspect so the image is
+           shown in full (design.md §4) at the same content scale as before. */
         .article-frame {
           position: relative;
-          width: 1344px; /* 70% of 1920 */
+          width: 1372px;
           height: 760px;
           transform-origin: center center;
         }
 
         .article-img {
-          width: 1344px;
+          width: 1372px;
           height: 760px;
-          object-fit: cover;
-          object-position: top center;
+          object-fit: contain;
+          object-position: center center;
           display: block;
           border: 1px solid rgba(18, 18, 18, 0.14);
           border-radius: 6px;
@@ -70,10 +72,10 @@
         .highlighter {
           position: absolute;
           top: 318px;
-          left: 318px;
+          left: 332px;
           width: 708px;
           height: 62px;
-          background: #fc5c84;
+          background: #ffe34f;
           mix-blend-mode: multiply;
           transform-origin: left center;
           transform: scaleX(0);
@@ -89,7 +91,7 @@
 
         <div data-hf-id="hf-mafj" class="article-stage">
           <div data-hf-id="hf-lv7m" class="article-frame" id="e8-article-frame">
-            <img data-hf-id="hf-gvk1" class="article-img" id="e8-article-img" src="../stock%20media/article1.png" alt="Article screenshot placeholder" width="1344" height="760">
+            <img data-hf-id="hf-gvk1" class="article-img" id="e8-article-img" src="../stock%20media/article1.png" alt="Article screenshot placeholder" width="1626" height="900">
             <div data-hf-id="hf-ikai" class="highlighter" id="e8-highlighter"></div>
           </div>
         </div>

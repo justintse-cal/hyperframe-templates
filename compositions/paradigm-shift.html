@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
         #root {
           position: absolute;
@@ -15,7 +15,7 @@
           height: 1080px;
           background: #ffffff;
           color: #fe4a49;
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -46,7 +46,7 @@
           left: 0;
           right: 0;
           text-align: center;
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 52px;
           font-weight: 800;
           color: #fa003f;
@@ -89,7 +89,7 @@
         }
 
         .panel-label {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 23px;
           font-style: italic;
           margin-bottom: 16px;
@@ -121,6 +121,16 @@
         }
 
         /* Final Logo Lockup */
+        /* White cover panel: the split stage holds underneath while this wipes
+           in over it, so the hand-off is two entrances and no exit (§5). */
+        .stage-cover {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          opacity: 0;
+          z-index: 10;
+        }
+
         .lockup-screen {
           position: absolute;
           inset: 120px;
@@ -133,7 +143,7 @@
         }
 
         .final-logo {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 74px;
           font-weight: 800;
           color: #fa003f;
@@ -167,6 +177,8 @@
             <div data-hf-id="hf-e29d" class="panel-title text-after">Serverless Elastic Cloud Stack</div>
           </div>
         </div>
+
+        <div data-hf-id="hf-c2cover" class="stage-cover" id="c2-cover"></div>
 
         <div data-hf-id="hf-kcst" class="lockup-screen" id="c2-lockup">
           <div data-hf-id="hf-f1p9" class="final-logo">EDITORIAL</div>
@@ -204,11 +216,15 @@
           3.2
         );
 
-        // 5–5.8s: Slide split screen away & reveal centered logo lockup
-        tl.to("#c2-stage",
-          { opacity: 0, scale: 0.95, duration: 0.8, ease: "power2.inOut" },
+        // 5–5.8s: cover the split stage, then reveal the centered logo lockup.
+        // Both beats are entrances; #c2-stage keeps its final state (§5).
+        tl.fromTo("#c2-cover",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.7, ease: "power2.inOut" },
           5.0
         );
+        // Hidden instantly behind the cover, never animated out (§5).
+        tl.set("#c2-stage", { autoAlpha: 0 }, 5.7);
         tl.fromTo("#c2-lockup",
           { opacity: 0, scale: 0.9 },
           { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },

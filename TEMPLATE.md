@@ -1,17 +1,19 @@
-# Claude Exchange editing contract
+# AI Answer Rank editing contract
 
 ## Surface ownership
 
-This template depicts the Claude application. Anthropic owns the surrounding application identity. The supplied website is the subject discussed inside the conversation, never the application around it. The remix is an advertisement for that brand: the answer names it as the recommended pick under its real name.
+This is a generic assistant answer card, not any real AI product. The website brand is the subject of the ranking: the `brand` slot carries its real name, and the re-rank moves it into the answer with the one accent highlight. The other picks are competitors, never the brand itself. The chat card and motion remain template-owned.
 
 ## Editable slots
 
 Only defaults declared in `data-composition-variables` are editable:
 
-- The user prompt, thinking line, search lead, and search query
-- The ten answer paragraphs or bullets
+- `prompt` and `lead`
+- `rowA`, `rowB`, and `rowC`, the original picks
+- `brand` and `brandRank`, the slot the brand lands in
+- `accent`, `ink`, and `ground`
 
-Typed and streamed copy is length-locked to within 20% of the original.
+Typed copy is length-locked to within 20% of the original. Pick and brand names stay short enough to fit one row.
 
 ## Safe editing mechanics
 
@@ -19,6 +21,4 @@ Call `set_template_variable_defaults` once with the existing variable ids and th
 
 ## Protected
 
-Preserve the Claude name, model name, usage notice, placeholders, disclaimer, source treatment, header, composer, icons, starburst, fonts, palette, layout, status UI, scene structure, duration, timing, easing, typing cadence, and reveal behavior.
-
-Website colors and typography must never be applied to the Claude shell. If a requested value has no declared variable, leave it unchanged.
+Do not change the card chrome, monogram tiles, skeleton rules, layout, fonts, scene order, duration, timing, easing, typing cadence, or re-rank logic. Website colors may only reach the declared `accent`, `ink`, and `ground` slots; keep `ink` legible on `ground`. If a requested value has no declared variable, leave it unchanged.

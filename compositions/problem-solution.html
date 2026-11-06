@@ -6,7 +6,7 @@
   <body>
     <template>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
         #root {
           position: absolute;
@@ -15,7 +15,7 @@
           height: 1080px;
           background: #ffffff;
           color: #000000;
-          font-family: 'Inter', sans-serif;
+          font-family: "Noto Sans", sans-serif;
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -46,14 +46,25 @@
         }
 
         /* Problem Stage (Stark Coral Warning) */
+        /* White cover panel: the problem stage holds underneath while this wipes
+           in over it, so the hand-off is two entrances and no exit (§5). */
+        .stage-cover {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          opacity: 0;
+          z-index: 10;
+        }
+
         .problem-stage {
-          background: rgba(192, 57, 43, 0.05);
+          /* Yellow-theme tint only (§3). */
+          background: rgba(255, 165, 0, 0.08);
           border: 2px solid #ffcf00;
           opacity: 0;
         }
 
         .problem-tag {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 26px;
           font-style: italic;
           color: #ffcf00;
@@ -63,7 +74,7 @@
         }
 
         .problem-title {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 50px;
           font-weight: 800;
           color: #000000;
@@ -82,14 +93,14 @@
 
         /* Solution Stage (Vibrant Brand Yellow & Pink) */
         .solution-stage {
-          background: rgba(255, 243, 168, 0.15);
+          background: rgba(255, 207, 0, 0.1);
           border: 2px solid #ffcf00;
-          box-shadow: 0 0 40px rgba(255, 243, 168, 0.9);
+          box-shadow: 0 0 40px rgba(255, 207, 0, 0.35);
           opacity: 0;
         }
 
         .solution-tag {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 26px;
           font-style: italic;
           color: #ffa500;
@@ -99,7 +110,7 @@
         }
 
         .solution-title {
-          font-family: 'Playfair Display', serif;
+          font-family: "Noto Sans", sans-serif;
           font-size: 50px;
           font-weight: 800;
           color: #ffcf00;
@@ -118,6 +129,8 @@
           <div data-hf-id="hf-pawi" class="problem-title">Legacy systems stall growth and burn engineering hours.</div>
           <div data-hf-id="hf-5r3x" class="crack-barrier" id="c4-barrier"></div>
         </div>
+
+        <div data-hf-id="hf-c4cover" class="stage-cover" id="c4-cover"></div>
 
         <!-- Stage 2: Solution -->
         <div data-hf-id="hf-jbnn" class="stage-box solution-stage" id="c4-solution">
@@ -144,11 +157,15 @@
           1.4
         );
 
-        // 3.4–5s: Wipe clean & reveal solution in vibrant brand colors
-        tl.to("#c4-problem",
-          { opacity: 0, scale: 1.05, duration: 0.6, ease: "power2.in" },
+        // 3.4–5s: cover the problem stage, then reveal the solution.
+        // Both beats are entrances; #c4-problem keeps its final state (§5).
+        tl.fromTo("#c4-cover",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.6, ease: "power2.inOut" },
           3.4
         );
+        // Hidden instantly behind the cover, never animated out (§5).
+        tl.set("#c4-problem", { autoAlpha: 0 }, 4.0);
         tl.fromTo("#c4-solution",
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },

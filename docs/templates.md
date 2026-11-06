@@ -1,15 +1,18 @@
 # HyperFrames Editorial Templates
 
-42 drop-in video templates, grouped by the job each one does in an edit —
+46 drop-in video templates, grouped by the job each one does in an edit —
 openers, explainers, comparisons, process flows, systems, data, proof and
-artifacts. Each one is 8 seconds, 1920×1080, silent, and built on the design
-system in `design.md`.
+artifacts. Each one is built on the design system in `design.md`.
+
+Durations vary by template: most are 8 seconds; `code-diff` is 6 seconds;
+the installed AI chat artifacts keep their own durations
+(`ai-chat-reveal` 12.6333s, `claude-exchange` 21.4s, `ai-answer-rank` 9s).
 
 Paste this file into an AI agent to tell it what the library contains.
 
 ## The short version
 
-- **42 templates** — A openers & statements (4) · B explain & summarize (5) · C compare & contrast (4) · D process & flow (6) · E structure & systems (5) · F data & numbers (8) · G social proof & audience (6) · H screens & artifacts (4).
+- **46 templates** — A openers & statements (4) · B explain & summarize (5) · C compare & contrast (4) · D process & flow (6) · E structure & systems (5) · F data & numbers (8) · G social proof & audience (6) · H screens & artifacts (8).
 - **File** `compositions/<id>.html`. **Mount** it with `data-composition-src="compositions/<file>.html"` plus a `data-start` and `data-duration`, and register one paused timeline: `window.__timelines["<id>"] = gsap.timeline({ paused: true });`
 - **Every frame** uses a white background (`#ffffff`), black text by default, one theme per template (Blue/Red/Green/Yellow/Orange), entrance-only motion, no content below y=920, and no corner text.
 - **To adapt one**, edit the copy in the file (or its `CONFIG` block where it has one) and keep the design system intact.
@@ -29,7 +32,7 @@ A red alert chip, a headline that slams in word by word, and a scrolling ticker.
 Use it for: urgency beats — patches, outages, breaking announcements.
 
 **A02 · Chapter Card** (`chapter-card`)
-Dimmed footage behind a chapter number and a title whose characters rise in.
+Dimmed footage behind a chapter number and a title whose characters raise in.
 Use it for: section openers and chapter markers in a long-form piece.
 
 **A03 · Headline Stack** (`headline-stack`)
@@ -205,6 +208,22 @@ Use it for: showing the prompt you used to get a result.
 **H04 · Notes Typing** (`notes-typing`)
 A notes-app page types a title and body lines on a human keystroke rhythm with a moving caret.
 Use it for: personal, diary-style storytelling beats.
+
+**H05 · Code Diff** (`code-diff`)
+A before/after code change plays out as a diff inside a black editor card.
+Use it for: showing what changed in code, configs or docs.
+
+**H06 · AI Chat Reveal** (`ai-chat-reveal`)
+A short AI chat reveals as prompt and answer bubbles, one beat at a time, inside a device screen shown on the white stage.
+Use it for: showing a concise AI answer building up in a chat UI.
+
+**H07 · Claude Exchange** (`claude-exchange`)
+A longer back-and-forth chat exchange plays out between a user and an assistant, inside a device screen shown on the white stage.
+Use it for: conversational AI beats where the dialogue itself is the content.
+
+**H08 · AI Answer Rank** (`ai-answer-rank`)
+Three AI answer picks rank on a card, then a highlighted brand slides into its slot and the rest step down.
+Use it for: feature-forward AI answer moments, best-answer callouts, AI-visibility claims.
 
 ---
 

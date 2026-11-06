@@ -83,14 +83,20 @@ The previous cream/blush gradient and gold/pink palette are replaced by this the
 - **Highlighter.** Text highlighters use `#FFE34F` with
   `mix-blend-mode: multiply` so the text reads through the mark instead of
   being covered.
-- **Never crop images.** Every image — screenshots, photos, stock placeholders,
-  avatars and logos (including channel avatars inside end-card / subscribe
-  pills) — must be shown in full. Size the placeholder frame to the media's
-  native aspect ratio and use `object-fit: contain`; never use
-  `object-fit: cover`, circular masks (`border-radius: 50%` on media), or any
-  overflow/clipping to force media into a differently-shaped box. Where a
-  headline row needs a visual anchor, use vector icons (e.g. Google Material
-  Symbols) instead of cropped screenshots.
+- **Never crop content media.** Every image shown as an image — screenshots,
+  photos, cards, stock placeholders, avatars and logos (including channel
+  avatars inside end-card / subscribe pills) — must be shown in full. Size the
+  placeholder frame to the media's native aspect ratio and use
+  `object-fit: contain`; never use `object-fit: cover`, circular masks
+  (`border-radius: 50%` on media), or any overflow/clipping to force media into
+  a differently-shaped box. Where a headline row needs a visual anchor, use
+  vector icons (e.g. Google Material Symbols) instead of cropped screenshots.
+- **Background plates are the one exception.** Footage or a photo used as a
+  *dimmed full-bleed background behind text* (§2 "full-bleed media templates",
+  §4 first bullet) may fill the frame with `object-fit: cover` — it carries no
+  information the viewer is meant to read in full, and it always sits under a
+  `rgba(0, 0, 0, 0.5)` dim. Everything else — including a portrait plate or a
+  card image — is content media and takes the `contain` rule above.
 - Media placeholders live in `stock media/` (space in path → always URL-encode:
   `src="../stock%20media/ai_price.jpg"`).
 
@@ -367,10 +373,32 @@ For italic Latin text use the same class with `font-style: italic` (the import
 includes the italic axis). CJK text has no italic — emphasise it with weight or
 the theme accent instead.
 
-> **Migration note.** The shipped templates in `compositions/` still import
-> Playfair Display + Plus Jakarta Sans (and `handdrawn-flowchart` also uses Caveat). They predate
-> this rule and must be migrated to Noto Sans before they are reused. Any new or
-> edited frame follows the Noto Sans rule above.
+> **Migration status.** All 46 catalogued templates now import Noto Sans (plus
+> Noto Sans TC) and set it as their body/display family — the earlier Playfair
+> Display / Plus Jakarta Sans imports are gone, including the 29 files that
+> referenced an unimported `Inter` and silently fell back to a system face.
+>
+> **Documented exceptions** (single-purpose identity faces, each self-hosted or
+> imported explicitly, never a silent fallback):
+> - `handdrawn-flowchart` keeps **Caveat** for its hand-drawn labels
+>   (`--hw-font-print`).
+> - `claude-exchange` keeps its bundled **ClaudeSans / ClaudeSerif** faces under
+>   `assets/fonts/`, because the block is a device mock of that product.
+
+### Artifact-internal type
+
+UI-mockup frames (`terminal-editor`, `code-diff`, `claude-exchange`,
+`ai-chat-reveal`, `notes-typing`, `typed-prompt`, `reddit-post-card`,
+`yt-comment-*`, `subscribe-outro`) reproduce a real interface, and their
+*internal* chrome — status bars, keycaps, code gutters, vote counters, badge
+letters — keeps the device's own pixel sizes so the mock stays believable.
+Those internal sizes are **not** ladder violations; the artifact exception in
+§5 covers their alignment, and this paragraph covers their type scale.
+
+What still binds an artifact frame: the frame itself is 1920×1080, the 96px
+gutter and y=920 floor hold, and any *editorial* text the frame adds (headline,
+callout, label, caption) uses the §6 ladder. Only the simulated-interface layer
+is exempt.
 
 ### Scale (at 1920×1080)
 
@@ -524,7 +552,7 @@ documented addendum exception, not a local override.
 
 ## 7. Template catalog
 
-42 templates, each identified by a **stable slug** (`core-definition`,
+46 templates, each identified by a **stable slug** (`core-definition`,
 `barchart-growth`, …). The slug is identity only — a template can move between
 groups without being renamed.
 

@@ -7,11 +7,16 @@
   "assets/fonts/inter-latin-500-normal.woff2": "f3779f1efccc4bdcdf9c0a02ab95bf6bd092ed09c48c08cedc725889edd1d19f",
   "assets/fonts/inter-latin-600-normal.woff2": "f9a06e79cd3a2a20951c0f0e28f66dd0e6d3fda73911d640a2125c8fcb78f21a",
   "assets/fonts/inter-LICENSE.txt": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345",
+  "assets/hyperframes-logo-white.svg": "f9f942c43b465616c3af2fb8b07daf1cc05a4776903bbb27beb2bb608060e6c7",
+  "compositions/ai-answer-rank.html": "76e58e3f93e1319438f93be292076195f452b719c9a867e8ae79d26cdf2c1e96",
+  "compositions/ai-chat-reveal.html": "b4ce0e31242593d8b8d962bd6b9efd0a44aaa62473ad3405c8ed31948540dcfb",
   "compositions/claude-exchange.html": "81b000a0a6bfafef99158af900b474848f701dc8138a2a39c340c63004df5162",
+  "compositions/code-diff.html": "aff96dad92006220181d6d32f6a889ad1779c79bf23337051880884a6130b201",
   "compositions/components/before-after-wipe.html": "c04e8bf1bfbcec71d0921a03a786cc09e660732428aa04bf79036a30b7755e09",
   "compositions/components/grid-card-assemble.html": "8713fc92043a353732f4d9bd8832e0023a2019472d3a9cfffc566ff6fd194042",
   "compositions/components/hw-arrow.html": "73585adc010db9ec60568eabeb1afb544601e6deef19ac22e2db3a1a380f0dad",
   "compositions/components/hw-box-label.html": "3c4d4049a2ffe0d5553203763eb6b5d382e9d5cc320d61dc9106a4de0fe76b2c",
+  "compositions/components/line-swap.html": "24fb7b6b8ed1455e2bcf22addfa80d02dbc1008473b4cef98e7346709aa80ad7",
   "compositions/components/notes-typing.html": "d1e0ad020fb0fd17b9e5abdddb1c125c40806d4f2f31c08bb6fffcd8867d495a",
   "compositions/components/radial-surround.html": "a331e57781ee42b150615fac69c9e8368425d050d25ffe134cf01f27d91af224",
   "compositions/components/split-tilt-cards.html": "93a753ab8250a3ab9c47d12894ab7677b3007492529e426aba36b4cef8126e32",
@@ -19,5 +24,5 @@
   "compositions/light-leak.html": "6f3961d0b875f5c5e0ff5a423dab636613fad0d486e23c5da315ef5d1183359a",
   "compositions/reddit-post.html": "1de327463a72669b4642460b87753d0129250df44e1c7fcac809380c865c42eb",
   "compositions/yt-comment-card.html": "6d5f88ba34fb60e9657043ccd3b3312b778b39cf1ad7024d4acf86d3b728a915",
-  "TEMPLATE.md": "1767ceb9d2a35b0b7c061244d5ee036405594a75e34d33a1456259293cf828ba"
+  "TEMPLATE.md": "eab80aee07319a256acd549a791cf11161b44d261e475152ca8c53db3e5d83a9"
 }

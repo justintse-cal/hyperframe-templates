@@ -84,6 +84,26 @@
       "name": "grid-card-assemble",
       "type": "hyperframes:component",
       "target": "compositions/components/grid-card-assemble.html"
+    },
+    {
+      "name": "code-diff",
+      "type": "hyperframes:block",
+      "target": "compositions/code-diff.html"
+    },
+    {
+      "name": "line-swap",
+      "type": "hyperframes:component",
+      "target": "compositions/components/line-swap.html"
+    },
+    {
+      "name": "ai-chat-reveal",
+      "type": "hyperframes:block",
+      "target": "compositions/ai-chat-reveal.html"
+    },
+    {
+      "name": "ai-answer-rank",
+      "type": "hyperframes:block",
+      "target": "compositions/ai-answer-rank.html"
     }
   ]
 }
